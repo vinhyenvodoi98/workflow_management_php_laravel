@@ -84,6 +84,8 @@
                     Laravel
                 </div>
 
+                <div id="example"></div>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -96,5 +98,6 @@
                 </div>
             </div>
         </div>
+        <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>

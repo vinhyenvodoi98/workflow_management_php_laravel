@@ -41,3 +41,29 @@ vs code js cài đặt plusin prettier, Trailing Space
 4. Create new branch from branch master and code
 5. Create pull request with detail description (may be with some screenshot) and wait for review
 6. After merge, pull new code from master
+
+## Run
+
+### Laravel
+
+```sh
+composer install
+composer update
+```
+
+### Reactjs
+
+```sh
+yarn install
+
+or
+
+npm install
+```
+
+```
+npm run watch
+
+```
+
+khi run lệnh trên mỗi khi bạn save file nó sẽ auto biên dịch mã javascript đến thư mục `public/js/app.js`
