@@ -67,3 +67,15 @@ npm run watch
 ```
 
 khi run lệnh trên mỗi khi bạn save file nó sẽ auto biên dịch mã javascript đến thư mục `public/js/app.js`
+
+### build docker image
+
+```
+docker build -t workflow .
+```
+
+### Run with docker
+
+```
+docker run -p 8181:8181 workflow
+```
