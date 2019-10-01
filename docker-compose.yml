@@ -1,0 +1,42 @@
+version: '3'
+services:
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: workflow/php
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /src
+    volumes:
+      - ./:/src
+    networks:
+      - app-network
+
+  #MariaDB Service
+  mariadb:
+    image: mariadb:10.3
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: mariadb
+      MYSQL_ROOT_PASSWORD: 123456
+    #volumes:
+    # - dbdata:....
+    # - ./mysql/my.cnf:/etc/mysql/my.cnf
+    # This bind mount binds ~/laravel-app/mysql/my.cnf to /etc/mysql/my.cnf in the container.
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
