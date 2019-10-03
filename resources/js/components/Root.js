@@ -11,7 +11,7 @@ export default class Root extends Component {
                 <Background />
                 <div className='content container'>
                     <Navbar />
-                    <p>Hello world</p>
+                    <p>Hello world !!!</p>
                 </div>
             </div>
         );

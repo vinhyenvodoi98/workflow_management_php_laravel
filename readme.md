@@ -68,14 +68,37 @@ npm run watch
 
 khi run lệnh trên mỗi khi bạn save file nó sẽ auto biên dịch mã javascript đến thư mục `public/js/app.js`
 
-### build docker image
+### Run with docker-composer
 
 ```
-docker build -t workflow .
+docker-compose up -d
 ```
 
-### Run with docker
+### If you want to check database
 
+**for the first time**
+
+```sh
+docker run --name mariadb -e MYSQL_ROOT_PASSWORD=123456 -d mariadb:10.3
 ```
-docker run -p 8181:8181 workflow
+
+```sh
+docker run -it --link mariadb:mysql --rm mariadb:10.3 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
+
+**Access to database for check**
+
+```sh
+docker exec -it <db_container_ID> bash
+
+mysql -u root -p
+```
+
+password is in docker-compose when you setup and run
+in `MYSQL_ROOT_PASSWORD: 123456`
+
+Test
+create `contact.php` seeds `contractsTableSeeder.php` factories `ContractFactory.php`
+
+follow this
+https://blog.digitalocean.com/create-simple-contacts-laravel-postgresql/
