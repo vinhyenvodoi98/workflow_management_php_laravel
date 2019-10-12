@@ -31,13 +31,13 @@ class Navbar extends Component {
                         </ul>
                         {/* </HashRouter> */}
                     </div>
-                    <div className='col'>
+                    <div className='row'>
                         <ul className='right'>
                             <li>
-                                <a href='#contact'>Sign In</a>
+                                <Link to='/login'>Sign In</Link>
                             </li>
                             <li>
-                                <a href='#contact'>Sign Up</a>
+                                <Link to='/register'>Register</Link>
                             </li>
                         </ul>
                     </div>
