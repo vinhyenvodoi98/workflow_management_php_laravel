@@ -1975,7 +1975,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".wallpaper {\n    margin: 0;\n    padding: 0;\n    height: 100vh;\n}\n\n.background {\n    position: relative;\n    width: 100%;\n    height: 100%;\n    background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);\n    overflow: hidden;\n}\n\nsection .wave {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 100px;\n    background: url(" + escape(__webpack_require__(/*! ../../image/wave.png */ "./resources/image/wave.png")) + ");\n    background-size: 1000px 100px;\n}\n\nsection .wave.wave1 {\n    -webkit-animation: animate 30s linear infinite;\n            animation: animate 30s linear infinite;\n    z-index: 1000;\n    opacity: 1;\n    -webkit-animation-delay: 0s;\n            animation-delay: 0s;\n    bottom: 0;\n}\n\nsection .wave.wave2 {\n    -webkit-animation: animate 15s linear infinite;\n            animation: animate 15s linear infinite;\n    z-index: 999;\n    opacity: 0.5;\n    -webkit-animation-delay: -5s;\n            animation-delay: -5s;\n    bottom: 10px;\n}\n\nsection .wave.wave3 {\n    -webkit-animation: animate 30s linear infinite;\n            animation: animate 30s linear infinite;\n    z-index: 998;\n    opacity: 0.2;\n    -webkit-animation-delay: -7s;\n            animation-delay: -7s;\n    bottom: 15px;\n}\n\nsection .wave.wave4 {\n    -webkit-animation: animate 20s linear infinite;\n            animation: animate 20s linear infinite;\n    z-index: 997;\n    opacity: 0.7;\n    -webkit-animation-delay: -2s;\n            animation-delay: -2s;\n    bottom: 20px;\n}\n\n@-webkit-keyframes animate {\n    0% {\n        background-position-x: 0;\n    }\n    100% {\n        background-position-x: right;\n    }\n}\n\n@keyframes animate {\n    0% {\n        background-position-x: 0;\n    }\n    100% {\n        background-position-x: right;\n    }\n}\n", ""]);
+exports.push([module.i, ".wallpaper {\n    margin: 0;\n    padding: 0;\n    height: 100vh;\n}\n\n.background {\n    position: relative;\n    width: 100%;\n    height: 100%;\n    background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);\n    overflow: hidden;\n}\n\nsection .wave {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 1.5vw;\n    background: url(" + escape(__webpack_require__(/*! ../../image/wave.png */ "./resources/image/wave.png")) + ");\n    background-size: 500px 1.5vw;\n}\n\nsection .wave.wave1 {\n    -webkit-animation: animate 30s linear infinite;\n            animation: animate 30s linear infinite;\n    z-index: 1000;\n    opacity: 1;\n    -webkit-animation-delay: 0s;\n            animation-delay: 0s;\n    bottom: 0;\n}\n\nsection .wave.wave2 {\n    -webkit-animation: animate 15s linear infinite;\n            animation: animate 15s linear infinite;\n    z-index: 999;\n    opacity: 0.5;\n    -webkit-animation-delay: -5s;\n            animation-delay: -5s;\n    bottom: 10px;\n}\n\nsection .wave.wave3 {\n    -webkit-animation: animate 30s linear infinite;\n            animation: animate 30s linear infinite;\n    z-index: 998;\n    opacity: 0.2;\n    -webkit-animation-delay: -7s;\n            animation-delay: -7s;\n    bottom: 15px;\n}\n\nsection .wave.wave4 {\n    -webkit-animation: animate 20s linear infinite;\n            animation: animate 20s linear infinite;\n    z-index: 997;\n    opacity: 0.7;\n    -webkit-animation-delay: -2s;\n            animation-delay: -2s;\n    bottom: 20px;\n}\n\n@-webkit-keyframes animate {\n    0% {\n        background-position-x: 0;\n    }\n    100% {\n        background-position-x: right;\n    }\n}\n\n@keyframes animate {\n    0% {\n        background-position-x: 0;\n    }\n    100% {\n        background-position-x: right;\n    }\n}\n", ""]);
 
 // exports
 
@@ -1991,10 +1991,29 @@ exports.push([module.i, ".wallpaper {\n    margin: 0;\n    padding: 0;\n    heig
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Amatic+SC&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".nav {\n    height: 4vw;\n    background-color: whitesmoke;\n    box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);\n}\n\n.image_block {\n    text-align: left;\n    height: 4vw;\n    width: 4vw;\n}\n\n.logo_image {\n    margin: 10px;\n}\n\n.row {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n}\n\n.right {\n    display: flex;\n    flex-direction: row;\n    font-family: 'Poppins', sans-serif;\n}\n\nul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n}\n\nli a {\n    display: block;\n    padding: 1.4vw 1.5vw;\n    text-decoration: none;\n    font-size: 1.5vw;\n    font-weight: 600;\n    line-height: 0.4cm;\n    color: black;\n}\n\nli a:hover {\n    border-bottom: 2px solid #8167a9;\n    color: #8167a9;\n}\n", ""]);
+exports.push([module.i, ".nav {\n    height: 3vw;\n    background-color: whitesmoke;\n    box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);\n    font-family: 'Amatic SC', cursive;\n}\n\n.image_block {\n    text-align: left;\n    height: 3vw;\n    width: 3vw;\n}\n\n.logo_image {\n    margin: 10px;\n}\n\n.row {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n}\n\n.right {\n    display: flex;\n    flex-direction: row;\n}\n\nul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n}\n\nli a {\n    height: 2.5vw;\n    display: block;\n    padding: 0vw 1.5vw;\n    text-decoration: none;\n    font-size: 1.5vw;\n    font-weight: 600;\n    color: black;\n}\n\nli a:hover {\n    border-bottom: 2px solid #8167a9;\n    color: #8167a9;\n}\n\n.row {\n    height: 3vw;\n}\n\na {\n    padding-top: 0.5vw !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/views/LoginPage.css":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/views/LoginPage.css ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Amatic+SC&display=swap);", ""]);
+
+// module
+exports.push([module.i, ".login_container {\n    font-family: 'Amatic SC', cursive;\n    display: flex;\n    flex-direction: row;\n    width: 50%;\n    height: 90vh;\n    margin: auto;\n    justify-content: space-around;\n}\n\n.box {\n    display: flex;\n    position: relative;\n    width: 50%;\n    height: 90vh;\n    margin: auto;\n    justify-content: center;\n    align-items: center;\n    align-content: center;\n}\n\n.form_box {\n    display: block;\n    margin-bottom: auto;\n    background-color: white;\n}\n\n.form {\n    display: flex;\n    justify-content: space-around;\n    flex-direction: column;\n}\n\nlabel {\n    font-size: 1.6vw;\n    font-weight: 600;\n}\n\n.input {\n    font-weight: bold;\n    /* width: 100%; */\n    margin: 0 35px 20px;\n    height: 35px;\n    padding: 6px 15px;\n    border-radius: 5px;\n    outline: none;\n    border: none;\n    background: #f6f7f9;\n    color: #748194;\n    font-size: 14px;\n}\n\n.space_around {\n    margin: 10px;\n}\n\n.choice_container {\n    position: absolute;\n    width: auto;\n    height: auto;\n    border-radius: 15px 15px 15px 15px;\n}\n\n.c1 {\n    box-shadow: 0 0 10px grey;\n    background-color: white;\n    width: 300px;\n    height: 500px;\n    display: inline-block;\n    border-radius: 15px 15px 15px 15px;\n}\n\n.c11 {\n    background-image: url('https://i.pinimg.com/736x/b8/09/22/b80922f6ea2daaf36a6627378662803b--deck-of-cards-phone-wallpapers.jpg');\n    background-size: 300px 400px;\n    background-repeat: no-repeat;\n    background-color: white;\n    width: 300px;\n    height: 400px;\n    position: absolute;\n    z-index: 4;\n    border-radius: 15px 15px 200px 200px;\n}\n\n#left,\n#right {\n    text-align: center;\n    color: white;\n    display: inline-block;\n    width: 146px;\n    /* height: 500px; */\n    background-color: white;\n    cursor: pointer;\n}\n\n#left {\n    border-radius: 15px 0px 0px 15px;\n}\n\n#right {\n    border-radius: 15px 15px 15px 0px;\n}\n\n.left_hover {\n    color: #ee9ba3;\n    box-shadow: 5px 0 18px -10px #333;\n    z-index: 1;\n    position: absolute;\n}\n\n.right_hover {\n    box-shadow: -5px 0 15px -10px #333;\n    z-index: 1;\n    position: absolute;\n}\n\n.s1class {\n    color: #748194;\n    position: absolute;\n    bottom: 0;\n    left: 63%;\n    margin-left: -50%;\n}\n\n.s1class span,\n.s2class span {\n    display: block;\n}\n\n.su {\n    font-size: 20px;\n}\n\n.s2class {\n    color: #748194;\n    position: absolute;\n    bottom: 0;\n    right: 63%;\n    margin-right: -50%;\n}\n\n.mainhead {\n    color: white;\n    font-size: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.mainp {\n    color: white;\n    font-size: 13px;\n    text-align: center;\n    margin-top: 10px;\n}\n\n.c2 {\n    box-shadow: 0 0 10px grey;\n    background-color: white;\n    width: 300px;\n    height: 500px;\n    border-radius: 15px;\n    left: 370px;\n    display: inline-block;\n    text-align: center;\n}\n\nbutton {\n    font-weight: bold;\n    margin: 0 35px 20px;\n    height: 45px;\n    padding: 6px 15px;\n    border-radius: 5px;\n    outline: none;\n    border: none;\n    background: #ee9ba3;\n    color: white;\n    font-size: 14px;\n}\n\nh1 {\n    color: #748194;\n    font-size: 30px;\n    text-align: center;\n}\n\n.text-color {\n    color: rgb(238, 155, 163);\n}\n\n.address-font {\n    font-size: 12px;\n}\n\n.verify-box {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n    height: 80%;\n}\n", ""]);
 
 // exports
 
@@ -53512,8 +53531,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_WorkMgmtPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/WorkMgmtPage */ "./resources/js/views/WorkMgmtPage.js");
 /* harmony import */ var _views_GroupMgmtPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/GroupMgmtPage */ "./resources/js/views/GroupMgmtPage.js");
 /* harmony import */ var _views_ProcessMgmtPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/ProcessMgmtPage */ "./resources/js/views/ProcessMgmtPage.js");
-/* harmony import */ var _Root_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Root.css */ "./resources/js/Root.css");
-/* harmony import */ var _Root_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_Root_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _views_LoginPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/LoginPage */ "./resources/js/views/LoginPage.js");
+/* harmony import */ var _views_RegisterPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/RegisterPage */ "./resources/js/views/RegisterPage.js");
+/* harmony import */ var _Root_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Root.css */ "./resources/js/Root.css");
+/* harmony import */ var _Root_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_Root_css__WEBPACK_IMPORTED_MODULE_11__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53534,6 +53555,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
  // import {  } from 'react-router';
+
+
 
 
 
@@ -53576,6 +53599,14 @@ function (_Component) {
         exact: true,
         path: "/processpage",
         component: _views_ProcessMgmtPage__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
+        path: "/login",
+        component: _views_LoginPage__WEBPACK_IMPORTED_MODULE_9__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
+        path: "/register",
+        component: _views_RegisterPage__WEBPACK_IMPORTED_MODULE_10__["default"]
       }))));
     }
   }]);
@@ -53729,15 +53760,7 @@ function (_Component) {
         className: "wallpaper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "wallpaper background"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wave wave1"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wave wave2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wave wave3"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wave wave4"
-      })));
+      }));
     }
   }]);
 
@@ -53850,14 +53873,14 @@ function (_Component) {
       }, "Group Managment")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/processpage"
       }, "Process Management")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
+        className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#contact"
-      }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#contact"
-      }, "Sign Up"))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
+      }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register"
+      }, "Register"))))));
     }
   }]);
 
@@ -53988,6 +54011,162 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/views/LoginPage.css":
+/*!******************************************!*\
+  !*** ./resources/js/views/LoginPage.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./LoginPage.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/views/LoginPage.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/views/LoginPage.js":
+/*!*****************************************!*\
+  !*** ./resources/js/views/LoginPage.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _LoginPage_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginPage.css */ "./resources/js/views/LoginPage.css");
+/* harmony import */ var _LoginPage_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_LoginPage_css__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var LoginPage =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(LoginPage, _Component);
+
+  function LoginPage(props) {
+    var _this;
+
+    _classCallCheck(this, LoginPage);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoginPage).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(LoginPage, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login_container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choice_container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "c1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "c11"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "s1class text-color"
+      }, this.homepageRender, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "SIGN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "su"
+      }, "IN"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        render: function render(_ref) {
+          var history = _ref.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            id: "right",
+            onClick: function onClick() {
+              history.push('/register');
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            className: "s2class"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "SIGN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "su"
+          }, "UP")));
+        }
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choice_container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "c2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "space_around"
+      }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "space_around",
+        htmlFor: "username"
+      }, "Enter username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input space_around",
+        id: "username",
+        name: "username",
+        type: "text",
+        placeholder: "Username*"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "space_around",
+        htmlFor: "password"
+      }, "Enter your password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input space_around",
+        id: "password",
+        name: "password",
+        type: "password",
+        placeholder: "Password*"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button"
+      }, "Submit"))))));
+    }
+  }]);
+
+  return LoginPage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (LoginPage);
+
+/***/ }),
+
 /***/ "./resources/js/views/ProcessMgmtPage.js":
 /*!***********************************************!*\
   !*** ./resources/js/views/ProcessMgmtPage.js ***!
@@ -54045,6 +54224,151 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (ProcessMgmtPage);
+
+/***/ }),
+
+/***/ "./resources/js/views/RegisterPage.js":
+/*!********************************************!*\
+  !*** ./resources/js/views/RegisterPage.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _LoginPage_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginPage.css */ "./resources/js/views/LoginPage.css");
+/* harmony import */ var _LoginPage_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_LoginPage_css__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var RegisterPage =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(RegisterPage, _Component);
+
+  function RegisterPage(props) {
+    var _this;
+
+    _classCallCheck(this, RegisterPage);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RegisterPage).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(RegisterPage, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login_container "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choice_container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "c1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "c11"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        render: function render(_ref) {
+          var history = _ref.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            id: "left",
+            onClick: function onClick() {
+              history.push('/login');
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            className: "s1class"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "SIGN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "su"
+          }, "IN")));
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        render: function render(_ref2) {
+          var history = _ref2.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            id: "right",
+            onClick: function onClick() {
+              history.push('/register');
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            className: "s2class text-color"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "SIGN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "su"
+          }, "UP")));
+        }
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choice_container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "c2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form_box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "space_around"
+      }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "space_around",
+        htmlFor: "name"
+      }, "Enter Fullname"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input space_around",
+        id: "name",
+        name: "name",
+        type: "text",
+        placeholder: "Full name*"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "space_around",
+        htmlFor: "username"
+      }, "Enter username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input space_around",
+        id: "username",
+        name: "username",
+        type: "text",
+        placeholder: "Username*"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "space_around",
+        htmlFor: "password"
+      }, "Enter your password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input space_around",
+        id: "password",
+        name: "password",
+        type: "password",
+        placeholder: "Password*"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button"
+      }, "Submit")))))));
+    }
+  }]);
+
+  return RegisterPage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterPage);
 
 /***/ }),
 
