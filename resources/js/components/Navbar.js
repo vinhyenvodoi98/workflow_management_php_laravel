@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import './Navbar.css';
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {}
+
     render() {
         return (
             <div className='nav'>
@@ -31,20 +39,36 @@ class Navbar extends Component {
                         </ul>
                         {/* </HashRouter> */}
                     </div>
-                    <div className='row'>
-                        <ul className='right'>
-                            <li>
-                                <Link to='/login'>Sign In</Link>
-                            </li>
-                            <li>
-                                <Link to='/register'>Register</Link>
-                            </li>
-                        </ul>
-                    </div>
+                    {this.props.LoginStatus.isLogin ? (
+                        <div className='row'>
+                            <ul className='right'>
+                                <li>
+                                    <Link to='/profile'>{this.props.LoginStatus.name}</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    ) : (
+                        <div className='row'>
+                            <ul className='right'>
+                                <li>
+                                    <Link to='/login'>Sign In</Link>
+                                </li>
+                                <li>
+                                    <Link to='/register'>Register</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         );
     }
 }
 
-export default Navbar;
+const mapStatetoProps = (state) => {
+    return {
+        LoginStatus: state.LoginStatus
+    };
+};
+
+export default compose(connect(mapStatetoProps))(Navbar);
