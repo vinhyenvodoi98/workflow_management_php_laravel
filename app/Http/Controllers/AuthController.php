@@ -3,24 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterFormRequest;
-use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\User;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
     public function register(RegisterFormRequest $request)
     {
         $params = $request->only('email', 'name', 'password');
+        if (User::checkUserExisted($params['email'])) {
+            return response()->json([
+                "success" => "false",
+                "msg" => "Account already exists",
+            ]);
+        }
         $user = new User();
-        $user->email = $params['email'];
+        if ($user->checkUserExisted) {
+            $user->email = $params['email'];
+        }
+
         $user->name = $params['name'];
         $user->password = bcrypt($params['password']);
         $user->save();
 
-        return response()->json($user, Response::HTTP_OK);
+        return response()->json([
+            "success" => "true",
+            "msg" => "Create account successfully",
+        ]);
     }
 
     public function login(Request $request)
@@ -30,7 +42,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 'error',
                 'error' => 'invalid.credentials',
-                'msg' => 'Invalid Credentials.'
+                'msg' => 'Invalid Credentials.',
             ], Response::HTTP_BAD_REQUEST);
         }
 
@@ -55,7 +67,8 @@ class AuthController extends Controller
      *
      * @param Request $request
      */
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         $this->validate($request, ['token' => 'required']);
 
         try {
