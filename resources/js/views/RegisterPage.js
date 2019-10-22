@@ -6,8 +6,38 @@ import './LoginPage.css';
 class RegisterPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            email: '',
+            name: '',
+            password: ''
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    async handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+
+        await this.setState({
+            email: data.get('email'),
+            password: data.get('password'),
+            name: data.get('name')
+        });
+        await axios
+            .post('http://localhost:8181/api/signup', {
+                email: this.state.email,
+                password: this.state.password,
+                name: this.state.name
+            })
+            .then((res) => {
+                window.location.href = '/login';
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <div className='login_container '>
@@ -67,15 +97,15 @@ class RegisterPage extends Component {
                                         placeholder='Full name*'
                                     />
 
-                                    <label className='space_around' htmlFor='username'>
-                                        Enter username
+                                    <label className='space_around' htmlFor='email'>
+                                        Enter email
                                     </label>
                                     <input
                                         className='input space_around'
-                                        id='username'
-                                        name='username'
+                                        id='email'
+                                        name='email'
                                         type='text'
-                                        placeholder='Username*'
+                                        placeholder='email*'
                                     />
 
                                     <label className='space_around' htmlFor='password'>
