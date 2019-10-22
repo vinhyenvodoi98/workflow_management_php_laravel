@@ -102,3 +102,9 @@ create `contact.php` seeds `contractsTableSeeder.php` factories `ContractFactory
 
 follow this
 https://blog.digitalocean.com/create-simple-contacts-laravel-postgresql/
+
+### to show logs form container
+
+```sh
+docker logs -f --details containerName
+```

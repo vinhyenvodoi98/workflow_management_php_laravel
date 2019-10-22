@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-// import {  } from 'react-router';
+import { Provider } from 'react-redux';
+import store from './store';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Background from './components/Background';
 import Navbar from './components/Navbar';
@@ -16,21 +17,23 @@ import './Root.css';
 export default class Root extends Component {
     render() {
         return (
-            <BrowserRouter>
-                <div>
-                    <Background />
-                    <div className='content container'>
-                        <Navbar />
+            <Provider store={store}>
+                <BrowserRouter>
+                    <div>
+                        <Background />
+                        <div className='content container'>
+                            <Navbar />
 
-                        <Route exact path='/' component={HomePage} />
-                        <Route exact path='/workspage' component={WorkMgmtPage} />
-                        <Route exact path='/grouppage' component={GroupMgmtPage} />
-                        <Route exact path='/processpage' component={ProcessMgmtPage} />
-                        <Route exact path='/login' component={LoginPage} />
-                        <Route exact path='/register' component={RegisterPage} />
+                            <Route exact path='/' component={HomePage} />
+                            <Route exact path='/workspage' component={WorkMgmtPage} />
+                            <Route exact path='/grouppage' component={GroupMgmtPage} />
+                            <Route exact path='/processpage' component={ProcessMgmtPage} />
+                            <Route exact path='/login' component={LoginPage} />
+                            <Route exact path='/register' component={RegisterPage} />
+                        </div>
                     </div>
-                </div>
-            </BrowserRouter>
+                </BrowserRouter>
+            </Provider>
         );
     }
 }
