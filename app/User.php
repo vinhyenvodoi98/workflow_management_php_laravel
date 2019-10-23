@@ -47,10 +47,4 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    # Static
-    public static function checkUserExisted($email)
-    {
-        # Check if the email already existed in database or not
-        return DB::table('users')->where('email', $email)->exists();
-    }
 }

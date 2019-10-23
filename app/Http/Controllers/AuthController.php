@@ -14,17 +14,9 @@ class AuthController extends Controller
     public function register(RegisterFormRequest $request)
     {
         $params = $request->only('email', 'name', 'password');
-        if (User::checkUserExisted($params['email'])) {
-            return response()->json([
-                "success" => "false",
-                "msg" => "Account already exists",
-            ]);
-        }
-        $user = new User();
-        if ($user->checkUserExisted) {
-            $user->email = $params['email'];
-        }
 
+        $user = new User();
+        $user->email = $params['email'];
         $user->name = $params['name'];
         $user->password = bcrypt($params['password']);
         $user->save();
