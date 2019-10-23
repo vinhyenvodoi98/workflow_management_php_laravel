@@ -2,14 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import store from '../store';
+import * as loginAction from '../actions/loginAction';
 import './Navbar.css';
 
 class Navbar extends Component {
     constructor(props) {
         super(props);
+        this.logout = this.logout.bind(this);
     }
 
     componentDidMount() {}
+
+    logout() {
+        store.dispatch(loginAction.logout());
+    }
 
     render() {
         return (
@@ -44,6 +51,11 @@ class Navbar extends Component {
                             <ul className='right'>
                                 <li>
                                     <Link to='/profile'>{this.props.LoginStatus.name}</Link>
+                                </li>
+                                <li>
+                                    <Link to='/' onClick={this.logout}>
+                                        Logout
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

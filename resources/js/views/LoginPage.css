@@ -22,12 +22,14 @@
 }
 
 .form_box {
+    height: 95%;
     display: block;
     margin-bottom: auto;
     background-color: white;
 }
 
 .form {
+    height: 90%;
     display: flex;
     justify-content: space-around;
     flex-direction: column;

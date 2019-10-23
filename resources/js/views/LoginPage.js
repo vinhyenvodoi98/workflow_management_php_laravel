@@ -31,6 +31,7 @@ class LoginPage extends Component {
             .then((res) => {
                 localStorage.setItem('token', res.data.token);
             });
+        window.location.href = '/';
     }
 
     render() {
