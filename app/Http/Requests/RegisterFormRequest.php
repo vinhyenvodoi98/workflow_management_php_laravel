@@ -32,8 +32,6 @@ class RegisterFormRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        #var_dump($validator);
-        echo "Making json\n";
         $response = new JsonResponse(
             [
                 "success" => "false",
@@ -41,8 +39,6 @@ class RegisterFormRequest extends FormRequest
             ],
             422
         );
-        echo "OK\n";
         throw (new ValidationException($validator, $response));
-        #return $response;
     }
 }
