@@ -11,7 +11,8 @@ export const login = (token) => (dispatch) => {
             dispatch({
                 type: LOGIN,
                 isLogin: true,
-                name: response.data.name
+                name: response.data.name,
+                token
             });
         })
         .catch((error) => {
@@ -33,7 +34,8 @@ export const logout = () => async (dispatch) => {
             dispatch({
                 type: LOGIN,
                 isLogin: false,
-                name: ''
+                name: '',
+                token: ''
             });
         })
         .catch((error) => {

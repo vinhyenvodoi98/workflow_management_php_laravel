@@ -35,13 +35,13 @@ ul {
 }
 
 li a {
-    height: 2.5vw;
+    height: 3vw !important;
     display: block;
-    padding: 0vw 1.5vw;
     text-decoration: none;
     font-size: 1.5vw;
     font-weight: 600;
     color: black;
+    cursor: pointer;
 }
 
 li a:hover {
@@ -55,4 +55,5 @@ li a:hover {
 
 a {
     padding-top: 0.5vw !important;
+    text-decoration: none !important;
 }
