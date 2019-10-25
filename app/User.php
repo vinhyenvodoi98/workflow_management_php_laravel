@@ -47,4 +47,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Static function to check for valid username and password
+     *
+     * return true if valid
+     */
+    public static function checkValidEmail($email)
+    {
+        return DB::table('users')->where('email', $email)->exists();
+    }
 }
