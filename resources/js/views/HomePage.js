@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import store from '../store';
+import PieChart from '../components/PieChart';
 import * as loginAction from '../actions/loginAction';
+
+import './HomePage.css';
 
 class HomePage extends Component {
     constructor(props) {
@@ -22,8 +25,42 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div>
-                <h1>HomePage</h1>
+            <div className='container'>
+                <div className='underNav'></div>
+                <div className='col-12 fullBox'>
+                    <div className='row '>
+                        <div className='col-6'>
+                            <div className='col-12 area'>
+                                <div className='boxBackGroud'></div>
+                                <p className='content'>Work overview</p>
+                                <PieChart />
+                            </div>
+                        </div>
+                        <div className='col-6'>
+                            <div className='col-12 area'>
+                                <div className='boxBackGroud'></div>
+                                <p className='content'>Urgent work</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='col-12 fullBox'>
+                    <div className='row'>
+                        <div className='col-6'>
+                            <div className='col-12 area'>
+                                <div className='boxBackGroud'></div>
+                                <p className='content'>Remind work</p>
+                            </div>
+                        </div>
+                        <div className='col-6'>
+                            <div className='col-12 area'>
+                                <div className='boxBackGroud'></div>
+                                <p className='content'>Working diary</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

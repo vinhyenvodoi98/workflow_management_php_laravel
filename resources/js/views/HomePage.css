@@ -1,0 +1,35 @@
+.staticBlock {
+    position: relative;
+}
+
+.area {
+    padding-top: 2.5vw;
+    padding-bottom: 1.5vw;
+    height: 20vw;
+    border: solid white 3px;
+    border-radius: 10px;
+}
+
+.boxBackGroud {
+    background-color: white;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.underNav {
+    height: 3vw;
+}
+
+.content {
+    /* color: white; */
+    left: 0;
+    font-weight: bold;
+}
+
+.fullBox {
+    height: 22vw;
+}

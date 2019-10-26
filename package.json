@@ -22,6 +22,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "@amcharts/amcharts4": "^4.7.4",
         "react-redux": "^7.1.1",
         "react-router-dom": "^5.1.2",
         "redux": "^4.0.4",
