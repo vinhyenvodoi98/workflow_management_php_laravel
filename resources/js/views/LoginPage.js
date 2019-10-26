@@ -9,7 +9,8 @@ class LoginPage extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            msg: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,8 +31,11 @@ class LoginPage extends Component {
             })
             .then((res) => {
                 localStorage.setItem('token', res.data.token);
+                window.location.href = '/';
+            })
+            .catch((error) => {
+                this.setState({ msg: error.response.data.msg });
             });
-        window.location.href = '/';
     }
 
     render() {
@@ -73,6 +77,11 @@ class LoginPage extends Component {
                             <h1 className='space_around'>Login</h1>
 
                             <form className='form' onSubmit={this.handleSubmit}>
+                                {this.state.msg ? (
+                                    <p className='colorError'>{this.state.msg}</p>
+                                ) : (
+                                    <p></p>
+                                )}
                                 <label className='space_around' htmlFor='email'>
                                     Enter email
                                 </label>

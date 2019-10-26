@@ -21,7 +21,7 @@ export default class Root extends Component {
                 <BrowserRouter>
                     <div>
                         <Background />
-                        <div className='content container'>
+                        <div className='content '>
                             <Navbar />
 
                             <Route exact path='/' component={HomePage} />

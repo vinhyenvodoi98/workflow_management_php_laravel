@@ -2006,7 +2006,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Amatic+SC&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".nav {\n    height: 3vw;\n    background-color: whitesmoke;\n    box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);\n    font-family: 'Amatic SC', cursive;\n}\n\n.image_block {\n    text-align: left;\n    height: 3vw;\n    width: 3vw;\n}\n\n.logo_image {\n    margin: 10px;\n}\n\n.row {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n}\n\n.right {\n    display: flex;\n    flex-direction: row;\n}\n\nul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n}\n\nli a {\n    height: 2.5vw;\n    display: block;\n    padding: 0vw 1.5vw;\n    text-decoration: none;\n    font-size: 1.5vw;\n    font-weight: 600;\n    color: black;\n}\n\nli a:hover {\n    border-bottom: 2px solid #8167a9;\n    color: #8167a9;\n}\n\n.row {\n    height: 3vw;\n}\n\na {\n    padding-top: 0.5vw !important;\n}\n", ""]);
+exports.push([module.i, ".nav {\n    height: 3vw;\n    background-color: whitesmoke;\n    box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);\n    font-family: 'Amatic SC', cursive;\n}\n\n.image_block {\n    text-align: left;\n    height: 3vw;\n    width: 3vw;\n}\n\n.logo_image {\n    margin: 10px;\n}\n\n.row {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n}\n\n.right {\n    display: flex;\n    flex-direction: row;\n}\n\nul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n}\n\nli a {\n    height: 3vw !important;\n    display: block;\n    text-decoration: none;\n    font-size: 1.5vw;\n    font-weight: 600;\n    color: black;\n    cursor: pointer;\n}\n\nli a:hover {\n    border-bottom: 2px solid #8167a9;\n    color: #8167a9;\n}\n\n.row {\n    height: 3vw;\n}\n\na {\n    padding-top: 0.5vw !important;\n    text-decoration: none !important;\n}\n", ""]);
 
 // exports
 
@@ -2025,7 +2025,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Amatic+SC&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".login_container {\n    font-family: 'Amatic SC', cursive;\n    display: flex;\n    flex-direction: row;\n    width: 50%;\n    height: 90vh;\n    margin: auto;\n    justify-content: space-around;\n}\n\n.box {\n    display: flex;\n    position: relative;\n    width: 50%;\n    height: 90vh;\n    margin: auto;\n    justify-content: center;\n    align-items: center;\n    align-content: center;\n}\n\n.form_box {\n    height: 95%;\n    display: block;\n    margin-bottom: auto;\n    background-color: white;\n}\n\n.form {\n    height: 90%;\n    display: flex;\n    justify-content: space-around;\n    flex-direction: column;\n}\n\nlabel {\n    font-size: 1.6vw;\n    font-weight: 600;\n}\n\n.input {\n    font-weight: bold;\n    /* width: 100%; */\n    margin: 0 35px 20px;\n    height: 35px;\n    padding: 6px 15px;\n    border-radius: 5px;\n    outline: none;\n    border: none;\n    background: #f6f7f9;\n    color: #748194;\n    font-size: 14px;\n}\n\n.space_around {\n    margin: 10px;\n}\n\n.choice_container {\n    position: absolute;\n    width: auto;\n    height: auto;\n    border-radius: 15px 15px 15px 15px;\n}\n\n.c1 {\n    box-shadow: 0 0 10px grey;\n    background-color: white;\n    width: 300px;\n    height: 500px;\n    display: inline-block;\n    border-radius: 15px 15px 15px 15px;\n}\n\n.c11 {\n    background-image: url('https://i.pinimg.com/736x/b8/09/22/b80922f6ea2daaf36a6627378662803b--deck-of-cards-phone-wallpapers.jpg');\n    background-size: 300px 400px;\n    background-repeat: no-repeat;\n    background-color: white;\n    width: 300px;\n    height: 400px;\n    position: absolute;\n    z-index: 4;\n    border-radius: 15px 15px 200px 200px;\n}\n\n#left,\n#right {\n    text-align: center;\n    color: white;\n    display: inline-block;\n    width: 146px;\n    /* height: 500px; */\n    background-color: white;\n    cursor: pointer;\n}\n\n#left {\n    border-radius: 15px 0px 0px 15px;\n}\n\n#right {\n    border-radius: 15px 15px 15px 0px;\n}\n\n.left_hover {\n    color: #ee9ba3;\n    box-shadow: 5px 0 18px -10px #333;\n    z-index: 1;\n    position: absolute;\n}\n\n.right_hover {\n    box-shadow: -5px 0 15px -10px #333;\n    z-index: 1;\n    position: absolute;\n}\n\n.s1class {\n    color: #748194;\n    position: absolute;\n    bottom: 0;\n    left: 63%;\n    margin-left: -50%;\n}\n\n.s1class span,\n.s2class span {\n    display: block;\n}\n\n.su {\n    font-size: 20px;\n}\n\n.s2class {\n    color: #748194;\n    position: absolute;\n    bottom: 0;\n    right: 63%;\n    margin-right: -50%;\n}\n\n.mainhead {\n    color: white;\n    font-size: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.mainp {\n    color: white;\n    font-size: 13px;\n    text-align: center;\n    margin-top: 10px;\n}\n\n.c2 {\n    box-shadow: 0 0 10px grey;\n    background-color: white;\n    width: 300px;\n    height: 500px;\n    border-radius: 15px;\n    left: 370px;\n    display: inline-block;\n    text-align: center;\n}\n\nbutton {\n    font-weight: bold;\n    margin: 0 35px 20px;\n    height: 45px;\n    padding: 6px 15px;\n    border-radius: 5px;\n    outline: none;\n    border: none;\n    background: #ee9ba3;\n    color: white;\n    font-size: 14px;\n}\n\nh1 {\n    color: #748194;\n    font-size: 30px;\n    text-align: center;\n}\n\n.text-color {\n    color: rgb(238, 155, 163);\n}\n\n.address-font {\n    font-size: 12px;\n}\n\n.verify-box {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n    height: 80%;\n}\n", ""]);
+exports.push([module.i, ".login_container {\n    font-family: 'Amatic SC', cursive;\n    display: flex;\n    flex-direction: row;\n    width: 50%;\n    height: 90vh;\n    margin: auto;\n    justify-content: space-around;\n}\n\n.box {\n    display: flex;\n    position: relative;\n    width: 50%;\n    height: 90vh;\n    margin: auto;\n    justify-content: center;\n    align-items: center;\n    align-content: center;\n}\n\n.form_box {\n    height: 95%;\n    display: block;\n    margin-bottom: auto;\n    background-color: white;\n}\n\n.form {\n    height: 90%;\n    display: flex;\n    justify-content: space-around;\n    flex-direction: column;\n}\n\nlabel {\n    font-size: 1.6vw;\n    font-weight: 600;\n}\n\n.input {\n    font-weight: bold;\n    /* width: 100%; */\n    margin: 0 35px 20px;\n    height: 35px;\n    padding: 6px 15px;\n    border-radius: 5px;\n    outline: none;\n    border: none;\n    background: #f6f7f9;\n    color: #748194;\n    font-size: 14px;\n}\n\n.space_around {\n    margin: 10px;\n}\n\n.choice_container {\n    position: absolute;\n    width: auto;\n    height: auto;\n    border-radius: 15px 15px 15px 15px;\n}\n\n.c1 {\n    box-shadow: 0 0 10px grey;\n    background-color: white;\n    width: 300px;\n    height: 500px;\n    display: inline-block;\n    border-radius: 15px 15px 15px 15px;\n}\n\n.c11 {\n    background-image: url('https://i.pinimg.com/736x/b8/09/22/b80922f6ea2daaf36a6627378662803b--deck-of-cards-phone-wallpapers.jpg');\n    background-size: 300px 400px;\n    background-repeat: no-repeat;\n    background-color: white;\n    width: 300px;\n    height: 400px;\n    position: absolute;\n    z-index: 4;\n    border-radius: 15px 15px 200px 200px;\n}\n\n#left,\n#right {\n    text-align: center;\n    color: white;\n    display: inline-block;\n    width: 146px;\n    /* height: 500px; */\n    background-color: white;\n    cursor: pointer;\n}\n\n#left {\n    border-radius: 15px 0px 0px 15px;\n}\n\n#right {\n    border-radius: 15px 15px 15px 0px;\n}\n\n.left_hover {\n    color: #ee9ba3;\n    box-shadow: 5px 0 18px -10px #333;\n    z-index: 1;\n    position: absolute;\n}\n\n.right_hover {\n    box-shadow: -5px 0 15px -10px #333;\n    z-index: 1;\n    position: absolute;\n}\n\n.s1class {\n    color: #748194;\n    position: absolute;\n    bottom: 0;\n    left: 63%;\n    margin-left: -50%;\n}\n\n.s1class span,\n.s2class span {\n    display: block;\n}\n\n.su {\n    font-size: 20px;\n}\n\n.s2class {\n    color: #748194;\n    position: absolute;\n    bottom: 0;\n    right: 63%;\n    margin-right: -50%;\n}\n\n.mainhead {\n    color: white;\n    font-size: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.mainp {\n    color: white;\n    font-size: 13px;\n    text-align: center;\n    margin-top: 10px;\n}\n\n.c2 {\n    box-shadow: 0 0 10px grey;\n    background-color: white;\n    width: 300px;\n    height: 500px;\n    border-radius: 15px;\n    left: 370px;\n    display: inline-block;\n    text-align: center;\n}\n\nbutton {\n    font-weight: bold;\n    margin: 0 35px 20px;\n    height: 45px;\n    padding: 6px 15px;\n    border-radius: 5px;\n    outline: none;\n    border: none;\n    background: #ee9ba3;\n    color: white;\n    font-size: 14px;\n}\n\nh1 {\n    color: #748194;\n    font-size: 30px;\n    text-align: center;\n}\n\n.text-color {\n    color: rgb(238, 155, 163);\n}\n\n.address-font {\n    font-size: 12px;\n}\n\n.verify-box {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n    height: 80%;\n}\n\n.colorError {\n    color: red;\n}\n", ""]);
 
 // exports
 
@@ -56837,7 +56837,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
         store: _store__WEBPACK_IMPORTED_MODULE_3__["default"]
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Background__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "content container"
+        className: "content "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Navbar__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
         exact: true,
         path: "/",
@@ -56909,7 +56909,8 @@ var login = function login(token) {
       dispatch({
         type: LOGIN,
         isLogin: true,
-        name: response.data.name
+        name: response.data.name,
+        token: token
       });
     })["catch"](function (error) {
       // handle error
@@ -56937,7 +56938,8 @@ var logout = function logout() {
                   dispatch({
                     type: LOGIN,
                     isLogin: false,
-                    name: ''
+                    name: '',
+                    token: ''
                   });
                 })["catch"](function (error) {
                   console.log(error);
@@ -57210,42 +57212,119 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav"
+        className: "col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "nav row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "image_block"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "image_block col-0.5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo_image",
         src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Work Management"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "#"
+      }, "Show to-do list"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "#"
+      }, "Create to-do"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "#"
+      }, "Show sample to-do"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
         to: "/workspage"
-      }, "Work Management")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/grouppage"
-      }, "Group Managment")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Create sample to-do")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Group Management"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "#"
+      }, "Show group list"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "#"
+      }, "Create group")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Process Management"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
         to: "/processpage"
-      }, "Process Management")))), this.props.LoginStatus.isLogin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Show list process"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "/processpage"
+      }, "Show processes you participate in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-item",
+        to: "#"
+      }, "Create new process")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, "Calendar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, "Kql management")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }, this.props.LoginStatus.isLogin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/profile"
-      }, this.props.LoginStatus.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, this.props.LoginStatus.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         onClick: this.logout
-      }, "Logout")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Logout"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
-      }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register"
       }, "Register"))))));
     }
@@ -57303,7 +57382,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   isLogin: false,
-  name: '' // NOTE
+  name: '',
+  token: '' // NOTE
   // some thing you want to set global
 
 };
@@ -57316,7 +57396,8 @@ var loginReducer = function loginReducer() {
     case _actions_loginAction__WEBPACK_IMPORTED_MODULE_0__["LOGIN"]:
       return _objectSpread({}, state, {
         isLogin: action.isLogin,
-        name: action.name
+        name: action.name,
+        token: action.token
       });
     // NOTE
     // write case to update initialState
@@ -57577,7 +57658,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LoginPage).call(this, props));
     _this.state = {
       email: '',
-      password: ''
+      password: '',
+      msg: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -57589,6 +57671,8 @@ function (_Component) {
       var _handleSubmit = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
+        var _this2 = this;
+
         var data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -57609,12 +57693,14 @@ function (_Component) {
                   password: this.state.password
                 }).then(function (res) {
                   localStorage.setItem('token', res.data.token);
+                  window.location.href = '/';
+                })["catch"](function (error) {
+                  _this2.setState({
+                    msg: error.response.data.msg
+                  });
                 });
 
               case 6:
-                window.location.href = '/';
-
-              case 7:
               case "end":
                 return _context.stop();
             }
@@ -57672,7 +57758,9 @@ function (_Component) {
       }, "Login"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
         className: "form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+      }, this.state.msg ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+        className: "colorError"
+      }, this.state.msg) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         className: "space_around",
         htmlFor: "email"
       }, "Enter email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -57821,7 +57909,8 @@ function (_Component) {
     _this.state = {
       email: '',
       name: '',
-      password: ''
+      password: '',
+      msg: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -57833,6 +57922,8 @@ function (_Component) {
       var _handleSubmit = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
+        var _this2 = this;
+
         var data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -57854,9 +57945,13 @@ function (_Component) {
                   password: this.state.password,
                   name: this.state.name
                 }).then(function (res) {
+                  console.log(res);
                   window.location.href = '/login';
                 })["catch"](function (error) {
-                  console.log(error);
+                  _this2.setState({
+                    msg: error.response.data.errors.email
+                  }); // console.log(error.response.data.errors.email);
+
                 });
 
               case 6:
@@ -57927,7 +58022,9 @@ function (_Component) {
       }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
         className: "form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+      }, this.state.msg ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+        className: "colorError"
+      }, this.state.msg) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         className: "space_around",
         htmlFor: "name"
       }, "Enter Fullname"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {

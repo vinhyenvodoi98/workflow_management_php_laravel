@@ -9,7 +9,8 @@ class RegisterPage extends Component {
         this.state = {
             email: '',
             name: '',
-            password: ''
+            password: '',
+            msg: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,10 +32,12 @@ class RegisterPage extends Component {
                 name: this.state.name
             })
             .then((res) => {
+                console.log(res);
                 window.location.href = '/login';
             })
             .catch((error) => {
-                console.log(error);
+                this.setState({ msg: error.response.data.errors.email });
+                // console.log(error.response.data.errors.email);
             });
     }
 
@@ -86,6 +89,11 @@ class RegisterPage extends Component {
                             <div className='form_box'>
                                 <h1 className='space_around'>Sign Up</h1>
                                 <form className='form' onSubmit={this.handleSubmit}>
+                                    {this.state.msg ? (
+                                        <p className='colorError'>{this.state.msg}</p>
+                                    ) : (
+                                        <p></p>
+                                    )}
                                     <label className='space_around' htmlFor='name'>
                                         Enter Fullname
                                     </label>

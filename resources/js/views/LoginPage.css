@@ -201,3 +201,7 @@ h1 {
     justify-content: space-around;
     height: 80%;
 }
+
+.colorError {
+    color: red;
+}
