@@ -30,15 +30,13 @@ class HomePage extends Component {
                 <div className='col-12 fullBox'>
                     <div className='row '>
                         <div className='col-6'>
-                            <div className='col-12 area'>
-                                <div className='boxBackGroud'></div>
+                            <div className='col-12 area home_area_heght'>
                                 <p className='content'>Work overview</p>
                                 <PieChart />
                             </div>
                         </div>
                         <div className='col-6'>
-                            <div className='col-12 area'>
-                                <div className='boxBackGroud'></div>
+                            <div className='col-12 area home_area_heght'>
                                 <p className='content'>Urgent work</p>
                             </div>
                         </div>
@@ -48,14 +46,12 @@ class HomePage extends Component {
                 <div className='col-12 fullBox'>
                     <div className='row'>
                         <div className='col-6'>
-                            <div className='col-12 area'>
-                                <div className='boxBackGroud'></div>
+                            <div className='col-12 area home_area_heght'>
                                 <p className='content'>Remind work</p>
                             </div>
                         </div>
                         <div className='col-6'>
-                            <div className='col-12 area'>
-                                <div className='boxBackGroud'></div>
+                            <div className='col-12 area home_area_heght'>
                                 <p className='content'>Working diary</p>
                             </div>
                         </div>

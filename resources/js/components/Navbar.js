@@ -79,10 +79,10 @@ class Navbar extends Component {
                                             className='dropdown-menu'
                                             aria-labelledby='dropdownMenuButton'
                                         >
-                                            <Link className='dropdown-item' to='#'>
+                                            <Link className='dropdown-item' to='/groups'>
                                                 Show group list
                                             </Link>
-                                            <Link className='dropdown-item' to='#'>
+                                            <Link className='dropdown-item' to='/groupCreate'>
                                                 Create group
                                             </Link>
                                         </div>

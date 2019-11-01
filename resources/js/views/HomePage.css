@@ -5,19 +5,13 @@
 .area {
     padding-top: 2.5vw;
     padding-bottom: 1.5vw;
-    height: 20vw;
     border: solid white 3px;
     border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-.boxBackGroud {
-    background-color: white;
-    opacity: 0.5;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+.home_area_heght {
+    height: 20vw;
 }
 
 .underNav {

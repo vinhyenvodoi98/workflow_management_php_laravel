@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
     .wallpaper {
         margin: 0;
         padding: 0;
@@ -14,20 +14,18 @@
     }
 }
 
-@media only screen and (min-width: 1101px) and (max-width: 1500px) {
+@media only screen and (min-width: 1101px) {
     .wallpaper {
         margin: 0;
         padding: 0;
         height: 115vh;
     }
-}
+} */
 
 .background {
     position: relative;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
-    overflow: hidden;
 }
 
 section .wave {
