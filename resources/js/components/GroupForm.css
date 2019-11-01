@@ -1,0 +1,14 @@
+.text_align_form {
+    text-align: left;
+}
+
+.non-padding {
+    padding: 0 !important;
+}
+
+.mini-form-area {
+    border: solid white 3px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1vw;
+}

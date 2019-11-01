@@ -11,6 +11,8 @@ import GroupMgmtPage from './views/GroupMgmtPage';
 import ProcessMgmtPage from './views/ProcessMgmtPage';
 import LoginPage from './views/LoginPage';
 import RegisterPage from './views/RegisterPage';
+import GroupCreatePage from './views/GroupCreatePage';
+import GroupListPage from './views/GroupListPage';
 
 import './Root.css';
 
@@ -30,6 +32,8 @@ export default class Root extends Component {
                             <Route exact path='/processpage' component={ProcessMgmtPage} />
                             <Route exact path='/login' component={LoginPage} />
                             <Route exact path='/register' component={RegisterPage} />
+                            <Route exact path='/groups' component={GroupListPage} />
+                            <Route exact path='/groupCreate' component={GroupCreatePage} />
                         </div>
                     </div>
                 </BrowserRouter>

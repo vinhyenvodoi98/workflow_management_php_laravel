@@ -17,12 +17,6 @@
     margin: 10px;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .right {
     display: flex;
     flex-direction: row;
@@ -47,10 +41,6 @@ li a {
 li a:hover {
     border-bottom: 2px solid #8167a9;
     color: #8167a9;
-}
-
-.row {
-    height: 3vw;
 }
 
 a {
