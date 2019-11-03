@@ -27,3 +27,26 @@
 .fullBox {
     height: 22vw;
 }
+
+.blank {
+    height: 40%;
+}
+
+.home-text-color {
+    color: white;
+}
+
+.title-style {
+    font-size: 2vw;
+    text-align: initial;
+    font-weight: 700;
+}
+
+.content-style {
+    text-align: initial;
+    font-size: larger;
+}
+
+.homepage-button {
+    padding: 3vw;
+}

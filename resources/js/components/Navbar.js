@@ -25,105 +25,118 @@ class Navbar extends Component {
                     <div className='col-10'>
                         <div className='left'>
                             {/* <HashRouter> */}
-                            <ul className='row'>
-                                <li className='image_block col-0.5'>
-                                    <img
-                                        className='logo_image'
-                                        src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
-                                    />
-                                </li>
-                                <li className='col-1'>
-                                    <Link to='/'>Home</Link>
-                                </li>
-                                <li className='col'>
-                                    <div className='dropdown'>
-                                        <a
-                                            id='dropdownMenuButton'
-                                            data-toggle='dropdown'
-                                            aria-haspopup='true'
-                                            aria-expanded='false'
-                                        >
-                                            Work Management
-                                        </a>
-                                        <div
-                                            className='dropdown-menu'
-                                            aria-labelledby='dropdownMenuButton'
-                                        >
-                                            <Link className='dropdown-item' to='#'>
-                                                Show to-do list
-                                            </Link>
-                                            <Link className='dropdown-item' to='#'>
-                                                Create to-do
-                                            </Link>
-                                            <Link className='dropdown-item' to='#'>
-                                                Show sample to-do
-                                            </Link>
-                                            <Link className='dropdown-item' to='/workspage'>
-                                                Create sample to-do
-                                            </Link>
+                            {this.props.LoginStatus.isLogin ? (
+                                <ul className='row'>
+                                    <li className='image_block col-0.5'>
+                                        <img
+                                            className='logo_image'
+                                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
+                                        />
+                                    </li>
+                                    <li className='col-1'>
+                                        <Link to='/'>Home</Link>
+                                    </li>
+                                    <li className='col'>
+                                        <div className='dropdown'>
+                                            <a
+                                                id='dropdownMenuButton'
+                                                data-toggle='dropdown'
+                                                aria-haspopup='true'
+                                                aria-expanded='false'
+                                            >
+                                                Work Management
+                                            </a>
+                                            <div
+                                                className='dropdown-menu'
+                                                aria-labelledby='dropdownMenuButton'
+                                            >
+                                                <Link className='dropdown-item' to='#'>
+                                                    Show to-do list
+                                                </Link>
+                                                <Link className='dropdown-item' to='#'>
+                                                    Create to-do
+                                                </Link>
+                                                <Link className='dropdown-item' to='#'>
+                                                    Show sample to-do
+                                                </Link>
+                                                <Link className='dropdown-item' to='/workspage'>
+                                                    Create sample to-do
+                                                </Link>
+                                            </div>
                                         </div>
-                                    </div>
-                                    {/* <Link to='/workspage'>Work Management</Link> */}
-                                </li>
-                                <li className='col'>
-                                    <div className='dropdown'>
-                                        <a
-                                            id='dropdownMenuButton'
-                                            data-toggle='dropdown'
-                                            aria-haspopup='true'
-                                            aria-expanded='false'
-                                        >
-                                            Group Management
-                                        </a>
-                                        <div
-                                            className='dropdown-menu'
-                                            aria-labelledby='dropdownMenuButton'
-                                        >
-                                            <Link className='dropdown-item' to='/groups'>
-                                                Show group list
-                                            </Link>
-                                            <Link className='dropdown-item' to='/groupCreate'>
-                                                Create group
-                                            </Link>
+                                        {/* <Link to='/workspage'>Work Management</Link> */}
+                                    </li>
+                                    <li className='col'>
+                                        <div className='dropdown'>
+                                            <a
+                                                id='dropdownMenuButton'
+                                                data-toggle='dropdown'
+                                                aria-haspopup='true'
+                                                aria-expanded='false'
+                                            >
+                                                Group Management
+                                            </a>
+                                            <div
+                                                className='dropdown-menu'
+                                                aria-labelledby='dropdownMenuButton'
+                                            >
+                                                <Link className='dropdown-item' to='/groups'>
+                                                    Show group list
+                                                </Link>
+                                                <Link className='dropdown-item' to='/groupCreate'>
+                                                    Create group
+                                                </Link>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li className='col'>
-                                    <div className='dropdown'>
-                                        <a
-                                            id='dropdownMenuButton'
-                                            data-toggle='dropdown'
-                                            aria-haspopup='true'
-                                            aria-expanded='false'
-                                        >
-                                            Process Management
-                                        </a>
-                                        <div
-                                            className='dropdown-menu'
-                                            aria-labelledby='dropdownMenuButton'
-                                        >
-                                            <Link className='dropdown-item' to='/processpage'>
-                                                Show list process
-                                            </Link>
-                                            <Link className='dropdown-item' to='/processpage'>
-                                                Show processes you participate in
-                                            </Link>
-                                            <Link className='dropdown-item' to='#'>
-                                                Create new process
-                                            </Link>
+                                    </li>
+                                    <li className='col'>
+                                        <div className='dropdown'>
+                                            <a
+                                                id='dropdownMenuButton'
+                                                data-toggle='dropdown'
+                                                aria-haspopup='true'
+                                                aria-expanded='false'
+                                            >
+                                                Process Management
+                                            </a>
+                                            <div
+                                                className='dropdown-menu'
+                                                aria-labelledby='dropdownMenuButton'
+                                            >
+                                                <Link className='dropdown-item' to='/processpage'>
+                                                    Show list process
+                                                </Link>
+                                                <Link className='dropdown-item' to='/processpage'>
+                                                    Show processes you participate in
+                                                </Link>
+                                                <Link className='dropdown-item' to='#'>
+                                                    Create new process
+                                                </Link>
+                                            </div>
                                         </div>
-                                    </div>
-                                    {/* <Link to='/processpage'>Process Management</Link> */}
-                                </li>
-                                <li className='col-1'>
-                                    <Link to='/'>Calendar</Link>
-                                </li>
-                                <li className='col'>
-                                    <Link to='/'>Kql management</Link>
-                                </li>
-                                <li className='col'></li>
-                            </ul>
-                            {/* </HashRouter> */}
+                                        {/* <Link to='/processpage'>Process Management</Link> */}
+                                    </li>
+                                    <li className='col-1'>
+                                        <Link to='/'>Calendar</Link>
+                                    </li>
+                                    <li className='col'>
+                                        <Link to='/'>Kql management</Link>
+                                    </li>
+                                    <li className='col'></li>
+                                </ul>
+                            ) : (
+                                <ul className='row'>
+                                    <li className='image_block col-0.5'>
+                                        <img
+                                            className='logo_image'
+                                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
+                                        />
+                                    </li>
+                                    <li className='col-1'>
+                                        <Link to='/'>Home</Link>
+                                    </li>
+                                </ul>
+                            )}
                         </div>
                     </div>
                     <div className='col-2'>
