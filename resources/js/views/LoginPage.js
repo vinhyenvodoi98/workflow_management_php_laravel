@@ -1,13 +1,43 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 import './LoginPage.css';
 
 class LoginPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            email: '',
+            password: '',
+            msg: ''
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    async handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+
+        await this.setState({
+            email: data.get('email'),
+            password: data.get('password')
+        });
+        await axios
+            .post('http://localhost:8181/api/login', {
+                email: this.state.email,
+                password: this.state.password
+            })
+            .then((res) => {
+                localStorage.setItem('token', res.data.token);
+                window.location.href = '/';
+            })
+            .catch((error) => {
+                this.setState({ msg: error.response.data.msg });
+            });
+    }
+
     render() {
         return (
             <div className='login_container'>
@@ -47,15 +77,20 @@ class LoginPage extends Component {
                             <h1 className='space_around'>Login</h1>
 
                             <form className='form' onSubmit={this.handleSubmit}>
-                                <label className='space_around' htmlFor='username'>
-                                    Enter username
+                                {this.state.msg ? (
+                                    <p className='colorError'>{this.state.msg}</p>
+                                ) : (
+                                    <p></p>
+                                )}
+                                <label className='space_around' htmlFor='email'>
+                                    Enter email
                                 </label>
                                 <input
                                     className='input space_around'
-                                    id='username'
-                                    name='username'
+                                    id='email'
+                                    name='email'
                                     type='text'
-                                    placeholder='Username*'
+                                    placeholder='Email*'
                                 />
 
                                 <label className='space_around' htmlFor='password'>

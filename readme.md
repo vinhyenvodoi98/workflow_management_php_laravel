@@ -48,7 +48,17 @@ vs code js cài đặt plusin prettier, Trailing Space
 
 ```sh
 composer install
+
 composer update
+
+# Create Application Key
+php artisan key:generate
+
+# Pulish file config jwt:
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+# Create Jwt Key
+php artisan jwt:secret
 ```
 
 ### Reactjs
@@ -102,3 +112,9 @@ create `contact.php` seeds `contractsTableSeeder.php` factories `ContractFactory
 
 follow this
 https://blog.digitalocean.com/create-simple-contacts-laravel-postgresql/
+
+### to show logs form container
+
+```sh
+docker logs -f --details containerName
+```

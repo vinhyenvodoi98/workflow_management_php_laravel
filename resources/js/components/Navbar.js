@@ -1,45 +1,166 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import store from '../store';
+import * as loginAction from '../actions/loginAction';
 import './Navbar.css';
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
+
+    componentDidMount() {}
+
+    logout() {
+        store.dispatch(loginAction.logout());
+    }
+
     render() {
         return (
-            <div className='nav'>
-                <div className='row'>
-                    <div className='row left'>
-                        <div className='image_block'>
-                            <img
-                                className='logo_image'
-                                src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
-                            />
+            <div className='col'>
+                <div className='nav row'>
+                    <div className='col-10'>
+                        <div className='left'>
+                            {/* <HashRouter> */}
+                            {this.props.LoginStatus.isLogin ? (
+                                <ul className='row'>
+                                    <li className='image_block col-0.5'>
+                                        <img
+                                            className='logo_image'
+                                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
+                                        />
+                                    </li>
+                                    <li className='col-1'>
+                                        <Link to='/'>Home</Link>
+                                    </li>
+                                    <li className='col'>
+                                        <div className='dropdown'>
+                                            <a
+                                                id='dropdownMenuButton'
+                                                data-toggle='dropdown'
+                                                aria-haspopup='true'
+                                                aria-expanded='false'
+                                            >
+                                                Work Management
+                                            </a>
+                                            <div
+                                                className='dropdown-menu'
+                                                aria-labelledby='dropdownMenuButton'
+                                            >
+                                                <Link className='dropdown-item' to='#'>
+                                                    Show to-do list
+                                                </Link>
+                                                <Link className='dropdown-item' to='#'>
+                                                    Create to-do
+                                                </Link>
+                                                <Link className='dropdown-item' to='#'>
+                                                    Show sample to-do
+                                                </Link>
+                                                <Link className='dropdown-item' to='/workspage'>
+                                                    Create sample to-do
+                                                </Link>
+                                            </div>
+                                        </div>
+                                        {/* <Link to='/workspage'>Work Management</Link> */}
+                                    </li>
+                                    <li className='col'>
+                                        <div className='dropdown'>
+                                            <a
+                                                id='dropdownMenuButton'
+                                                data-toggle='dropdown'
+                                                aria-haspopup='true'
+                                                aria-expanded='false'
+                                            >
+                                                Group Management
+                                            </a>
+                                            <div
+                                                className='dropdown-menu'
+                                                aria-labelledby='dropdownMenuButton'
+                                            >
+                                                <Link className='dropdown-item' to='/groups'>
+                                                    Show group list
+                                                </Link>
+                                                <Link className='dropdown-item' to='/groupCreate'>
+                                                    Create group
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className='col'>
+                                        <div className='dropdown'>
+                                            <a
+                                                id='dropdownMenuButton'
+                                                data-toggle='dropdown'
+                                                aria-haspopup='true'
+                                                aria-expanded='false'
+                                            >
+                                                Process Management
+                                            </a>
+                                            <div
+                                                className='dropdown-menu'
+                                                aria-labelledby='dropdownMenuButton'
+                                            >
+                                                <Link className='dropdown-item' to='/processpage'>
+                                                    Show list process
+                                                </Link>
+                                                <Link className='dropdown-item' to='/processpage'>
+                                                    Show processes you participate in
+                                                </Link>
+                                                <Link className='dropdown-item' to='#'>
+                                                    Create new process
+                                                </Link>
+                                            </div>
+                                        </div>
+                                        {/* <Link to='/processpage'>Process Management</Link> */}
+                                    </li>
+                                    <li className='col-1'>
+                                        <Link to='/'>Calendar</Link>
+                                    </li>
+                                    <li className='col'>
+                                        <Link to='/'>Kql management</Link>
+                                    </li>
+                                    <li className='col'></li>
+                                </ul>
+                            ) : (
+                                <ul className='row'>
+                                    <li className='image_block col-0.5'>
+                                        <img
+                                            className='logo_image'
+                                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
+                                        />
+                                    </li>
+                                    <li className='col-1'>
+                                        <Link to='/'>Home</Link>
+                                    </li>
+                                </ul>
+                            )}
                         </div>
-                        {/* <HashRouter> */}
-                        <ul className='row'>
-                            <li>
-                                <Link to='/'>Home</Link>
-                            </li>
-                            <li>
-                                <Link to='/workspage'>Work Management</Link>
-                            </li>
-                            <li>
-                                <Link to='/grouppage'>Group Managment</Link>
-                            </li>
-                            <li>
-                                <Link to='/processpage'>Process Management</Link>
-                            </li>
-                        </ul>
-                        {/* </HashRouter> */}
                     </div>
-                    <div className='row'>
-                        <ul className='right'>
-                            <li>
-                                <Link to='/login'>Sign In</Link>
-                            </li>
-                            <li>
-                                <Link to='/register'>Register</Link>
-                            </li>
-                        </ul>
+                    <div className='col-2'>
+                        {this.props.LoginStatus.isLogin ? (
+                            <ul className='row'>
+                                <li className='col'>
+                                    <Link to='/profile'>{this.props.LoginStatus.name}</Link>
+                                </li>
+                                <li className='col'>
+                                    <Link to='/' onClick={this.logout}>
+                                        Logout
+                                    </Link>
+                                </li>
+                            </ul>
+                        ) : (
+                            <ul className='row'>
+                                <li className='col'>
+                                    <Link to='/login'>Sign In</Link>
+                                </li>
+                                <li className='col'>
+                                    <Link to='/register'>Register</Link>
+                                </li>
+                            </ul>
+                        )}
                     </div>
                 </div>
             </div>
@@ -47,4 +168,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapStatetoProps = (state) => {
+    return {
+        LoginStatus: state.LoginStatus
+    };
+};
+
+export default compose(connect(mapStatetoProps))(Navbar);

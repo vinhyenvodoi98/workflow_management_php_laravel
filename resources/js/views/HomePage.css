@@ -1,0 +1,48 @@
+.staticBlock {
+    position: relative;
+}
+
+.area {
+    padding-top: 2.5vw;
+    padding-bottom: 1.5vw;
+    border: solid white 3px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.home_area_heght {
+    height: 20vw;
+}
+
+.content {
+    /* color: white; */
+    left: 0;
+    font-weight: bold;
+}
+
+.fullBox {
+    height: 22vw;
+}
+
+.blank {
+    height: 40%;
+}
+
+.home-text-color {
+    color: white;
+}
+
+.title-style {
+    font-size: 2vw;
+    text-align: initial;
+    font-weight: 700;
+}
+
+.content-style {
+    text-align: initial;
+    font-size: larger;
+}
+
+.homepage-button {
+    padding: 3vw;
+}
