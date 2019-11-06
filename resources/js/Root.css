@@ -6,6 +6,10 @@
     height: 100%;
 }
 
+.underNav {
+    height: 3vw;
+}
+
 body,
 html {
     background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);

@@ -2,17 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Background from './components/Background';
-import Navbar from './components/Navbar';
-import HomePage from './views/HomePage';
-import WorkMgmtPage from './views/WorkMgmtPage';
-import GroupMgmtPage from './views/GroupMgmtPage';
-import ProcessMgmtPage from './views/ProcessMgmtPage';
-import LoginPage from './views/LoginPage';
-import RegisterPage from './views/RegisterPage';
-import GroupCreatePage from './views/GroupCreatePage';
-import GroupListPage from './views/GroupListPage';
+import Router from './router';
 
 import './Root.css';
 
@@ -23,18 +15,7 @@ export default class Root extends Component {
                 <BrowserRouter>
                     <div>
                         <Background />
-                        <div className='content '>
-                            <Navbar />
-
-                            <Route exact path='/' component={HomePage} />
-                            <Route exact path='/workspage' component={WorkMgmtPage} />
-                            <Route exact path='/grouppage' component={GroupMgmtPage} />
-                            <Route exact path='/processpage' component={ProcessMgmtPage} />
-                            <Route exact path='/login' component={LoginPage} />
-                            <Route exact path='/register' component={RegisterPage} />
-                            <Route exact path='/groups' component={GroupListPage} />
-                            <Route exact path='/groupCreate' component={GroupCreatePage} />
-                        </div>
+                        <Router />
                     </div>
                 </BrowserRouter>
             </Provider>
