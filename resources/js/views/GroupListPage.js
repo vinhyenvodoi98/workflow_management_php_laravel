@@ -94,6 +94,7 @@ class GroupListPage extends Component {
     render() {
         return (
             <div className='container'>
+                <div className='underNav'></div>
                 <ul className=' col row tabs'>
                     <li className='col-2 btn' onClick={() => this.select(1, members1)}>
                         Active groups ({members1.length})
