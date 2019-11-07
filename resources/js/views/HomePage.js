@@ -82,7 +82,7 @@ class HomePage extends Component {
                             </div>
                         </div>
                         <div className='homepage-button'>
-                            <Link to='/login'>
+                            <Link to='/register'>
                                 <button type='button' className='btn btn-success'>
                                     Sign Up – It’s Free!
                                 </button>
