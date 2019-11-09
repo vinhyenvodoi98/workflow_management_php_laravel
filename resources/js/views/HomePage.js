@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import store from '../store';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PieChart from '../components/PieChart';
-import * as loginAction from '../actions/loginAction';
 
 import './HomePage.css';
 
@@ -12,18 +10,6 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-    }
-
-    componentDidMount() {
-        var token;
-        try {
-            window.addEventListener('load', () => {
-                if ((token = localStorage.getItem('token')))
-                    store.dispatch(loginAction.login(token));
-            });
-        } catch (error) {
-            console.error(error);
-        }
     }
 
     render() {

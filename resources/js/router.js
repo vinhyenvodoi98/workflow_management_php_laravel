@@ -13,6 +13,8 @@ import RegisterPage from './views/RegisterPage';
 import GroupCreatePage from './views/GroupCreatePage';
 import GroupListPage from './views/GroupListPage';
 import Page404 from './views/Page404';
+import ShowListProcessPage from './views/ShowListProcessPage';
+import SampleToDoPage from './views/SampleToDoPage';
 
 class Router extends Component {
     constructor(props) {
@@ -32,13 +34,15 @@ class Router extends Component {
                         <Route exact path='/' component={HomePage} />
 
                         {this.props.LoginStatus.isLogin ? (
-                            <span>
+                            <Switch>
                                 <Route exact path='/workspage' component={WorkMgmtPage} />
                                 <Route exact path='/grouppage' component={GroupMgmtPage} />
+                                <Route exact path='/sampleToDo' component={SampleToDoPage} />
+                                <Route exact path='/processes' component={ShowListProcessPage} />
                                 <Route exact path='/processpage' component={ProcessMgmtPage} />
                                 <Route exact path='/groups' component={GroupListPage} />
                                 <Route exact path='/groupCreate' component={GroupCreatePage} />
-                            </span>
+                            </Switch>
                         ) : (
                             ''
                         )}
