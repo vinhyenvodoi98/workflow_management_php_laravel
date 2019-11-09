@@ -56,11 +56,8 @@ class Navbar extends Component {
                                                 <Link className='dropdown-item' to='#'>
                                                     Create to-do
                                                 </Link>
-                                                <Link className='dropdown-item' to='#'>
+                                                <Link className='dropdown-item' to='/sampleToDo'>
                                                     Show sample to-do
-                                                </Link>
-                                                <Link className='dropdown-item' to='/workspage'>
-                                                    Create sample to-do
                                                 </Link>
                                             </div>
                                         </div>
@@ -103,18 +100,17 @@ class Navbar extends Component {
                                                 className='dropdown-menu'
                                                 aria-labelledby='dropdownMenuButton'
                                             >
-                                                <Link className='dropdown-item' to='/processpage'>
+                                                <Link className='dropdown-item' to='/processes'>
                                                     Show list process
                                                 </Link>
                                                 <Link className='dropdown-item' to='/processpage'>
                                                     Show processes you participate in
                                                 </Link>
-                                                <Link className='dropdown-item' to='#'>
+                                                <Link className='dropdown-item' to='/processpage'>
                                                     Create new process
                                                 </Link>
                                             </div>
                                         </div>
-                                        {/* <Link to='/processpage'>Process Management</Link> */}
                                     </li>
                                     <li className='col-1'>
                                         <Link to='/'>Calendar</Link>
