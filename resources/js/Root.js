@@ -2,22 +2,29 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import { BrowserRouter } from 'react-router-dom';
-import Background from './components/Background';
+import * as loginAction from './actions/loginAction';
+
 import Router from './router';
 
 import './Root.css';
 
 export default class Root extends Component {
+    componentDidMount() {
+        var token;
+        try {
+            window.addEventListener('load', () => {
+                if ((token = localStorage.getItem('token')))
+                    store.dispatch(loginAction.login(token));
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     render() {
         return (
             <Provider store={store}>
-                <BrowserRouter>
-                    <div>
-                        <Background />
-                        <Router />
-                    </div>
-                </BrowserRouter>
+                <Router />
             </Provider>
         );
     }

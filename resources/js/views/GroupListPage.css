@@ -2,11 +2,8 @@
     margin: 0vw 0vw 2vw 0vw;
     border-bottom: solid 3px white;
     border-top: solid 3px white;
+    height: 3.5vw;
 }
 .tabs > li {
     font-weight: 800;
-}
-
-.table {
-    padding: 1vw;
 }
