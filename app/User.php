@@ -57,4 +57,76 @@ class User extends Authenticatable implements JWTSubject
     {
         return DB::table('users')->where('email', $email)->exists();
     }
+
+    /**
+     * Get activities created by user
+     */
+    public function activities()
+    {
+        return $this->hasMany('App\Activity');
+    }
+
+    /**
+     * Get comments written by user
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    /**
+     * Get documments uploaded by user
+     */
+    public function documents()
+    {
+        return $this->hasMany('App\Document');
+    }
+
+    /**
+     * Get targets set by user
+     */
+    public function targets()
+    {
+        return $this->hasMany('App\Target');
+    }
+
+    /**
+     * Departments that belong to user
+     */
+    public function departments()
+    {
+        return $this->belongsToMany('App\Department')->withPivot('role')->withTimestamps();
+    }
+
+    /**
+     * Department tasks that belong to user
+     */
+    public function departmentTasks()
+    {
+        return $this->belongsToMany('App\DepartmentTask')->withTimestamps();
+    }
+
+    /**
+     * Groups that belong to user
+     */
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group')->withPivot('role')->withTimestamps();
+    }
+
+    /**
+     * Group tasks that belong to user
+     */
+    public function groupTasks()
+    {
+        return $this->belongsToMany('App\GroupTask')->withTimestamps();
+    }
+
+    /**
+     * Works that belong to user
+     */
+    public function works()
+    {
+        return $this->belongsToMany('App\Work')->withPivot('role')->withTimestamps();
+    }
 }
