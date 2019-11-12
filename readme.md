@@ -13,7 +13,7 @@
 
 vs code js cài đặt plusin prettier, Trailing Space
 
--   **Prettier setup**
+- **Prettier setup**
 
 `Ctrl + ,`-> search `prettier`
 
@@ -71,22 +71,54 @@ or
 npm install
 ```
 
-```
+```sh
 npm run watch
 
 ```
 
 khi run lệnh trên mỗi khi bạn save file nó sẽ auto biên dịch mã javascript đến thư mục `public/js/app.js`
 
-### Run with docker-composer
+### Start everything with docker-compose
 
-```
+```sh
 docker-compose up -d
+```
+
+### Create database
+
+- First, regenerate Composer's autoloader
+
+```sh
+composer dump-autoload
+```
+
+- Enter `app` container
+
+```sh
+docker exec -it app bash
+```
+
+- If you **do not** have any database created yet, run migration scripts to create database tables
+
+```bash
+php artisan migrate
+```
+
+- If you have **already** had a database before, add `refresh` option
+
+```bash
+php artisan migrate:refresh
+```
+
+- Create a little of sample data for testing if you want
+
+```bash
+php artisan db:seed
 ```
 
 ### If you want to check database
 
-**for the first time**
+**For the first time**
 
 ```sh
 docker run --name mariadb -e MYSQL_ROOT_PASSWORD=123456 -d mariadb:10.3
@@ -96,10 +128,10 @@ docker run --name mariadb -e MYSQL_ROOT_PASSWORD=123456 -d mariadb:10.3
 docker run -it --link mariadb:mysql --rm mariadb:10.3 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
 
-**Access to database for check**
+**Access to database for checking**
 
 ```sh
-docker exec -it <db_container_ID> bash
+docker exec -it <db_container_ID> sh
 
 mysql -u root -p
 ```
@@ -111,9 +143,9 @@ Test
 create `contact.php` seeds `contractsTableSeeder.php` factories `ContractFactory.php`
 
 follow this
-https://blog.digitalocean.com/create-simple-contacts-laravel-postgresql/
+<https://blog.digitalocean.com/create-simple-contacts-laravel-postgresql/>
 
-### to show logs form container
+### To show logs form container
 
 ```sh
 docker logs -f --details containerName
