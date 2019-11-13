@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC&display=swap");
 
 .login_container {
-    font-family: 'Amatic SC', cursive;
+    font-family: "Amatic SC", cursive;
     display: flex;
     flex-direction: row;
     width: 50%;
@@ -168,7 +168,7 @@ label {
     text-align: center;
 }
 
-button {
+.logon > button {
     font-weight: bold;
     margin: 0 35px 20px;
     height: 45px;
