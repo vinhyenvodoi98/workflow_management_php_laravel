@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC&display=swap");
 
 .nav {
     height: 3vw;
     background-color: whitesmoke;
     box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);
-    font-family: 'Amatic SC', cursive;
+    font-family: "Amatic SC", cursive;
 }
 
 .image_block {
@@ -46,4 +46,12 @@ li a:hover {
 a {
     padding-top: 0.5vw !important;
     text-decoration: none !important;
+}
+
+/* -----TREE VIEW----- */
+
+.treeview {
+    background-color: #f5f5f5;
+    height: 400px;
+    width: 100%;
 }

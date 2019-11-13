@@ -53,7 +53,7 @@ class Navbar extends Component {
                                                 <Link className='dropdown-item' to='#'>
                                                     Show to-do list
                                                 </Link>
-                                                <Link className='dropdown-item' to='#'>
+                                                <Link className='dropdown-item' to='/createToDo'>
                                                     Create to-do
                                                 </Link>
                                                 <Link className='dropdown-item' to='/sampleToDo'>

@@ -1,9 +1,9 @@
-import * as login from '../actions/loginAction';
+import * as login from "../actions/loginAction";
 
 const initialState = {
     isLogin: false,
-    name: '',
-    token: ''
+    name: "",
+    token: ""
     // NOTE
     // some thing you want to set global
 };

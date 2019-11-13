@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const LOGIN = 'LOGIN';
-export const login = (token) => (dispatch) => {
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+export const LOGIN = "LOGIN";
+export const login = token => dispatch => {
+    axios.defaults.headers.common["Authorization"] = "Bearer " + token;
 
     axios
-        .get('http://localhost:8181/api/auth')
-        .then((response) => {
+        .get("http://localhost:8181/api/auth")
+        .then(response => {
             // handle success
             dispatch({
                 type: LOGIN,
@@ -15,7 +15,7 @@ export const login = (token) => (dispatch) => {
                 token
             });
         })
-        .catch((error) => {
+        .catch(error => {
             // handle error
             console.log(error);
         });
@@ -23,22 +23,22 @@ export const login = (token) => (dispatch) => {
     //  isLogin will save in store and can be called from any view
 };
 
-export const logout = () => async (dispatch) => {
-    var token = localStorage.getItem('token');
+export const logout = () => async dispatch => {
+    var token = localStorage.getItem("token");
     axios
-        .post('http://localhost:8181/api/logout', {
+        .post("http://localhost:8181/api/logout", {
             token: token
         })
-        .then((response) => {
-            localStorage.removeItem('token');
+        .then(response => {
+            localStorage.removeItem("token");
             dispatch({
                 type: LOGIN,
                 isLogin: false,
-                name: '',
-                token: ''
+                name: "",
+                token: ""
             });
         })
-        .catch((error) => {
+        .catch(error => {
             console.log(error);
         });
 };
