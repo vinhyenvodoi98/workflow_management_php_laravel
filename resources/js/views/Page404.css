@@ -3,40 +3,40 @@
 =======================*/
 
 .page_404 {
-    height: 94vh;
-    background: #fff;
-    font-family: "Arvo", serif;
+  height: 94vh;
+  background: #fff;
+  font-family: 'Arvo', serif;
 }
 
 .page_404 img {
-    width: 100%;
+  width: 100%;
 }
 
 .four_zero_four_bg {
-    background-image: url(../../image/dribbble_1.gif);
-    height: 400px;
-    background-position: center;
+  background-image: url(../../image/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
 }
 
 .four_zero_four_bg h1 {
-    font-size: 80px;
+  font-size: 80px;
 }
 
 .four_zero_four_bg h3 {
-    font-size: 80px;
+  font-size: 80px;
 }
 
 .link_404 {
-    color: #fff !important;
-    padding: 10px 20px;
-    background: #39ac31;
-    margin: 20px 0;
-    display: inline-block;
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
 }
 .contant_box_404 {
-    margin-top: -50px;
+  margin-top: -50px;
 }
 
 .text-center {
-    margin: auto;
+  margin: auto;
 }

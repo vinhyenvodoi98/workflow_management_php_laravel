@@ -1,71 +1,71 @@
 .sidebar-section {
-    position: absolute;
-    height: 100%;
-    width: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .sidebar-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Position the items */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Position the items */
 }
 
 .make-me-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    padding: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
 }
 
 /* Ignore This, just coloring */
 body {
-    background: #fff;
+  background: #fff;
 }
 
 article {
-    background: #f1f1f1;
-    border-radius: 12px;
-    padding: 25px 0 600px;
+  background: #f1f1f1;
+  border-radius: 12px;
+  padding: 25px 0 600px;
 }
 
 .content-section,
 .sidebar-section {
-    background: #fff;
-    border-radius: 10px;
+  background: #fff;
+  border-radius: 10px;
 }
 
 .content-section {
-    padding: 1rem;
-    text-align: center;
-    margin: 0;
-    border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  margin: 0;
+  border-radius: 10px;
 }
 
 .sidebar-item {
-    text-align: center;
-    border-radius: 10px;
+  text-align: center;
+  border-radius: 10px;
 }
 .sidebar-item {
-    border-radius: 10px;
-    background: #fff;
-    max-width: 100%;
-    margin: 0 auto;
-    border-bottom: solid 1px #fff;
+  border-radius: 10px;
+  background: #fff;
+  max-width: 100%;
+  margin: 0 auto;
+  border-bottom: solid 1px #fff;
 }
 
 .item {
-    background: #fff;
+  background: #fff;
 }
 
 .active {
-    color: #8167a9 !important;
+  color: #8167a9 !important;
 }
 
 .nav-pills > li {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

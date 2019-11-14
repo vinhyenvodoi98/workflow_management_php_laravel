@@ -13,7 +13,7 @@
 
 vs code js cài đặt plusin prettier, Trailing Space
 
--   **Prettier setup**
+- **Prettier setup**
 
 `Ctrl + ,`-> search `prettier`
 
@@ -86,31 +86,31 @@ docker-compose up -d
 
 ### Create database
 
--   First, regenerate Composer's autoloader
+- First, regenerate Composer's autoloader
 
 ```sh
 composer dump-autoload
 ```
 
--   If you **do not** have any database created yet, run migration scripts to create database tables
+- If you **do not** have any database created yet, run migration scripts to create database tables
 
 ```bash
 docker-compose exec app php artisan migrate
 ```
 
--   If you have **already** had a database before, you can Rollback & Migrate
+- If you have **already** had a database before, you can Rollback & Migrate
 
 ```bash
 docker-compose exec app php artisan migrate:refresh
 ```
 
--   OR Drop All Tables & Migrate
+- OR Drop All Tables & Migrate
 
 ```bash
 docker-compose exec app php artisan migrate:fresh --seed
 ```
 
--   Create a little of sample data for testing if you want
+- Create a little of sample data for testing if you want
 
 ```bash
 docker-compose exec app php artisan db:seed
