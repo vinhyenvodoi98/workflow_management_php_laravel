@@ -3,7 +3,6 @@ import SortableTree, {
     addNodeUnderParent,
     removeNodeAtPath
 } from "react-sortable-tree";
-import "react-sortable-tree/style.css";
 
 import "./Navbar.css";
 import CreateTodoDetail from "./CreateTodoDetail";

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import store from '../store';
-import * as loginAction from '../actions/loginAction';
-import './Navbar.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import store from "../store";
+import * as loginAction from "../actions/loginAction";
+import "./Navbar.css";
 
 class Navbar extends Component {
     constructor(props) {
@@ -20,140 +20,170 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div className='col'>
-                <div className='nav row'>
-                    <div className='col-10'>
-                        <div className='left'>
+            <div className="col">
+                <div className="nav row">
+                    <div className="col-9">
+                        <div className="left">
                             {/* <HashRouter> */}
                             {this.props.LoginStatus.isLogin ? (
-                                <ul className='row'>
-                                    <li className='image_block col-0.5'>
+                                <ul className="row">
+                                    <li className="image_block col-0.5">
                                         <img
-                                            className='logo_image'
-                                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
+                                            className="logo_image"
+                                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg"
                                         />
                                     </li>
-                                    <li className='col-1'>
-                                        <Link to='/'>Home</Link>
+                                    <li className="col-1">
+                                        <Link to="/">Home</Link>
                                     </li>
-                                    <li className='col'>
-                                        <div className='dropdown'>
+                                    <li className="col">
+                                        <div className="dropdown">
                                             <a
-                                                id='dropdownMenuButton'
-                                                data-toggle='dropdown'
-                                                aria-haspopup='true'
-                                                aria-expanded='false'
+                                                id="dropdownMenuButton"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
                                             >
-                                                Work Management
+                                                Work
                                             </a>
                                             <div
-                                                className='dropdown-menu'
-                                                aria-labelledby='dropdownMenuButton'
+                                                className="dropdown-menu"
+                                                aria-labelledby="dropdownMenuButton"
                                             >
-                                                <Link className='dropdown-item' to='#'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="#"
+                                                >
                                                     Show to-do list
                                                 </Link>
-                                                <Link className='dropdown-item' to='/createToDo'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/createToDo"
+                                                >
                                                     Create to-do
                                                 </Link>
-                                                <Link className='dropdown-item' to='/sampleToDo'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/sampleToDo"
+                                                >
                                                     Show sample to-do
                                                 </Link>
                                             </div>
                                         </div>
                                         {/* <Link to='/workspage'>Work Management</Link> */}
                                     </li>
-                                    <li className='col'>
-                                        <div className='dropdown'>
+                                    <li className="col">
+                                        <div className="dropdown">
                                             <a
-                                                id='dropdownMenuButton'
-                                                data-toggle='dropdown'
-                                                aria-haspopup='true'
-                                                aria-expanded='false'
+                                                id="dropdownMenuButton"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
                                             >
-                                                Group Management
+                                                Group
                                             </a>
                                             <div
-                                                className='dropdown-menu'
-                                                aria-labelledby='dropdownMenuButton'
+                                                className="dropdown-menu"
+                                                aria-labelledby="dropdownMenuButton"
                                             >
-                                                <Link className='dropdown-item' to='/groups'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/groups"
+                                                >
                                                     Show group list
                                                 </Link>
-                                                <Link className='dropdown-item' to='/groupCreate'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/groupCreate"
+                                                >
                                                     Create group
                                                 </Link>
                                             </div>
                                         </div>
                                     </li>
-                                    <li className='col'>
-                                        <div className='dropdown'>
+                                    <li className="col">
+                                        <div className="dropdown">
                                             <a
-                                                id='dropdownMenuButton'
-                                                data-toggle='dropdown'
-                                                aria-haspopup='true'
-                                                aria-expanded='false'
+                                                id="dropdownMenuButton"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
                                             >
-                                                Process Management
+                                                Process
                                             </a>
                                             <div
-                                                className='dropdown-menu'
-                                                aria-labelledby='dropdownMenuButton'
+                                                className="dropdown-menu"
+                                                aria-labelledby="dropdownMenuButton"
                                             >
-                                                <Link className='dropdown-item' to='/processes'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/processes"
+                                                >
                                                     Show list process
                                                 </Link>
-                                                <Link className='dropdown-item' to='/processpage'>
-                                                    Show processes you participate in
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/processpage"
+                                                >
+                                                    Show processes you
+                                                    participate in
                                                 </Link>
-                                                <Link className='dropdown-item' to='/processpage'>
+                                                <Link
+                                                    className="dropdown-item"
+                                                    to="/processpage"
+                                                >
                                                     Create new process
                                                 </Link>
                                             </div>
                                         </div>
                                     </li>
-                                    <li className='col-1'>
-                                        <Link to='/'>Calendar</Link>
+                                    <li className="col-1">
+                                        <Link to="/">Calendar</Link>
                                     </li>
-                                    <li className='col'>
-                                        <Link to='/'>Kql management</Link>
+                                    <li className="col">
+                                        <Link to="/">KPI</Link>
                                     </li>
-                                    <li className='col'></li>
+                                    <li className="col">
+                                        <Link to="/corporate">Corporate</Link>
+                                    </li>
+                                    <li className="col"></li>
                                 </ul>
                             ) : (
-                                <ul className='row'>
-                                    <li className='image_block col-0.5'>
+                                <ul className="row">
+                                    <li className="image_block col-0.5">
                                         <img
-                                            className='logo_image'
-                                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg'
+                                            className="logo_image"
+                                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg"
                                         />
                                     </li>
-                                    <li className='col-1'>
-                                        <Link to='/'>Home</Link>
+                                    <li className="col-1">
+                                        <Link to="/">Home</Link>
                                     </li>
                                 </ul>
                             )}
                         </div>
                     </div>
-                    <div className='col-2'>
+                    <div className="col-3">
                         {this.props.LoginStatus.isLogin ? (
-                            <ul className='row'>
-                                <li className='col'>
-                                    <Link to='/profile'>{this.props.LoginStatus.name}</Link>
+                            <ul className="row">
+                                <li className="col">
+                                    <Link to="/profile">
+                                        {this.props.LoginStatus.name}
+                                    </Link>
                                 </li>
-                                <li className='col'>
-                                    <Link to='/' onClick={this.logout}>
+                                <li className="col">
+                                    <Link to="/" onClick={this.logout}>
                                         Logout
                                     </Link>
                                 </li>
                             </ul>
                         ) : (
-                            <ul className='row'>
-                                <li className='col'>
-                                    <Link to='/login'>Sign In</Link>
+                            <ul className="row">
+                                <li className="col">
+                                    <Link to="/login">Sign In</Link>
                                 </li>
-                                <li className='col'>
-                                    <Link to='/register'>Register</Link>
+                                <li className="col">
+                                    <Link to="/register">Register</Link>
                                 </li>
                             </ul>
                         )}
@@ -164,7 +194,7 @@ class Navbar extends Component {
     }
 }
 
-const mapStatetoProps = (state) => {
+const mapStatetoProps = state => {
     return {
         LoginStatus: state.LoginStatus
     };

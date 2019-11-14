@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC&display=swap");
-
 .login_container {
-    font-family: "Amatic SC", cursive;
     display: flex;
     flex-direction: row;
     width: 50%;

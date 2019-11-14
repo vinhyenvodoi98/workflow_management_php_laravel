@@ -16,6 +16,7 @@ import Page404 from "./views/Page404";
 import ShowListProcessPage from "./views/ShowListProcessPage";
 import SampleToDoPage from "./views/SampleToDoPage";
 import CreateToDoPage from "./views/CreateTodoPage";
+import CorporatePage from "./views/CorporatePage";
 
 class Router extends Component {
     constructor(props) {
@@ -79,6 +80,11 @@ class Router extends Component {
                                     exact
                                     path="/groupCreate"
                                     component={GroupCreatePage}
+                                />
+                                <Route
+                                    exact
+                                    path="/corporate"
+                                    component={CorporatePage}
                                 />
                             </Switch>
                         ) : (

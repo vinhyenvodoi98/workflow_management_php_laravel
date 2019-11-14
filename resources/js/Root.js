@@ -7,6 +7,7 @@ import * as loginAction from "./actions/loginAction";
 import Router from "./router";
 
 import "./Root.css";
+import "react-sortable-tree/style.css";
 
 export default class Root extends Component {
     componentDidMount() {
