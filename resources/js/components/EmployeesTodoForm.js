@@ -23,8 +23,8 @@ class EmployeesTodoForm extends Component {
       <div className='mini-form-area-modals'>
         <div className='form-group row'>
           <p className='col-3'>Obligatory</p>
-          <div className='form-check'>
-            <input type='checkbox' className='form-check-input' id='exampleCheck1' />
+          <div>
+            <input type='checkbox' className='checkbox' />
           </div>
         </div>
         <div className='form-group row'>

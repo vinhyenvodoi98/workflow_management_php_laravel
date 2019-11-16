@@ -64,7 +64,7 @@ article {
   color: #8167a9 !important;
 }
 
-.nav-pills > li {
+.item > .nav-pills > li {
   display: flex;
   flex-direction: column;
   width: 100%;
