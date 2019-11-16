@@ -46,7 +46,7 @@ class Navbar extends Component {
                         Work
                       </a>
                       <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                        <Link className='dropdown-item' to='#'>
+                        <Link className='dropdown-item' to='/listToDo'>
                           Show to-do list
                         </Link>
                         <Link className='dropdown-item' to='/createToDo'>
@@ -100,7 +100,7 @@ class Navbar extends Component {
                       </div>
                     </div>
                   </li>
-                  <li className='col-1'>
+                  <li className='col'>
                     <Link to='/'>Calendar</Link>
                   </li>
                   <li className='col'>

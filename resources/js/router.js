@@ -17,6 +17,7 @@ import ShowListProcessPage from './views/ShowListProcessPage';
 import SampleToDoPage from './views/SampleToDoPage';
 import CreateToDoPage from './views/CreateTodoPage';
 import CorporatePage from './views/CorporatePage';
+import ListToDoPage from './views/ListToDoPage';
 
 class Router extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Router extends Component {
               <Switch>
                 <Route exact path='/workspage' component={WorkMgmtPage} />
                 <Route exact path='/grouppage' component={GroupMgmtPage} />
+                <Route exact path='/listToDo' component={ListToDoPage} />
                 <Route exact path='/createToDo' component={CreateToDoPage} />
                 <Route exact path='/sampleToDo' component={SampleToDoPage} />
                 <Route exact path='/processes' component={ShowListProcessPage} />
