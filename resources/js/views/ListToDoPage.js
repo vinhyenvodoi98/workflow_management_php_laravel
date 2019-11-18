@@ -19,10 +19,9 @@ class ListToDoPage extends Component {
             <div className='sidebar-item'>
               <div className='make-me-sticky'>
                 <div className='item'>
-                  <h4>
+                  <h4 className='h4'>
                     <strong>Your group</strong>
                   </h4>
-                  <hr />
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
                     {this.state.groups.map((group, index) => (
                       <li key={index}>
