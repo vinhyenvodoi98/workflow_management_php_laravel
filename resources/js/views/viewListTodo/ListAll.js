@@ -72,8 +72,12 @@ function ListAll(props) {
 
   const [tableColumnExtensions] = useState([{ columnName: 'name', width: 300 }]);
 
+  function onChange() {
+    console.log('1');
+  }
+
   return (
-    <Paper>
+    <Paper onClick={onChange}>
       <Grid rows={data} columns={columns}>
         <TreeDataState />
         <CustomTreeData getChildRows={getChildRows} />

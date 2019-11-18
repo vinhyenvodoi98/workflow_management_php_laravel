@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CreateTodoPage from '../views/CreateTodoPage';
 import All from '../views/viewListTodo/All';
 
+import './Navbar.css';
+
 function NavBarCreateTodo(props) {
   return (
     <BrowserRouter>
@@ -55,7 +57,7 @@ function NavBarCreateTodo(props) {
         </li> */}
       </ul>
       <Switch>
-        <Route exact path='/listToDo' component={CreateTodoPage} />
+        <Route exact path='/listToDo' component={All} />
         <Route exact path='/listToDo/All' component={All} />
         <Route exact path='/listToDo/Process' component={CreateTodoPage} />
         <Route exact path='/listToDo/Processing' component={CreateTodoPage} />

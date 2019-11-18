@@ -36,10 +36,9 @@ class CorporatePage extends Component {
             <div className='sidebar-item'>
               <div className='make-me-sticky'>
                 <div className='item'>
-                  <h4>
+                  <h4 className='h4'>
                     <strong>Your Department</strong>
                   </h4>
-                  <hr />
                   <div className='treeview-nav'>
                     <SortableTree
                       treeData={this.state.treeData}
@@ -88,7 +87,7 @@ class CorporatePage extends Component {
           </div>
           <div className='col-9'>
             <div className='content-section'>
-              <h2>Corporate Structure Department</h2>
+              <h2 className='h4'>Corporate Structure Department</h2>
               <GroupForm />
             </div>
           </div>
