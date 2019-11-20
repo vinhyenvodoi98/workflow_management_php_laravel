@@ -40,5 +40,6 @@
     "react-sortable-tree": "^2.7.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
-  }
+  },
+  "version": "0.0.0"
 }
