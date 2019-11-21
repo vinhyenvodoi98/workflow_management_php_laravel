@@ -20,7 +20,11 @@ use Illuminate\Http\Request;
 Route::post('signup', 'AuthController@register');
 Route::post('login', 'AuthController@login');
 
+
 Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('high_prioty_work', 'Query\QueryController@query_high_priority_work');
+    Route::get('work_schedule', 'Query\QueryController@query_work_remind');
+    Route::get('all_user', 'Query\QueryController@query_all_user');
     Route::get('auth', 'AuthController@user');
     Route::post('logout', 'AuthController@logout');
 });
