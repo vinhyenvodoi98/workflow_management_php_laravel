@@ -99,7 +99,8 @@ class CreateTodoDetail extends Component {
               <select
                 defaultValue={'DEFAULT'}
                 className='col-3 custom-select'
-                id='inputGroupSelect01'>
+                id='inputGroupSelect01'
+              >
                 <option value='DEFAULT' disabled>
                   Choose...
                 </option>
@@ -114,7 +115,8 @@ class CreateTodoDetail extends Component {
               <select
                 defaultValue={'DEFAULT'}
                 className='col-3 custom-select'
-                id='inputGroupSelect01'>
+                id='inputGroupSelect01'
+              >
                 <option value='DEFAULT' disabled>
                   Choose...
                 </option>

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import CreateTodoPage from '../views/CreateTodoPage';
+import All from '../views/viewListTodo/All';
 
 import './CreateTodoPage.css';
 import NavBarCreateTodo from '../components/NavBarCreateTodo';
@@ -19,9 +22,9 @@ class ListToDoPage extends Component {
             <div className='sidebar-item'>
               <div className='make-me-sticky'>
                 <div className='item'>
-                  <h4 className='h4'>
+                  <p className='title'>
                     <strong>Your group</strong>
-                  </h4>
+                  </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
                     {this.state.groups.map((group, index) => (
                       <li key={index}>
@@ -37,7 +40,20 @@ class ListToDoPage extends Component {
           </div>
           <div className='col-9'>
             <div className='content-section'>
-              <NavBarCreateTodo />
+              <BrowserRouter>
+                <NavBarCreateTodo />
+                <Switch>
+                  <Route exact path='/listToDo' component={All} />
+                  <Route exact path='/listToDo/All' component={All} />
+                  <Route exact path='/listToDo/Process' component={CreateTodoPage} />
+                  <Route exact path='/listToDo/Processing' component={CreateTodoPage} />
+                  <Route exact path='/listToDo/OutOfDate' component={CreateTodoPage} />
+                  <Route exact path='/listToDo/Wait' component={CreateTodoPage} />
+                  <Route exact path='/listToDo/Finish' component={CreateTodoPage} />
+                  <Route exact path='/listToDo/Pause' component={CreateTodoPage} />
+                  <Route exact path='/listToDo/Cancelled' component={CreateTodoPage} />
+                </Switch>
+              </BrowserRouter>
             </div>
           </div>
         </div>

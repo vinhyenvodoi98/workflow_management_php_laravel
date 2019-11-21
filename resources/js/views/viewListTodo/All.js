@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import ListAll from './ListAll';
 
+import ProcessModal from '../../modals/ProcessModals';
+
 var role = {
   isCreater: false,
   isWorker: true,
@@ -55,6 +57,12 @@ function All(props) {
           Sharer
         </label>
       </div>
+      <div className='col'>
+        <div className='row justify-content-end'>
+          <ProcessModal />
+        </div>
+      </div>
+
       <ListAll />
     </div>
   );
