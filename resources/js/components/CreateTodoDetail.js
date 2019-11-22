@@ -125,6 +125,13 @@ class CreateTodoDetail extends Component {
                 <option value='3'>Three</option>
               </select>
             </div>
+            <div className='form-group'>
+              <div className='col'>
+                <div className='row justify-content-end'>
+                  <button className='btn'>Create</button>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           ''

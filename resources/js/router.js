@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Background from './components/Background';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar/Navbar';
 import HomePage from './views/HomePage';
 import WorkMgmtPage from './views/WorkMgmtPage';
 import GroupMgmtPage from './views/GroupMgmtPage';

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import store from '../store';
-import * as loginAction from '../actions/loginAction';
+import store from '../../store';
+import * as loginAction from '../../actions/loginAction';
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -42,7 +42,8 @@ class Navbar extends Component {
                         id='dropdownMenuButton'
                         data-toggle='dropdown'
                         aria-haspopup='true'
-                        aria-expanded='false'>
+                        aria-expanded='false'
+                      >
                         Work
                       </a>
                       <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
@@ -65,7 +66,8 @@ class Navbar extends Component {
                         id='dropdownMenuButton'
                         data-toggle='dropdown'
                         aria-haspopup='true'
-                        aria-expanded='false'>
+                        aria-expanded='false'
+                      >
                         Group
                       </a>
                       <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
@@ -84,7 +86,8 @@ class Navbar extends Component {
                         id='dropdownMenuButton'
                         data-toggle='dropdown'
                         aria-haspopup='true'
-                        aria-expanded='false'>
+                        aria-expanded='false'
+                      >
                         Process
                       </a>
                       <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
@@ -101,7 +104,7 @@ class Navbar extends Component {
                     </div>
                   </li>
                   <li className='col'>
-                    <Link to='/'>Calendar</Link>
+                    <Link to='/'>Schedule</Link>
                   </li>
                   <li className='col'>
                     <Link to='/'>KPI</Link>

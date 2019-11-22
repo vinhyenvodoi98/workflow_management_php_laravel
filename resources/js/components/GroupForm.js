@@ -43,12 +43,12 @@ class GroupForm extends Component {
           </div>
         </div>
         <div className='form-group'>
-          <p>Deputy unit :</p>
-          <MiniGroupForm />
+          <p>Vice leader :</p>
+          <MiniGroupForm name='Vice leader' />
         </div>
         <div className='form-group'>
-          <p>Employees :</p>
-          <MiniGroupForm />
+          <p>Staff :</p>
+          <MiniGroupForm name='Staff' />
         </div>
       </div>
     );

@@ -37,11 +37,17 @@ class SampleToDoPage extends Component {
     return (
       <div className='container'>
         <div className='underNav'></div>
-        <div className='openModal'>
-          <CreateSampleToDoModals />
-        </div>
-        <div className='area table'>
-          <ProcessTable processes={this.state.processes} />
+        <div className='area'>
+          <div className='col area'>
+            <div className='col'>
+              <div className='row justify-content-end '>
+                <CreateSampleToDoModals />
+              </div>
+            </div>
+          </div>
+          <div className='area table'>
+            <ProcessTable processes={this.state.processes} />
+          </div>
         </div>
       </div>
     );

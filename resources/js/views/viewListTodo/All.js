@@ -5,10 +5,10 @@ import ListAll from './ListAll';
 import ProcessModal from '../../modals/ProcessModals';
 
 var role = {
-  isCreater: false,
-  isWorker: true,
-  isApprover: true,
-  isSharer: false
+  isInformed: false,
+  isResponsible: true,
+  isAccountable: true,
+  isConsulted: true
 };
 
 function All(props) {
@@ -25,36 +25,36 @@ function All(props) {
       </div>
       <div className='col-3' style={{ textAlign: 'left' }}>
         <label className='label--checkbox'>
-          {role.isCreater ? (
+          {role.isResponsible ? (
             <input type='checkbox' className='checkbox' checked disabled />
           ) : (
             <input type='checkbox' className='checkbox' disabled />
           )}
-          Creater
+          Responsible
         </label>
         <label className='label--checkbox'>
-          {role.isWorker ? (
+          {role.isAccountable ? (
             <input type='checkbox' className='checkbox' checked disabled />
           ) : (
             <input type='checkbox' className='checkbox' disabled />
           )}
-          Worker
+          Accountable
         </label>
         <label className='label--checkbox'>
-          {role.isApprover ? (
+          {role.isConsulted ? (
             <input type='checkbox' className='checkbox' checked disabled />
           ) : (
             <input type='checkbox' className='checkbox' disabled />
           )}
-          Approver
+          Consulted
         </label>
         <label className='label--checkbox'>
-          {role.isSharer ? (
+          {role.isInformed ? (
             <input type='checkbox' className='checkbox' checked disabled />
           ) : (
             <input type='checkbox' className='checkbox' disabled />
           )}
-          Sharer
+          Informed
         </label>
       </div>
       <div className='col'>

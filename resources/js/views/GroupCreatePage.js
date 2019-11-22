@@ -21,7 +21,6 @@ class GroupCreatePage extends Component {
             </div>
           </div>
         </div>
-        <div className='underNav'></div>
       </div>
     );
   }

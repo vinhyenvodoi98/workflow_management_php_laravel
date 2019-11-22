@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SortableTree, { addNodeUnderParent, removeNodeAtPath } from 'react-sortable-tree';
 
-import './Navbar.css';
+import './NavBar/Navbar.css';
 import CreateTodoDetail from './CreateTodoDetail';
 
 const firstNames = ['Abraham', 'Adam', 'Agnar', 'Albert', 'Albin', 'Albrecht'];
@@ -87,7 +87,8 @@ class CreateNewToDo extends Component {
                         addAsFirstChild: state.addAsFirstChild
                       }).treeData
                     }))
-                  }>
+                  }
+                >
                   Add Child
                 </button>,
                 <button
@@ -99,7 +100,8 @@ class CreateNewToDo extends Component {
                         getNodeKey
                       })
                     }))
-                  }>
+                  }
+                >
                   Remove
                 </button>
               ],

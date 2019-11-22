@@ -4,7 +4,7 @@ import CreateTodoPage from '../views/CreateTodoPage';
 import All from '../views/viewListTodo/All';
 
 import './CreateTodoPage.css';
-import NavBarCreateTodo from '../components/NavBarCreateTodo';
+import NavBarCreateTodo from '../components/NavBar/NavBarCreateTodo';
 
 class ListToDoPage extends Component {
   constructor(props) {
