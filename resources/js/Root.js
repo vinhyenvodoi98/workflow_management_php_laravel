@@ -16,6 +16,7 @@ export default class Root extends Component {
     try {
       window.addEventListener('load', () => {
         if ((token = localStorage.getItem('token'))) store.dispatch(loginAction.login(token));
+        else store.dispatch(loginAction.isloading());
       });
     } catch (error) {
       console.error(error);
