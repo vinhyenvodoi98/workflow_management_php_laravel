@@ -19,9 +19,9 @@ class CreateToDoPage extends Component {
             <div className='sidebar-item'>
               <div className='make-me-sticky'>
                 <div className='item'>
-                  <h4 className='h4'>
+                  <p className='title'>
                     <strong>Your group</strong>
-                  </h4>
+                  </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
                     {this.state.groups.map((group, index) => (
                       <li key={index}>
@@ -37,7 +37,7 @@ class CreateToDoPage extends Component {
           </div>
           <div className='col-9'>
             <div className='content-section'>
-              <h2 className='h4'>Create New ToDo</h2>
+              <p className='title'>Create New ToDo</p>
               <CreateNewToDo />
             </div>
           </div>
