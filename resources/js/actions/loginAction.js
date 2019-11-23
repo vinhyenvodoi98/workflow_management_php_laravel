@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const LOGIN = 'LOGIN';
+export const ISLOADING = 'ISLOADING';
 export const login = token => dispatch => {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
@@ -13,6 +14,10 @@ export const login = token => dispatch => {
         isLogin: true,
         name: response.data.name,
         token
+      });
+      dispatch({
+        type: ISLOADING,
+        isLoading: false
       });
     })
     .catch(error => {
@@ -41,4 +46,11 @@ export const logout = () => async dispatch => {
     .catch(error => {
       console.log(error);
     });
+};
+
+export const isloading = () => async dispatch => {
+  dispatch({
+    type: ISLOADING,
+    isLoading: false
+  });
 };
