@@ -95,24 +95,33 @@ class GroupListPage extends Component {
     return (
       <div className='container'>
         <div className='underNav'></div>
-        <ul className=' col row tabs'>
-          <li className='col-2 btn' onClick={() => this.select(1, members1)}>
-            Active groups ({members1.length})
-          </li>
-          <li className='col-2 btn' onClick={() => this.select(2, members2)}>
-            Groups expired
-          </li>
-        </ul>
-        <div className='area table'>
-          {this.state.page === 1 ? (
-            <div>
-              <Table members={this.state.members} />
-            </div>
-          ) : (
-            <div>
-              <Table members={this.state.members} />
-            </div>
-          )}
+        <div className='area'>
+          <ul className='nav nav-tabs'>
+            <li className='nav-item'>
+              <a
+                className='nav-link active'
+                data-toggle='tab'
+                onClick={() => this.select(1, members1)}>
+                Active groups ({members1.length})
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' data-toggle='tab' onClick={() => this.select(2, members2)}>
+                Groups expired
+              </a>
+            </li>
+          </ul>
+          <div className='table'>
+            {this.state.page === 1 ? (
+              <div>
+                <Table members={this.state.members} />
+              </div>
+            ) : (
+              <div>
+                <Table members={this.state.members} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );

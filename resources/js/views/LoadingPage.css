@@ -1,0 +1,13 @@
+.loading {
+  background: #ffffff;
+  height: 94vh;
+  font-family: 'Arvo', serif;
+}
+
+.circle {
+  background-image: url(../../image/giphy1.gif);
+  margin: auto;
+  height: 500px;
+  width: 600px;
+  background-position: center;
+}

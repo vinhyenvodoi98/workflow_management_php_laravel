@@ -3,7 +3,8 @@ import * as login from '../actions/loginAction';
 const initialState = {
   isLogin: false,
   name: '',
-  token: ''
+  token: '',
+  isLoading: true
   // NOTE
   // some thing you want to set global
 };
@@ -16,6 +17,11 @@ const loginReducer = (state = initialState, action) => {
         isLogin: action.isLogin,
         name: action.name,
         token: action.token
+      };
+    case login.ISLOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading
       };
     // NOTE
     // write case to update initialState

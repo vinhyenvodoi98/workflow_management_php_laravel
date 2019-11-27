@@ -18,7 +18,7 @@ class MiniGroupForm extends Component {
     return (
       <div className='mini-form-area'>
         <div className='form-group row'>
-          <p className='col-3'>Select Deputy unit :</p>
+          <p className='col-3'>Select {this.props.name} :</p>
           <div className='non-padding col-6 select_backgroud'>
             <Multiselect
               options={this.state.options} // Options to display in the dropdown
@@ -32,7 +32,9 @@ class MiniGroupForm extends Component {
         <div className='form-group row'>
           <p className='col-3'>Mission :</p>
           <textarea type='text' className='form-control col-6' id='usr' />
-          <div className='col-3'></div>
+          <div className='col-3'>
+            <button className='btn'>Save</button>
+          </div>
         </div>
         <div className='form-group'>
           <GroupTable />

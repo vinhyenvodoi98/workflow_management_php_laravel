@@ -70,7 +70,10 @@ article {
   width: 100%;
 }
 
-.h4 {
+.title {
+  padding: 0.5rem 1rem;
+  font: 1vw;
+  font-weight: 600;
   height: 3vw;
   border-bottom: 1px solid #dee2e6;
 }

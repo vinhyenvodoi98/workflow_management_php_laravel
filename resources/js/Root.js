@@ -8,6 +8,7 @@ import Router from './router';
 
 import './Root.css';
 import 'react-sortable-tree/style.css';
+import 'react-tabs/style/react-tabs.css';
 
 export default class Root extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ export default class Root extends Component {
     try {
       window.addEventListener('load', () => {
         if ((token = localStorage.getItem('token'))) store.dispatch(loginAction.login(token));
+        else store.dispatch(loginAction.isloading());
       });
     } catch (error) {
       console.error(error);

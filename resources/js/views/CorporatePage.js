@@ -36,9 +36,9 @@ class CorporatePage extends Component {
             <div className='sidebar-item'>
               <div className='make-me-sticky'>
                 <div className='item'>
-                  <h4 className='h4'>
+                  <p className='title'>
                     <strong>Your Department</strong>
-                  </h4>
+                  </p>
                   <div className='treeview-nav'>
                     <SortableTree
                       treeData={this.state.treeData}
@@ -59,7 +59,8 @@ class CorporatePage extends Component {
                                   addAsFirstChild: state.addAsFirstChild
                                 }).treeData
                               }))
-                            }>
+                            }
+                          >
                             Add Child
                           </button>,
                           <button
@@ -71,7 +72,8 @@ class CorporatePage extends Component {
                                   getNodeKey
                                 })
                               }))
-                            }>
+                            }
+                          >
                             Remove
                           </button>
                         ],
@@ -87,7 +89,7 @@ class CorporatePage extends Component {
           </div>
           <div className='col-9'>
             <div className='content-section'>
-              <h2 className='h4'>Corporate Structure Department</h2>
+              <p className='title'>Corporate Structure Department</p>
               <GroupForm />
             </div>
           </div>

@@ -5,9 +5,10 @@
 .area {
   padding-top: 2.5vw;
   padding-bottom: 1.5vw;
-  border: solid white 3px;
+  /* border: solid white 3px; */
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: white;
+  /* background-color: rgba(255, 255, 255, 0.5); */
 }
 
 .home_area_heght {
