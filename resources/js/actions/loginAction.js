@@ -22,7 +22,11 @@ export const login = token => dispatch => {
     })
     .catch(error => {
       // handle error
-      console.log(error);
+      localStorage.removeItem('token');
+      dispatch({
+        type: ISLOADING,
+        isLoading: false
+      });
     });
 
   //  isLogin will save in store and can be called from any view
