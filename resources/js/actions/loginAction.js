@@ -1,11 +1,14 @@
 import axios from 'axios';
+import store from '../store';
 
 export const LOGIN = 'LOGIN';
 export const ISLOADING = 'ISLOADING';
-export const login = token => dispatch => {
+export const LOADALLUSER = 'LOADALLUSER';
+
+export const login = token => async dispatch => {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
-  axios
+  await axios
     .get('http://localhost:8181/api/auth')
     .then(response => {
       // handle success
@@ -28,6 +31,8 @@ export const login = token => dispatch => {
         isLoading: false
       });
     });
+
+  dispatch(loadAllUser());
 
   //  isLogin will save in store and can be called from any view
 };
@@ -56,5 +61,18 @@ export const isloading = () => async dispatch => {
   dispatch({
     type: ISLOADING,
     isLoading: false
+  });
+};
+
+export const loadAllUser = () => dispatch => {
+  var token = store.getState().LoginStatus.token;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios.get('http://localhost:8181/api/all_user').then(response => {
+    // handle success
+    dispatch({
+      type: LOADALLUSER,
+      users: response.data.work
+    });
   });
 };

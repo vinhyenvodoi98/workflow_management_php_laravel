@@ -9,6 +9,7 @@ import Router from './router';
 import './Root.css';
 import 'react-sortable-tree/style.css';
 import 'react-tabs/style/react-tabs.css';
+import 'rsuite/dist/styles/rsuite-default.css';
 
 export default class Root extends Component {
   componentDidMount() {

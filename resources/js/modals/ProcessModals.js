@@ -35,7 +35,7 @@ class ProcessModals extends Component {
     return (
       <>
         <Button variant='btn btn-light' onClick={this.open}>
-          Work Detail
+          Details
         </Button>
 
         <Modal
@@ -56,7 +56,7 @@ class ProcessModals extends Component {
                     <div className='make-me-sticky'>
                       <div className='item'>
                         <p className='title'>
-                          <strong>Todo List</strong>
+                          <strong>Your works</strong>
                         </p>
                         <ul className='nav nav-pills nav-stacked' role='tablist'>
                           {this.state.groups.map((group, index) => (

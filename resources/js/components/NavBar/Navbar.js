@@ -34,7 +34,9 @@ class Navbar extends Component {
                     />
                   </li>
                   <li className='col-1'>
-                    <Link to='/'>Home</Link>
+                    <Link className='Link_color' to='/'>
+                      Home
+                    </Link>
                   </li>
                   <li className='col'>
                     <div className='dropdown'>
@@ -48,10 +50,10 @@ class Navbar extends Component {
                       </a>
                       <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                         <Link className='dropdown-item' to='/listToDo'>
-                          Show to-do list
+                          Show all
                         </Link>
                         <Link className='dropdown-item' to='/createToDo'>
-                          Create to-do
+                          Create new work
                         </Link>
                         <Link className='dropdown-item' to='/sampleToDo'>
                           Show sample to-do
@@ -72,10 +74,10 @@ class Navbar extends Component {
                       </a>
                       <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                         <Link className='dropdown-item' to='/groups'>
-                          Show group list
+                          Show all
                         </Link>
                         <Link className='dropdown-item' to='/groupCreate'>
-                          Create group
+                          Create new group
                         </Link>
                       </div>
                     </div>
@@ -104,14 +106,33 @@ class Navbar extends Component {
                     </div>
                   </li>
                   <li className='col'>
-                    <Link to='/'>Schedule</Link>
+                    <Link className='Link_color' to='/'>
+                      Schedule
+                    </Link>
                   </li>
                   <li className='col'>
-                    <Link to='/'>KPI</Link>
+                    <Link className='Link_color' to='/'>
+                      KPI
+                    </Link>
                   </li>
                   <li className='col'>
-                    <Link to='/corporate'>Corporate</Link>
+                    <div className='dropdown'>
+                      <a
+                        id='dropdownMenuButton'
+                        data-toggle='dropdown'
+                        aria-haspopup='true'
+                        aria-expanded='false'
+                      >
+                        Corporate
+                      </a>
+                      <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                        <Link className='dropdown-item' to='/corporate'>
+                          Create new department
+                        </Link>
+                      </div>
+                    </div>
                   </li>
+
                   <li className='col'></li>
                 </ul>
               ) : (
@@ -123,7 +144,9 @@ class Navbar extends Component {
                     />
                   </li>
                   <li className='col-1'>
-                    <Link to='/'>Home</Link>
+                    <Link className='Link_color' to='/'>
+                      Home
+                    </Link>
                   </li>
                 </ul>
               )}
@@ -133,10 +156,12 @@ class Navbar extends Component {
             {this.props.LoginStatus.isLogin ? (
               <ul className='row'>
                 <li className='col'>
-                  <Link to='/profile'>{this.props.LoginStatus.name}</Link>
+                  <Link className='Link_color' to='/profile'>
+                    {this.props.LoginStatus.name}
+                  </Link>
                 </li>
                 <li className='col'>
-                  <Link to='/' onClick={this.logout}>
+                  <Link className='Link_color' to='/' onClick={this.logout}>
                     Logout
                   </Link>
                 </li>
@@ -144,10 +169,14 @@ class Navbar extends Component {
             ) : (
               <ul className='row'>
                 <li className='col'>
-                  <Link to='/login'>Sign In</Link>
+                  <Link className='Link_color' to='/login'>
+                    Sign In
+                  </Link>
                 </li>
                 <li className='col'>
-                  <Link to='/register'>Register</Link>
+                  <Link className='Link_color' to='/register'>
+                    Register
+                  </Link>
                 </li>
               </ul>
             )}

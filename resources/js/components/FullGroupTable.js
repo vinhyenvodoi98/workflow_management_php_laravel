@@ -7,7 +7,7 @@ function Table(props) {
         <thead className='thead-light'>
           <tr>
             <th scope='col'>#</th>
-            <th scope='col'>Full name</th>
+            <th scope='col'>Name</th>
             <th scope='col'>Mission Description</th>
             <th scope='col'>Action</th>
             <th scope='col'>Total work performed</th>

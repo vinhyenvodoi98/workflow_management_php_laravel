@@ -24,7 +24,7 @@ class GroupForm extends Component {
     return (
       <div className='form text_align_form'>
         <div className='form-group'>
-          <p>Group name :</p>
+          <p>Name :</p>
           <input type='text' className='form-control col-6' id='usr' />
         </div>
         <div className='form-group'>

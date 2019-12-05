@@ -23,39 +23,41 @@ function All(props) {
           </Button>
         </div>
       </div>
-      <div className='col-3' style={{ textAlign: 'left' }}>
-        <label className='label--checkbox'>
-          {role.isResponsible ? (
-            <input type='checkbox' className='checkbox' checked disabled />
-          ) : (
-            <input type='checkbox' className='checkbox' disabled />
-          )}
-          Responsible
-        </label>
-        <label className='label--checkbox'>
-          {role.isAccountable ? (
-            <input type='checkbox' className='checkbox' checked disabled />
-          ) : (
-            <input type='checkbox' className='checkbox' disabled />
-          )}
-          Accountable
-        </label>
-        <label className='label--checkbox'>
-          {role.isConsulted ? (
-            <input type='checkbox' className='checkbox' checked disabled />
-          ) : (
-            <input type='checkbox' className='checkbox' disabled />
-          )}
-          Consulted
-        </label>
-        <label className='label--checkbox'>
-          {role.isInformed ? (
-            <input type='checkbox' className='checkbox' checked disabled />
-          ) : (
-            <input type='checkbox' className='checkbox' disabled />
-          )}
-          Informed
-        </label>
+      <div className='col'>
+        <div className='row' style={{ textAlign: 'left' }}>
+          <label className='label--checkbox row'>
+            {role.isResponsible ? (
+              <input type='checkbox' className='checkbox' checked disabled />
+            ) : (
+              <input type='checkbox' className='checkbox' disabled />
+            )}
+            <p style={{ fontSize: 'small' }}>Responsible</p>
+          </label>
+          <label className='label--checkbox row'>
+            {role.isAccountable ? (
+              <input type='checkbox' className='checkbox' checked disabled />
+            ) : (
+              <input type='checkbox' className='checkbox' disabled />
+            )}
+            <p style={{ fontSize: 'small' }}>Accountable</p>
+          </label>
+          <label className='label--checkbox row'>
+            {role.isConsulted ? (
+              <input type='checkbox' className='checkbox' checked disabled />
+            ) : (
+              <input type='checkbox' className='checkbox' disabled />
+            )}
+            <p style={{ fontSize: 'small' }}>Consulted</p>
+          </label>
+          <label className='label--checkbox row'>
+            {role.isInformed ? (
+              <input type='checkbox' className='checkbox' checked disabled />
+            ) : (
+              <input type='checkbox' className='checkbox' disabled />
+            )}
+            <p style={{ fontSize: 'small' }}>Informed</p>
+          </label>
+        </div>
       </div>
       <div className='col'>
         <div className='row justify-content-end'>

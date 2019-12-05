@@ -23,7 +23,7 @@ class ListToDoPage extends Component {
               <div className='make-me-sticky'>
                 <div className='item'>
                   <p className='title'>
-                    <strong>Your group</strong>
+                    <strong>Your groups</strong>
                   </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
                     {this.state.groups.map((group, index) => (

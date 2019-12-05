@@ -39,7 +39,7 @@ class CreateTodoDetail extends Component {
         {this.props.todo ? (
           <div>
             <div className='form-group'>
-              <p className='col'>Todo :</p>
+              <p className='col'>Name :</p>
               <div className='input-group-prepend'>
                 <span className='input-group-text col-3'>{this.props.todo}</span>
               </div>
@@ -49,7 +49,7 @@ class CreateTodoDetail extends Component {
               <textarea type='text' className='form-control col-6' id='usr' />
             </div>
             <div className='form-group'>
-              <p className='col'>Select worker :</p>
+              <p className='col'>Responsible :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
                   options={this.state.options} // Options to display in the dropdown
@@ -60,7 +60,7 @@ class CreateTodoDetail extends Component {
               </div>
             </div>
             <div className='form-group'>
-              <p className='col'>Select Approver :</p>
+              <p className='col'>Accountable :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
                   options={this.state.options} // Options to display in the dropdown
@@ -71,7 +71,7 @@ class CreateTodoDetail extends Component {
               </div>
             </div>
             <div className='form-group'>
-              <p className='col'>Select Observer :</p>
+              <p className='col'>Informed :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
                   options={this.state.options} // Options to display in the dropdown
@@ -83,19 +83,19 @@ class CreateTodoDetail extends Component {
             </div>
             <div className='form-group row'>
               <div className='col-4'>
-                <p className='col'>Select StartDate :</p>
+                <p className='col'>Start :</p>
                 <DatePicker
                   selected={this.state.startDate}
                   onChange={this.handleChange_startDate}
                 />
               </div>
               <div className='col-4'>
-                <p className='col'>Select EndtDate :</p>
+                <p className='col'>End :</p>
                 <DatePicker selected={this.state.endtDate} onChange={this.handleChange_endDate} />
               </div>
             </div>
             <div className='form-group'>
-              <p className='col-3'>Select priority level :</p>
+              <p className='col-3'>Priority :</p>
               <select
                 defaultValue={'DEFAULT'}
                 className='col-3 custom-select'
@@ -111,7 +111,7 @@ class CreateTodoDetail extends Component {
             </div>
 
             <div className='form-group'>
-              <p className='col-3'>Select KPL :</p>
+              <p className='col-3'>KPI :</p>
               <select
                 defaultValue={'DEFAULT'}
                 className='col-3 custom-select'

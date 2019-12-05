@@ -32,7 +32,7 @@ class CreateNewToDo extends Component {
     return (
       <div className='form text_align_form'>
         <div className='form-group'>
-          <p className='col'>Choice sample Todo :</p>
+          <p className='col'>Group :</p>
           <select defaultValue={'DEFAULT'} className='col-3 custom-select' id='inputGroupSelect01'>
             <option value='DEFAULT' disabled>
               Choose...
@@ -43,19 +43,7 @@ class CreateNewToDo extends Component {
           </select>
         </div>
 
-        <div className='form-group'>
-          <p className='col'>Choice group :</p>
-          <select defaultValue={'DEFAULT'} className='col-3 custom-select' id='inputGroupSelect01'>
-            <option value='DEFAULT' disabled>
-              Choose...
-            </option>
-            <option value='1'>One</option>
-            <option value='2'>Two</option>
-            <option value='3'>Three</option>
-          </select>
-        </div>
-
-        <div className='form-group'>
+        {/* <div className='form-group'>
           <p className='col'>Choose the parent job :</p>
           <select defaultValue={'DEFAULT'} className='col-3 custom-select' id='inputGroupSelect01'>
             <option value='DEFAULT' disabled>
@@ -65,7 +53,7 @@ class CreateNewToDo extends Component {
             <option value='2'>Two</option>
             <option value='3'>Three</option>
           </select>
-        </div>
+        </div> */}
 
         <div className='form-group treeview'>
           <SortableTree

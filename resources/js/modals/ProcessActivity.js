@@ -6,11 +6,11 @@ function ProcessActivity(props) {
     <div className='col'>
       <Tabs>
         <TabList>
-          <Tab>Activity</Tab>
-          <Tab>Exchange</Tab>
-          <Tab>Document</Tab>
-          <Tab>Input</Tab>
-          <Tab>Output</Tab>
+          <Tab>Activities</Tab>
+          <Tab>Discussion</Tab>
+          <Tab>Priority</Tab>
+          <Tab>Status</Tab>
+          <Tab>Documents</Tab>
         </TabList>
 
         <TabPanel>

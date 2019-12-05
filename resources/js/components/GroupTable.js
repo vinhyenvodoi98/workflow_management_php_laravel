@@ -17,7 +17,7 @@ class GroupTable extends Component {
         <thead className='thead-light'>
           <tr>
             <th scope='col'>#</th>
-            <th scope='col'>Full name</th>
+            <th scope='col'>Name</th>
             <th scope='col'>Mission Description</th>
             <th scope='col'>Action</th>
           </tr>

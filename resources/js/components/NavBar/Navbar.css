@@ -10,6 +10,10 @@
   width: 3vw;
 }
 
+.Link_color {
+  color: inherit;
+}
+
 .logo_image {
   margin: 10px;
 }

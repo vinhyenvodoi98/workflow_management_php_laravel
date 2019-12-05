@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { Slider } from 'rsuite';
 
 import './modals.css';
 
@@ -65,21 +66,21 @@ function ProcessForm(props) {
         <div className='col form-group'>
           <div className='row form-group'>
             <div className='col'>
-              <p className='col'>% Finish</p>
-              <input type='text' className='form-control' placeholder='% Finish' />
+              <p className='col'>Progress</p>
+              <Slider progress defaultValue={50} />
             </div>
             <div className='col'>
-              <p className='col'>Select StartDate :</p>
+              <p className='col'>Start :</p>
               <DatePicker selected={startDate} onChange={e => setstartDate(e)} />
             </div>
           </div>
           <div className='row form-group'>
             <div className='col'>
-              <p className='col'>Assess</p>
-              <input type='text' className='form-control' placeholder='..%' />
+              <p className='col'>Evaluate</p>
+              <Slider progress defaultValue={50} />
             </div>
             <div className='col'>
-              <p className='col'>Select EndDate :</p>
+              <p className='col'>End :</p>
               <DatePicker selected={endDate} onChange={e => setendDate(e)} />
             </div>
           </div>
@@ -95,8 +96,7 @@ function ProcessForm(props) {
           </div>
           <div className='row form-group'>
             <div className='col'>
-              <p>Finish request</p>
-              <button className='btn'>Request</button>
+              <button className='btn'>Request for approval</button>
             </div>
             <div className='col'></div>
           </div>
