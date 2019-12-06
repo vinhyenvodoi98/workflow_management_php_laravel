@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CreateTodoPage from '../views/CreateTodoPage';
 import All from '../views/viewListTodo/All';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import './CreateTodoPage.css';
-import NavBarCreateTodo from '../components/NavBar/NavBarCreateTodo';
 
 class ListToDoPage extends Component {
   constructor(props) {
@@ -40,20 +39,43 @@ class ListToDoPage extends Component {
           </div>
           <div className='col-9'>
             <div className='content-section'>
-              <BrowserRouter>
-                <NavBarCreateTodo />
-                <Switch>
-                  <Route exact path='/listToDo' component={All} />
-                  <Route exact path='/listToDo/All' component={All} />
-                  <Route exact path='/listToDo/Process' component={CreateTodoPage} />
-                  <Route exact path='/listToDo/Processing' component={CreateTodoPage} />
-                  <Route exact path='/listToDo/OutOfDate' component={CreateTodoPage} />
-                  <Route exact path='/listToDo/Wait' component={CreateTodoPage} />
-                  <Route exact path='/listToDo/Finish' component={CreateTodoPage} />
-                  <Route exact path='/listToDo/Pause' component={CreateTodoPage} />
-                  <Route exact path='/listToDo/Cancelled' component={CreateTodoPage} />
-                </Switch>
-              </BrowserRouter>
+              <Tabs>
+                <TabList className='title'>
+                  <Tab>Prioritize</Tab>
+                  <Tab>All</Tab>
+                  <Tab>Process</Tab>
+                  <Tab>Processing</Tab>
+                  <Tab>Out of date</Tab>
+                  <Tab>Wait</Tab>
+                  <Tab>Finish</Tab>
+                  <Tab>Pause</Tab>
+                </TabList>
+
+                <TabPanel>
+                  <All />
+                </TabPanel>
+                <TabPanel>
+                  <All />
+                </TabPanel>
+                <TabPanel>
+                  <CreateTodoPage />
+                </TabPanel>
+                <TabPanel>
+                  <CreateTodoPage />
+                </TabPanel>
+                <TabPanel>
+                  <CreateTodoPage />
+                </TabPanel>
+                <TabPanel>
+                  <CreateTodoPage />
+                </TabPanel>
+                <TabPanel>
+                  <CreateTodoPage />
+                </TabPanel>
+                <TabPanel>
+                  <CreateTodoPage />
+                </TabPanel>
+              </Tabs>
             </div>
           </div>
         </div>

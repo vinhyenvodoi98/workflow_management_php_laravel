@@ -46,11 +46,11 @@ class LoginPage extends Component {
             <div className='c1'>
               <div className='c11' />
               <div id='left'>
-                <h1 className='s1class text-color'>
+                <h2 className='s1class text-color'>
                   {this.homepageRender}
                   <span>SIGN</span>
                   <span className='su'>IN</span>
-                </h1>
+                </h2>
               </div>
               <Route
                 render={({ history }) => (
@@ -58,11 +58,12 @@ class LoginPage extends Component {
                     id='right'
                     onClick={() => {
                       history.push('/register');
-                    }}>
-                    <h1 className='s2class'>
+                    }}
+                  >
+                    <h2 className='s2class'>
                       <span>SIGN</span>
                       <span className='su'>UP</span>
-                    </h1>
+                    </h2>
                   </div>
                 )}
               />
@@ -73,7 +74,7 @@ class LoginPage extends Component {
         <div className='box'>
           <div className='choice_container'>
             <div className='c2'>
-              <h1 className='space_around'>Login</h1>
+              <h2 className='space_around'>Login</h2>
 
               <form className='form logon' onSubmit={this.handleSubmit}>
                 {this.state.msg ? <p className='colorError'>{this.state.msg}</p> : <p></p>}

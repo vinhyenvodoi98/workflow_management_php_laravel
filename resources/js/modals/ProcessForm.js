@@ -29,7 +29,7 @@ function ProcessForm(props) {
         </div>
         <div className='col-3'>
           <select className='custom-select' id='inputGroupSelect01'>
-            <option defaultValue>Choose...</option>
+            <option defaultValue>Priority</option>
             <option value='1'>One</option>
             <option value='2'>Two</option>
             <option value='3'>Three</option>
@@ -37,7 +37,7 @@ function ProcessForm(props) {
         </div>
         <div className='col-3'>
           <select className='custom-select' id='inputGroupSelect01'>
-            <option defaultValue>Choose...</option>
+            <option defaultValue>Status</option>
             <option value='1'>One</option>
             <option value='2'>Two</option>
             <option value='3'>Three</option>

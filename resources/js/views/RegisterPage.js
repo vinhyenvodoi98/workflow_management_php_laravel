@@ -55,11 +55,12 @@ class RegisterPage extends Component {
                     id='left'
                     onClick={() => {
                       history.push('/login');
-                    }}>
-                    <h1 className='s1class'>
+                    }}
+                  >
+                    <h2 className='s1class'>
                       <span>SIGN</span>
                       <span className='su'>IN</span>
-                    </h1>
+                    </h2>
                   </div>
                 )}
               />
@@ -69,11 +70,12 @@ class RegisterPage extends Component {
                     id='right'
                     onClick={() => {
                       history.push('/register');
-                    }}>
-                    <h1 className='s2class text-color'>
+                    }}
+                  >
+                    <h2 className='s2class text-color'>
                       <span>SIGN</span>
                       <span className='su'>UP</span>
-                    </h1>
+                    </h2>
                   </div>
                 )}
               />
@@ -85,7 +87,7 @@ class RegisterPage extends Component {
           <div className='choice_container'>
             <div className='c2'>
               <div className='form_box'>
-                <h1 className='space_around'>Sign Up</h1>
+                <h2 className='space_around'>Sign Up</h2>
                 <form className='form logon' onSubmit={this.handleSubmit}>
                   {this.state.msg ? <p className='colorError'>{this.state.msg}</p> : <p></p>}
                   <label className='space_around' htmlFor='name'>
