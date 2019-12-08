@@ -19,6 +19,7 @@ import CreateToDoPage from './views/CreateTodoPage';
 import CorporatePage from './views/CorporatePage';
 import ListToDoPage from './views/ListToDoPage';
 import LoadingPage from './views/LoadingPage';
+import KPIPage from './views/KPIPage';
 
 class Router extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class Router extends Component {
                   <Route exact path='/groups' component={GroupListPage} />
                   <Route exact path='/groupCreate' component={GroupCreatePage} />
                   <Route exact path='/corporate' component={CorporatePage} />
+                  <Route exact path='/KPI' component={KPIPage} />
                   <Route path='*' exact={true} component={Page404} />
                 </Switch>
               ) : (

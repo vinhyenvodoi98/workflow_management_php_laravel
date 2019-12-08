@@ -111,7 +111,7 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li className='col'>
-                    <Link className='Link_color' to='/'>
+                    <Link className='Link_color' to='/KPI'>
                       KPI
                     </Link>
                   </li>
