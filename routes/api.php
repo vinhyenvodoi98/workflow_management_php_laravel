@@ -30,8 +30,17 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('auth', 'AuthController@user');
     Route::post('logout', 'AuthController@logout');
     
+    // User APIs
+    Route::get('users', 'UserController@index');
+    Route::get('users/currentUser/groups', 'UserController@currentUserGroups');
+
     // Group APIs
     Route::get('groups', 'GroupController@index');
+    Route::post('groups', 'GroupController@create');
+
+    // Work APIs
+    Route::get('user/groups/{group_id}/works', 'WorkController@index');
+
 });
 
 Route::middleware('jwt.refresh')->get('/token/refresh', 'AuthController@refresh');
