@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import CreateNewToDo from '../components/CreateNewToDo';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import './CreateTodoPage.css';
 
 class CreateToDoPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      groups: ['Unit 1', 'Unit 2', 'Unit 3', 'R&D']
-    };
   }
   render() {
     return (
@@ -23,10 +22,14 @@ class CreateToDoPage extends Component {
                     <strong>Your groups</strong>
                   </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
-                    {this.state.groups.map((group, index) => (
+                    {this.props.LoginStatus.currentUserGroup.map((group, index) => (
                       <li key={index}>
-                        <a role='tab' data-toggle='pill'>
-                          {group}
+                        <a
+                          role='tab'
+                          data-toggle='pill'
+                          style={{ overflow: 'hidden', fontSize: '0.8vw' }}
+                        >
+                          {group.name}
                         </a>
                       </li>
                     ))}
@@ -47,4 +50,10 @@ class CreateToDoPage extends Component {
   }
 }
 
-export default CreateToDoPage;
+const mapStatetoProps = state => {
+  return {
+    LoginStatus: state.LoginStatus
+  };
+};
+
+export default compose(connect(mapStatetoProps))(CreateToDoPage);

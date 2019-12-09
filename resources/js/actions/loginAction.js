@@ -4,6 +4,7 @@ import store from '../store';
 export const LOGIN = 'LOGIN';
 export const ISLOADING = 'ISLOADING';
 export const LOADALLUSER = 'LOADALLUSER';
+export const LOADUSERGROUP = 'LOADUSERGROUP';
 
 export const login = token => async dispatch => {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -33,6 +34,7 @@ export const login = token => async dispatch => {
     });
 
   dispatch(loadAllUser());
+  dispatch(loadUserGroup());
 
   //  isLogin will save in store and can be called from any view
 };
@@ -73,6 +75,20 @@ export const loadAllUser = () => dispatch => {
     dispatch({
       type: LOADALLUSER,
       users: response.data.work
+    });
+  });
+};
+
+export const loadUserGroup = () => dispatch => {
+  var token = store.getState().LoginStatus.token;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios.get('http://localhost:8181/api/users/currentUser/groups').then(response => {
+    // handle success
+
+    dispatch({
+      type: LOADUSERGROUP,
+      currentUserGroup: response.data
     });
   });
 };

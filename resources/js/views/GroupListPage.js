@@ -2,92 +2,45 @@ import React, { Component } from 'react';
 import Table from '../components/FullGroupTable';
 import './GroupListPage.css';
 import './HomePage.css';
-var members1 = [
-  {
-    fullname: 'Group 4',
-    mission: 'Hack the world',
-    role: 0,
-    totalwork: 25,
-    leader: 'Aluminas',
-    members: 5
-  },
-  {
-    fullname: 'Group 5',
-    mission: 'Hero',
-    role: 0,
-    totalwork: 30,
-    leader: 'Ha Viet Tien',
-    members: 15
-  }
-];
+import axios from 'axios';
 
-var members2 = [
-  {
-    fullname: 'Group 1',
-    mission: 'president',
-    role: 0,
-    totalwork: 20,
-    leader: 'Do Duc Hoang',
-    members: 5
-  },
-  {
-    fullname: 'Group 2',
-    mission: 'super villain',
-    role: 1,
-    totalwork: 30,
-    leader: 'Ha Viet Tien',
-    members: 10
-  },
-  {
-    fullname: 'Group 3',
-    mission: 'jesus noi tieng viet',
-    role: 0,
-    totalwork: 50,
-    leader: 'Tran Dan',
-    members: 15
-  }
-];
+// a = [
+//   {
+//     id: 2,
+//     name: 'Beatae dolorum quam ut dolore et autem incidunt.',
+//     description:
+//       'Occaecati quibusdam tempore vero est tempora ratione qui nihil. Eligendi aliquid vitae cum. Est voluptatem facilis quia et natus. A laborum eum sunt ab.',
+//     leader: 'Lucile Gutmann',
+//     performed_works: 13,
+//     members: 48,
+//     founding_date: '2019-09-26',
+//     expiration_date: '2019-12-25'
+//   }
+// ];
 
 class GroupListPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       page: 1,
-      members: [
-        {
-          fullname: 'Group 1',
-          mission: 'president',
-          role: 0,
-          totalwork: 20,
-          leader: 'Do Duc Hoang',
-          members: 5
-        },
-        {
-          fullname: 'Group 2',
-          mission: 'super villain',
-          role: 1,
-          totalwork: 30,
-          leader: 'Ha Viet Tien',
-          members: 10
-        },
-        {
-          fullname: 'Group 3',
-          mission: 'jesus noi tieng viet',
-          role: 0,
-          totalwork: 50,
-          leader: 'Tran Dan',
-          members: 15
-        }
-      ]
+      members: []
     };
 
     this.select = this.select.bind(this);
   }
 
-  select(number, members1) {
+  componentDidMount() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    axios.get('http://localhost:8181/api/groups').then(response => {
+      // handle success
+      this.setState({ members: response.data });
+    });
+  }
+
+  select(number) {
     this.setState({
-      page: number,
-      members: members1
+      page: number
     });
   }
 
@@ -98,27 +51,25 @@ class GroupListPage extends Component {
         <div className='area'>
           <ul className='nav nav-tabs'>
             <li className='nav-item'>
-              <a
-                className='nav-link active'
-                data-toggle='tab'
-                onClick={() => this.select(1, members1)}>
-                Active groups ({members1.length})
+              <a className='nav-link active' data-toggle='tab' onClick={() => this.select(1)}>
+                Active groups
+                {/* ({members1.length}) */}
               </a>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' data-toggle='tab' onClick={() => this.select(2, members2)}>
-                Groups expired
+              <a className='nav-link' data-toggle='tab' onClick={() => this.select(2)}>
+                Expired groups
               </a>
             </li>
           </ul>
           <div className='table'>
             {this.state.page === 1 ? (
               <div>
-                <Table members={this.state.members} />
+                <Table members={this.state.members} name='Active' />
               </div>
             ) : (
               <div>
-                <Table members={this.state.members} />
+                <Table members={this.state.members} name='Expired' />
               </div>
             )}
           </div>
