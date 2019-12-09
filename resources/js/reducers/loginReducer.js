@@ -5,7 +5,8 @@ const initialState = {
   name: '',
   token: '',
   isLoading: true,
-  users: null
+  users: null,
+  currentUserGroup: null
   // NOTE
   // some thing you want to set global
 };
@@ -27,8 +28,15 @@ const loginReducer = (state = initialState, action) => {
     case login.LOADALLUSER:
       return {
         ...state,
-        users: action.users
+        users: action.users,
+        currentUserGroup: action.currentUserGroup
       };
+    case login.LOADUSERGROUP:
+      return {
+        ...state,
+        currentUserGroup: action.currentUserGroup
+      };
+
     // NOTE
     // write case to update initialState
     default:
