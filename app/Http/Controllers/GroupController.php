@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\GroupTask;
 use App\Group;
 use App\User;
 
@@ -39,25 +40,92 @@ class GroupController extends Controller
     }
 
     function create(Request $request) {
-        $group = new Group();
-        $group->name = $request->name;
-        $group->description = $request->description;
-        $group->founding_date = $request->founding_date;
-        $group->expiration_date = $request->expiration_date;
-        if ($group->save()) {
-            $leader = User::find($request->leader_id);
-            $leader->groups()->attach(
-                $group,
-                ['role' => 'Leader']
-            );
+        try {
+            $group = new Group();
+            $group->name = $request->name;
+            $group->description = $request->description;
+            $group->founding_date = $request->founding_date;
+            $group->expiration_date = $request->expiration_date;
+            if ($group->save()) {
+                $leader = User::find($request->leader_id);
+                $leader->groups()->attach(
+                    $group,
+                    ['role' => 'Leader']
+                );
+                $res = array();
+                $res["id"] = $group->id;
+                $res["name"] = $group->name;
+                $res["description"] = $group->description;
+                $res["leader"] = $leader->name;
+
+                return response()->json($res);
+            } else {
+                return response(null, Response::HTTP_BAD_REQUEST);
+            }
+        } catch ( Exception $e ) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    function update(Request $request) {
+        try {
             $res = array();
-            $res["name"] = $group->name;
-            $res["description"] = $group->description;
-            $res["leader"] = $leader->name;
+
+            if($request->name) {
+                $group = Group::find($request->group_id);
+                $group->name = $request->name;
+                $group->save();   
+                $res["name"] = $request->name;
+            }
+
+            if($request->description) {
+                $group = Group::find($request->group_id);
+                $group->description = $request->description;
+                $group->save();   
+                $res["description"] = $request->description;
+            }
+            if($request->leader_id) {
+                $group = Group::find($request->group_id);
+                // Detach old leader
+                foreach($group->users()->get() as $user) {
+                    if ($user->pivot->role == "Leader") {
+                        $user->groups()->detach($group->id);
+                    }
+                }
+                // Attach new leader
+                $leader = User::find($request->leader_id);
+                $leader->groups()->attach(
+                    $group,
+                    ['role' => 'Leader']
+                );
+                $res["leader"] = $leader->name;
+            }
+
+            if($request->user_id && $request->role && $request->task) {
+                $group = Group::find($request->group_id);
+                $group_task = new GroupTask();
+                $group_task->name = $request->task;
+                $group_task->group_id = $group->id;
+                if($group_task->save()) {
+                    $user = User::find($request->user_id);
+                    $user->groupTasks()->attach($group_task);
+                    $user->groups()->attach(
+                        $group,
+                        ['role' => $request->role]
+                    );
+                    $res['user'] = array(
+                        "id" => $user->id,
+                        "name" => $user->name,
+                        "role" => $request->role,
+                        "task" => $request->task
+                    );     
+                }
+            }
 
             return response()->json($res);
-        } else {
-            return response(null, Response::HTTP_BAD_REQUEST);
+
+        } catch ( Exception $e ) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
 }
