@@ -39,6 +39,7 @@
     "react-router-dom": "^5.1.2",
     "react-sortable-tree": "^2.7.1",
     "react-tabs": "^3.0.0",
+    "react-toastify": "^5.4.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "rsuite": "^4.1.3"
