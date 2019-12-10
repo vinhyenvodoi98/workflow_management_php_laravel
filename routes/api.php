@@ -41,6 +41,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     // Work APIs
     Route::get('user/groups/{group_id}/works', 'WorkController@index');
+    Route::post('user/groups/{group_id}/works', 'WorkController@create');
 
 });
 
