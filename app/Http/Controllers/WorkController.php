@@ -19,16 +19,9 @@ class WorkController extends Controller
         $res = array();
         foreach($groups as $group) {
             foreach($group->works()->get() as $work){
-                $work_info = array();
-                $work_info["id"] = $work->id;
-                $work_info["name"] = $work->name;
-                $work_info["description"] = $work->description;
-                $work_info["status"] = $work->status;
-                $work_info["priority"] = $work->priority;
-                $work_info["score"] = $work->score;
-                $work_info["progress"] = $work->progress;
-                $work_info["start_date"] = $work->start_date;
-                $work_info["due_date"] = $work->due_date;
+                $work_info = $work->only("id", "name", "description", "status",
+                                         "priority", "score", "progress", 
+                                         "start_date", "due_date");
 
                 $current_user  = $work->users()->find($user->id);
                 if ($current_user) {
@@ -59,9 +52,6 @@ class WorkController extends Controller
         try {
             $work = new Work();
             $data = json_decode($request->getContent(), true);
-            // dd($data);
-            // $data = $data->toArray();
-            // return response($data);
             $work["name"] = $data["name"];
             $work["description"] = $data["description"];
             $work["priority"] = $data["priority"];
@@ -166,6 +156,12 @@ class WorkController extends Controller
 
             array_push($res, $work_info);
         }
-        return $res;
+        if(!empty($res)) {
+            return $res;
+        } else {
+            return null;
+        }
     }
+
+    
 }
