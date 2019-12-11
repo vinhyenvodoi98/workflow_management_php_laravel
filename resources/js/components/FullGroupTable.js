@@ -1,5 +1,6 @@
 import React from 'react';
 import EditGroup from '../modals/EditGroup';
+import axios from 'axios';
 
 function Table(props) {
   function formatDate(date) {
@@ -12,6 +13,22 @@ function Table(props) {
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
+  }
+
+  function deleteGroup(group_id) {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+    axios
+      .post('http://localhost:8181/api/groups/group/delete', {
+        group_id
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   return (
@@ -37,11 +54,12 @@ function Table(props) {
                     <td>{menber.name}</td>
                     <td>{menber.description}</td>
                     <td>
-                      <EditGroup groupId={menber.id} groupName={menber.name} />
+                      <EditGroup groupId={menber.id} groupInfo={menber} />
                       <input
                         className='btn btn-outline-danger btn-delete mr-2'
                         type='button'
                         value='Delete'
+                        onClick={() => deleteGroup(menber.id)}
                       />
                     </td>
                     <td>{menber.leader}</td>

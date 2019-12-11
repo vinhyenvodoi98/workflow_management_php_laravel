@@ -17,6 +17,7 @@ export const login = token => async dispatch => {
         type: LOGIN,
         isLogin: true,
         name: response.data.name,
+        position: response.data.position,
         token
       });
       dispatch({

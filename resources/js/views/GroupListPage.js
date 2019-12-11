@@ -4,20 +4,6 @@ import './GroupListPage.css';
 import './HomePage.css';
 import axios from 'axios';
 
-// a = [
-//   {
-//     id: 2,
-//     name: 'Beatae dolorum quam ut dolore et autem incidunt.',
-//     description:
-//       'Occaecati quibusdam tempore vero est tempora ratione qui nihil. Eligendi aliquid vitae cum. Est voluptatem facilis quia et natus. A laborum eum sunt ab.',
-//     leader: 'Lucile Gutmann',
-//     performed_works: 13,
-//     members: 48,
-//     founding_date: '2019-09-26',
-//     expiration_date: '2019-12-25'
-//   }
-// ];
-
 class GroupListPage extends Component {
   constructor(props) {
     super(props);
