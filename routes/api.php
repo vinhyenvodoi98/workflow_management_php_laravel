@@ -39,6 +39,10 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('groups', 'GroupController@create');
     Route::post('groups/group/update', 'GroupController@update');
     Route::post('groups/group/delete', 'GroupController@delete');
+    Route::post('groups/group/user/create', 'GroupController@addUserToGroup');
+    Route::post('groups/group/user/update', 'GroupController@updateUserTaskInGroup');
+    Route::post('groups/group/user/delete', 'GroupController@deleteUserInGroup');
+    Route::get('groups/{group_id}/users', 'GroupController@getUsersInfo');
 
     // Work APIs
     Route::get('user/groups/{group_id}/works', 'WorkController@index');
