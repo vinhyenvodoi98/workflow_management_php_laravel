@@ -85,6 +85,21 @@ class GroupController extends Controller
                 $group->save();   
                 $res["description"] = $request->description;
             }
+
+            if($request->founding_date) {
+                $group = Group::find($request->group_id);
+                $group->description = $request->description;
+                $group->save();   
+                $res["founding_date"] = $request->founding_date;
+            }
+
+            if($request->expiration_date) {
+                $group = Group::find($request->group_id);
+                $group->description = $request->description;
+                $group->save();   
+                $res["expiration_date"] = $request->expiration_date;
+            }
+
             if($request->leader_id) {
                 $group = Group::find($request->group_id);
                 // Detach old leader
@@ -102,33 +117,77 @@ class GroupController extends Controller
                 $res["leader"] = $leader->name;
             }
 
-            if($request->user_id && $request->role && $request->task) {
-                $group = Group::find($request->group_id);
-                $group_task = new GroupTask();
-                $group_task->name = $request->task;
-                $group_task->group_id = $group->id;
-                if($group_task->save()) {
-                    $user = User::find($request->user_id);
-                    $user->groupTasks()->attach($group_task);
-                    $user->groups()->attach(
-                        $group,
-                        ['role' => $request->role]
-                    );
-                    $res['user'] = array(
-                        "id" => $user->id,
-                        "name" => $user->name,
-                        "role" => $request->role,
-                        "task" => $request->task
-                    );     
-                }
-            }
-
             return response()->json($res);
 
         } catch ( Exception $e ) {
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
+
+    function addUserToGroup(Request $request) {
+        try {
+            $data = $request->only('group_id', 'user_id', 'role', 'task');
+            $group = Group::find($data["group_id"]);
+            $group_task = new GroupTask();
+            $group_task->name = $data["task"];
+            $group_task->group_id = $group->id;
+            if($group_task->save()) {
+                $user = User::find($data["user_id"]);
+                $user->groupTasks()->attach($group_task);
+                $user->groups()->attach(
+                    $group,
+                    ['role' => $data["role"]]
+                );
+                $res['user'] = array(
+                    "id" => $user->id,
+                    "name" => $user->name,
+                    "role" => $data["role"],
+                    "task" => $data["task"]
+                );
+                return response()->json($res);     
+            } else {
+                return response()->json(array("isOk" => false));
+            }
+        } catch ( Exception $e ) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+        
+    }
+
+    function updateUserTaskInGroup(Request $request) {
+        try {
+            $res = array();
+            $user = User::find($request->user_id);
+            $group = Group::find($request->group_id);
+
+            $group_task_id = DB::table('group_task_user')
+                                        ->select('group_task_id')
+                                        ->where('user_id', $request->user_id)
+                                        ->first();
+            DB::table('group_tasks')
+                ->where('id', $group_task_id->group_task_id)
+                ->update(['name' => $request->task]);
+            
+            $res["user_name"] = $user->name;
+            $res["task"] = $request->task;
+            
+            return response()->json($res);
+        } catch ( Exception $e ) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    function deleteUserInGroup(Request $request) {
+        try {
+            $group = Group::find($request->group_id);
+            $user = User::find($request->user_id);
+            $user->groups()->detach($group->id);
+
+            return response()->json(array("isOk" => true));
+        } catch ( Exception $e ) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+    }    
 
     function getUsersInfo(Request $request) {
         try {
