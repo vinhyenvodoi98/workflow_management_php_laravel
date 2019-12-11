@@ -31,7 +31,6 @@ class ProcessModals extends Component {
   }
 
   render() {
-    console.log(this.state.groupSelected);
     return (
       <>
         <Button variant='btn btn-light' onClick={this.open}>
