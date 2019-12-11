@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreateTodoPage from '../views/CreateTodoPage';
 import All from '../views/viewListTodo/All';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import axios from 'axios';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -10,7 +11,26 @@ import './CreateTodoPage.css';
 class ListToDoPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      groupData: null
+    };
+
+    this.fetchData = this.fetchData.bind(this);
   }
+
+  fetchData(id) {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    var url = 'http://localhost:8181/api/user/groups/' + id + '/works';
+
+    console.log(url);
+    axios.get(url).then(response => {
+      // handle success
+      console.log(response.data);
+      this.setState({ groupData: response.data });
+    });
+  }
+
   render() {
     return (
       <div className='container'>
@@ -18,6 +38,7 @@ class ListToDoPage extends Component {
         <div className='row'>
           <div className='col-3'>
             <div className='sidebar-item'>
+              {console.log(this.state)}
               <div className='make-me-sticky'>
                 <div className='item'>
                   <p className='title'>
@@ -25,7 +46,7 @@ class ListToDoPage extends Component {
                   </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
                     {this.props.LoginStatus.currentUserGroup.map((group, index) => (
-                      <li key={index}>
+                      <li key={index} onClick={() => this.fetchData(group.id)}>
                         <a
                           role='tab'
                           data-toggle='pill'
