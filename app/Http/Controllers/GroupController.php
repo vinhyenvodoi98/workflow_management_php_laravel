@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\GroupTask;
 use App\Group;
 use App\User;
@@ -127,5 +128,35 @@ class GroupController extends Controller
         } catch ( Exception $e ) {
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    function getUsersInfo(Request $request) {
+        try {
+            $group = Group::find($request->group_id);
+            $res = array();
+
+            foreach($group->users()->get() as $user) {
+                $user_info = array();
+                $user_info["id"] = $user->id;
+                $user_info["name"] = $user->name;
+                $user_info["role"] = $user->pivot->role;
+                $group_task_id = DB::table('group_task_user')
+                                        ->select('group_task_id')
+                                        ->where('user_id', $user->id)
+                                        ->first();
+                $task_name = $group->groupTasks()->find($group_task_id->group_task_id);
+                if($task_name) {
+                    $user_info["task"] = $task_name->name;
+                } else {
+                    $user_info["task"] = null;
+                }
+                array_push($res, $user_info);
+            }
+
+            return response()->json($res);
+        } catch ( Exception $e ) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+        
     }
 }
