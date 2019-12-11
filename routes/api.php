@@ -29,7 +29,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     // Auth APIs
     Route::get('auth', 'AuthController@user');
     Route::post('logout', 'AuthController@logout');
-    
+
     // User APIs
     Route::get('users', 'UserController@index');
     Route::get('users/currentUser/groups', 'UserController@currentUserGroups');
@@ -38,11 +38,11 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('groups', 'GroupController@index');
     Route::post('groups', 'GroupController@create');
     Route::post('groups/group/update', 'GroupController@update');
+    Route::post('groups/group/delete', 'GroupController@delete');
 
     // Work APIs
     Route::get('user/groups/{group_id}/works', 'WorkController@index');
     Route::post('user/groups/{group_id}/works', 'WorkController@create');
-
 });
 
 Route::middleware('jwt.refresh')->get('/token/refresh', 'AuthController@refresh');
