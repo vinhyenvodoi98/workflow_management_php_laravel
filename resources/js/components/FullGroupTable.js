@@ -1,4 +1,5 @@
 import React from 'react';
+import EditGroup from '../modals/EditGroup';
 
 function Table(props) {
   function formatDate(date) {
@@ -36,11 +37,7 @@ function Table(props) {
                     <td>{menber.name}</td>
                     <td>{menber.description}</td>
                     <td>
-                      <input
-                        className='btn btn-outline-success btn-edit mr-2'
-                        type='button'
-                        value='Edit'
-                      />
+                      <EditGroup groupId={menber.id} groupName={menber.name} />
                       <input
                         className='btn btn-outline-danger btn-delete mr-2'
                         type='button'
