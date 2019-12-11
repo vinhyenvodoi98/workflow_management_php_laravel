@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import ListAll from './ListAll';
+import { Link } from 'react-router-dom';
 
 import ProcessModal from '../../modals/ProcessModals';
 
@@ -18,8 +19,10 @@ function All(props) {
       <div className='row form-group justify-content-between'>
         <div className='col-2'>Your role</div>
         <div className='col-3'>
-          <Button variant='btn btn-light' href='/createToDo'>
-            Create new TODO
+          <Button variant='btn btn-light'>
+            <Link className='Link_color' to='/createToDo'>
+              Create new work
+            </Link>
           </Button>
         </div>
       </div>
