@@ -256,7 +256,12 @@ class GroupController extends Controller
 
                 $id = Auth::user()->id;
                 // print($id);
-                $permission = DB::table('group_user')->where('user_id', $id)->where('group_id', $group_id)->select('group_id')->get();
+                $permission = DB::table('group_user')
+                    ->where('id', $id)
+                    ->where('group_id', $group_id)
+                    ->where('role', 'Leader')
+                    ->select('group_id')
+                    ->get();
                 // print(DB::table('group_user')->where('user_id', $id)->get());
                 if ($permission && count($permission) > 0) {
                     //has value
