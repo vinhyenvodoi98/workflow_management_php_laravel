@@ -10,18 +10,28 @@ class CreateNewToDo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      treeData: [
-        { id: '1', title: 'Chicken', children: [{ title: 'Egg' }] },
-        { id: '1', title: 'Fish', children: [{ title: 'fingerline' }] },
-        { id: '1', title: 'Dog', children: [{ title: 'Hotdog' }] }
-      ],
+      treeData: [],
+      id: 0,
       todo: ''
     };
+
+    this.fetchData = this.fetchData.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      treeData: this.props.groupData
+  componentDidUpdate(prevProps) {
+    if (this.props.groupId !== prevProps.groupId) {
+      this.fetchData(this.props.groupId);
+    }
+  }
+
+  fetchData() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    var url = 'http://localhost:8181/api/user/groups/' + this.props.groupId + '/works/basic_info';
+
+    axios.get(url).then(response => {
+      // handle success
+      this.setState({ treeData: response.data });
     });
   }
 
@@ -37,7 +47,6 @@ class CreateNewToDo extends Component {
 
     return (
       <div className='form text_align_form'>
-        {console.log(this.props.groupData)}
         {console.log(this.state.treeData)}
         <div className='form-group treeview'>
           <SortableTree

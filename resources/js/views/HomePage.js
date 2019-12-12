@@ -9,7 +9,18 @@ import './HomePage.css';
 class HomePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data: null
+    };
+  }
+
+  componentDidMount() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+    axios.get('http://localhost:8181/api/works/analyze').then(response => {
+      this.setState({ data: response.data });
+    });
   }
 
   render() {
@@ -23,7 +34,7 @@ class HomePage extends Component {
                 <div className='col-6'>
                   <div className='col-12 area home_area_heght'>
                     <p className='content'>Work overview</p>
-                    <PieChart />
+                    {this.state.data !== null ? <PieChart data={this.state.data} /> : <></>}
                   </div>
                 </div>
                 <div className='col-6'>

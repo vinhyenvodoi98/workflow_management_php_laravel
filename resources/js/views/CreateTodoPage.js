@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CreateNewToDo from '../components/CreateNewToDo';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import './CreateTodoPage.css';
 
@@ -10,21 +9,8 @@ class CreateToDoPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      groupData: null
+      groupId: null
     };
-
-    this.fetchData = this.fetchData.bind(this);
-  }
-
-  fetchData(id) {
-    var token = localStorage.getItem('token');
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    var url = 'http://localhost:8181/api/user/groups/' + id + '/works/basic_info';
-
-    axios.get(url).then(response => {
-      // handle success
-      this.setState({ groupData: response.data });
-    });
   }
 
   render() {
@@ -41,7 +27,7 @@ class CreateToDoPage extends Component {
                   </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
                     {this.props.LoginStatus.currentUserGroup.map((group, index) => (
-                      <li key={index} onClick={() => this.fetchData(group.id)}>
+                      <li key={index} onClick={() => this.setState({ groupId: group.id })}>
                         <a
                           role='tab'
                           data-toggle='pill'
@@ -59,7 +45,7 @@ class CreateToDoPage extends Component {
           <div className='col-9'>
             <div className='content-section'>
               <p className='title'>Create new work</p>
-              <CreateNewToDo groupData={this.state.groupData} />
+              <CreateNewToDo groupId={this.state.groupId} />
             </div>
           </div>
         </div>

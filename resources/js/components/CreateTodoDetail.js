@@ -41,7 +41,7 @@ class CreateTodoDetail extends Component {
             <div className='form-group'>
               <p className='col'>Name :</p>
               <div className='input-group-prepend'>
-                <span className='input-group-text col-3'>{this.props.todo}</span>
+                <span className='input-group-text col-6'>{this.props.todo}</span>
               </div>
             </div>
             <div className='form-group'>
