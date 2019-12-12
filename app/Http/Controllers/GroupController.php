@@ -15,14 +15,11 @@ class GroupController extends Controller
 {
     function index()
     {
-        $user = Auth::user();
-        // print($user);
-        $user_id = $user["id"];
+        $current_user = Auth::user();
         $groups = Group::all();
         $res = array();
         $leader_id = -1;
         foreach ($groups as $group) {
-            $group_info = array();
             $group_leader = NULL;
             foreach ($group->users()->get() as $user) {
                 if ($user->pivot->role == "Leader") {
@@ -31,18 +28,15 @@ class GroupController extends Controller
                     break;
                 }
             }
-
+            $group_info = array();
+            $group_info = $group->only(['id', 'name', 'description', 
+                                        'founding_date', 'expiration_date']);
             $group_info["permission"] = FALSE;
-            $group_info["id"] = $group->id;
-            $group_info["name"] = $group->name;
-            $group_info["description"] = $group->description;
             $group_info["leader"] = $group_leader;
             $group_info["performed_works"] = $group->works()->count();
             $group_info["members"] = $group->users()->count();
-            $group_info["founding_date"] = $group->founding_date;
-            $group_info["expiration_date"] = $group->expiration_date;
 
-            if ($leader_id == $user_id || $group_leader == NULL) {
+            if ($leader_id == $current_user->id || $group_leader == NULL) {
                 $group_info["permission"] = TRUE;
             }
 
@@ -66,6 +60,13 @@ class GroupController extends Controller
                     $group,
                     ['role' => 'Leader']
                 );
+
+                $group_task = new GroupTask();
+                $group_task->name = "leader";
+                $group_task->group_id = $group->id;
+                $group_task->save();
+
+                $leader->groupTasks()->attach($group_task);
                 $res = array();
                 $res["id"] = $group->id;
                 $res["name"] = $group->name;
@@ -119,6 +120,13 @@ class GroupController extends Controller
                 // Detach old leader
                 foreach ($group->users()->get() as $user) {
                     if ($user->pivot->role == "Leader") {
+                        $group_task_user_ids = DB::table('group_task_user')
+                                                ->where('user_id', $user->id)
+                                                ->pluck('group_task_id');
+                        $group_task_ids = GroupTask::whereIn('id', $group_task_user_ids)
+                                                    ->where('group_id', $group->id)
+                                                    ->pluck('id');
+                        GroupTask::destroy($group_task_ids);
                         $user->groups()->detach($group->id);
                     }
                 }
@@ -128,6 +136,13 @@ class GroupController extends Controller
                     $group,
                     ['role' => 'Leader']
                 );
+
+                $group_task = new GroupTask();
+                $group_task->name = "leader";
+                $group_task->group_id = $group->id;
+                $group_task->save();
+
+                $leader->groupTasks()->attach($group_task);
                 $res["leader"] = $leader->name;
             }
 
@@ -143,37 +158,37 @@ class GroupController extends Controller
             $data = $request->only('group_id', 'user_ids', 'role', 'task');
     
             $group = Group::find($data["group_id"]);
-            $group_task = new GroupTask();
-            $group_task->name = $data["task"];
-            $group_task->group_id = $group->id;
-            if ($group_task->save()) {
-                $res = array();
-                foreach($data["user_ids"] as $user_id) {
-                    // Check if corresponding user was in group or not
-                    $user = $group->users()->find($user_id);
-                    if (!$user) {
-                        $user_info = array();
-                        $user = User::find($user_id);
-                        $user->groupTasks()->attach($group_task);
-                        $user->groups()->attach(
-                            $group,
-                            ['role' => $data["role"]]
-                        );
-                        
-                        $user_info = array(
-                            "id" => $user->id,
-                            "name" => $user->name,
-                            "role" => $data["role"],
-                            "task" => $data["task"]
-                        );
-                        array_push($res, $user_info);
-                    }
+
+            $res = array();
+            foreach($data["user_ids"] as $user_id) {
+                // Check if corresponding user was in group or not
+                $user = $group->users()->find($user_id);
+                if (!$user) {
+                    $user_info = array();
+                    $user = User::find($user_id);
+                    $group_task = new GroupTask();
+
+                    $group_task->name = $data["task"];
+                    $group_task->group_id = $group->id;
+                    $group_task->save();
+
+                    $user->groupTasks()->attach($group_task);
+                    $user->groups()->attach(
+                        $group,
+                        ['role' => $data["role"]]
+                    );
+                    
+                    $user_info = array(
+                        "id" => $user->id,
+                        "name" => $user->name,
+                        "role" => $data["role"],
+                        "task" => $data["task"]
+                    );
+                    array_push($res, $user_info);
                 }
+            }                
                 
-                return response()->json($res);
-            } else {
-                return response()->json(array("isOk" => false));
-            }
+            return response()->json($res);
         } catch (Exception $e) {
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
@@ -190,6 +205,7 @@ class GroupController extends Controller
                 ->select('group_task_id')
                 ->where('user_id', $request->user_id)
                 ->first();
+
             DB::table('group_tasks')
                 ->where('id', $group_task_id->group_task_id)
                 ->update(['name' => $request->task]);
@@ -208,6 +224,13 @@ class GroupController extends Controller
         try {
             $group = Group::find($request->group_id);
             $user = User::find($request->user_id);
+            $group_task_user_ids = DB::table('group_task_user')
+                                                ->where('user_id', $user->id)
+                                                ->pluck('group_task_id');
+            $group_task_ids = GroupTask::whereIn('id', $group_task_user_ids)
+                                        ->where('group_id', $group->id)
+                                        ->pluck('id');
+            GroupTask::destroy($group_task_ids);
             $user->groups()->detach($group->id);
 
             return response()->json(array("isOk" => true));
@@ -231,9 +254,10 @@ class GroupController extends Controller
                     ->select('group_task_id')
                     ->where('user_id', $user->id)
                     ->first();
-                $task_name = $group->groupTasks()->find($group_task_id->group_task_id);
-                if ($task_name) {
-                    $user_info["task"] = $task_name->name;
+                dd($group->groupTasks()->get()->toArray());
+                $group_task = $group->groupTasks()->find($group_task_id->group_task_id);
+                if ($group_task) {
+                    $user_info["task"] = $group_task->name;
                 } else {
                     $user_info["task"] = null;
                 }
@@ -245,24 +269,23 @@ class GroupController extends Controller
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
+    
     function delete(Request $request)
     {
         // Delete group and constraint
         try {
             $group_id = $request->only('group_id')['group_id'];
             $group = DB::table('groups')->where('id', $group_id)->get();
-            // print($group);
             if ($group && count($group) > 0) {
 
                 $id = Auth::user()->id;
-                // print($id);
                 $permission = DB::table('group_user')
                     ->where('id', $id)
                     ->where('group_id', $group_id)
                     ->where('role', 'Leader')
                     ->select('group_id')
                     ->get();
-                // print(DB::table('group_user')->where('user_id', $id)->get());
+
                 if ($permission && count($permission) > 0) {
                     //has value
                     DB::table('groups')->where('id', $group_id)->delete();
