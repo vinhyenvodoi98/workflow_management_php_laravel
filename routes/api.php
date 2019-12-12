@@ -34,8 +34,10 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('users', 'UserController@index');
     Route::get('users/currentUser/groups', 'UserController@currentUserGroups');
 
+
     // Group APIs
     Route::get('groups', 'GroupController@index');
+    Route::get('groups/lower', 'UserController@indexLowerTier');
     Route::post('groups', 'GroupController@create');
     Route::post('groups/group/update', 'GroupController@update');
     Route::post('groups/group/delete', 'GroupController@delete');
@@ -43,6 +45,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('groups/group/user/update', 'GroupController@updateUserTaskInGroup');
     Route::post('groups/group/user/delete', 'GroupController@deleteUserInGroup');
     Route::get('groups/{group_id}/users', 'GroupController@getUsersInfo');
+
 
     // Work APIs
     Route::get('user/groups/{group_id}/works', 'WorkController@index');
