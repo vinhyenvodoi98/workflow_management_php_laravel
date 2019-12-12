@@ -68,7 +68,7 @@ export default function KPIPersonal(params) {
         <div className='form-group'>
           <div className='col'>
             <div className='row'>
-              <p className='col-3'>Target Name :</p>
+              <p className='col-3'>Target name :</p>
               <div className='input-group-prepend col-6'>
                 <input type='text' className='form-control' />
               </div>
@@ -79,7 +79,7 @@ export default function KPIPersonal(params) {
         <div className='form-group'>
           <div className='col'>
             <div className='row'>
-              <p className='col-3'>Target belong :</p>
+              <p className='col-3'>Parent target :</p>
               <div className='input-group-prepend col-6'>
                 <select defaultValue={'DEFAULT'} className='custom-select' id='inputGroupSelect01'>
                   <option value='DEFAULT' disabled>
@@ -108,7 +108,7 @@ export default function KPIPersonal(params) {
         <div className='form-group'>
           <div className='col'>
             <div className=' row'>
-              <p className='col-3'>Evaluation Criteria :</p>
+              <p className='col-3'>Evaluation criteria :</p>
               <div className='col-6'>
                 <textarea type='text' className='form-control' id='usr' />
               </div>
@@ -123,8 +123,8 @@ export default function KPIPersonal(params) {
           <thead className='thead-light'>
             <tr>
               <th scope='col'>#</th>
-              <th scope='col'>Target Name</th>
-              <th scope='col'>Evaluation Criteria</th>
+              <th scope='col'>Target name</th>
+              <th scope='col'>Evaluation criteria</th>
               <th scope='col'>Action</th>
             </tr>
           </thead>

@@ -38,7 +38,7 @@ function Table(props) {
           <tr>
             <th scope='col'>#</th>
             <th scope='col'>Name</th>
-            <th scope='col'>Mission Description</th>
+            <th scope='col'>Task</th>
             <th scope='col'>Action</th>
             <th scope='col'>Leader</th>
             <th scope='col'>Works</th>
@@ -47,35 +47,39 @@ function Table(props) {
         </thead>
         <tbody>
           {props.name === 'Active'
-            ? props.members.map((menber, i) =>
-                menber.expiration_date > formatDate(new Date()) ? (
+            ? props.members.map((member, i) =>
+                member.expiration_date > formatDate(new Date()) ? (
                   <tr key={i}>
                     <th scope='row'>{i + 1}</th>
-                    <td>{menber.name}</td>
-                    <td>{menber.description}</td>
-                    <td>
-                      <EditGroup groupId={menber.id} groupInfo={menber} />
-                      <input
-                        className='btn btn-outline-danger btn-delete mr-2'
-                        type='button'
-                        value='Delete'
-                        onClick={() => deleteGroup(menber.id)}
-                      />
-                    </td>
-                    <td>{menber.leader}</td>
-                    <td>{menber.performed_works}</td>
-                    <td>{menber.members}</td>
+                    <td>{member.name}</td>
+                    <td>{member.description}</td>
+                    {member.permission ? (
+                      <td>
+                        <EditGroup groupId={member.id} groupInfo={member} />
+                        <input
+                          className='btn btn-outline-danger btn-delete mr-2'
+                          type='button'
+                          value='Delete'
+                          onClick={() => deleteGroup(member.id)}
+                        />
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
+                    <td>{member.leader}</td>
+                    <td>{member.performed_works}</td>
+                    <td>{member.members}</td>
                   </tr>
                 ) : (
                   <></>
                 )
               )
-            : props.members.map((menber, i) =>
-                menber.expiration_date < formatDate(new Date()) ? (
+            : props.members.map((member, i) =>
+                member.expiration_date < formatDate(new Date()) ? (
                   <tr key={i}>
                     <th scope='row'>{i + 1}</th>
-                    <td>{menber.name}</td>
-                    <td>{menber.description}</td>
+                    <td>{member.name}</td>
+                    <td>{member.description}</td>
                     <td>
                       <input
                         className='btn btn-outline-success btn-edit mr-2'
@@ -88,9 +92,9 @@ function Table(props) {
                         value='Delete'
                       />
                     </td>
-                    <td>{menber.leader}</td>
-                    <td>{menber.performed_works}</td>
-                    <td>{menber.members}</td>
+                    <td>{member.leader}</td>
+                    <td>{member.performed_works}</td>
+                    <td>{member.members}</td>
                   </tr>
                 ) : (
                   <></>
