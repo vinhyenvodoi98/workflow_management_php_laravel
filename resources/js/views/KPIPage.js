@@ -25,7 +25,7 @@ export default function KPIPage() {
                     }}
                   >
                     <a role='tab' data-toggle='pill' className='active'>
-                      KPI Group
+                      Group
                     </a>
                   </li>
                   <li
@@ -34,7 +34,7 @@ export default function KPIPage() {
                     }}
                   >
                     <a role='tab' data-toggle='pill'>
-                      KPI Personal
+                      Personal
                     </a>
                   </li>
                   <li
@@ -43,7 +43,7 @@ export default function KPIPage() {
                     }}
                   >
                     <a role='tab' data-toggle='pill'>
-                      KPI Evaluation
+                      Evaluation
                     </a>
                   </li>
                   <li
@@ -52,7 +52,7 @@ export default function KPIPage() {
                     }}
                   >
                     <a role='tab' data-toggle='pill'>
-                      KPI Statistics
+                      Statistics
                     </a>
                   </li>
                 </ul>
