@@ -140,24 +140,36 @@ class GroupController extends Controller
     function addUserToGroup(Request $request)
     {
         try {
-            $data = $request->only('group_id', 'user_id', 'role', 'task');
+            $data = $request->only('group_id', 'user_ids', 'role', 'task');
+    
             $group = Group::find($data["group_id"]);
             $group_task = new GroupTask();
             $group_task->name = $data["task"];
             $group_task->group_id = $group->id;
             if ($group_task->save()) {
-                $user = User::find($data["user_id"]);
-                $user->groupTasks()->attach($group_task);
-                $user->groups()->attach(
-                    $group,
-                    ['role' => $data["role"]]
-                );
-                $res['user'] = array(
-                    "id" => $user->id,
-                    "name" => $user->name,
-                    "role" => $data["role"],
-                    "task" => $data["task"]
-                );
+                $res = array();
+                foreach($data["user_ids"] as $user_id) {
+                    // Check if corresponding user was in group or not
+                    $user = $group->users()->find($user_id);
+                    if (!$user) {
+                        $user_info = array();
+                        $user = User::find($user_id);
+                        $user->groupTasks()->attach($group_task);
+                        $user->groups()->attach(
+                            $group,
+                            ['role' => $data["role"]]
+                        );
+                        
+                        $user_info = array(
+                            "id" => $user->id,
+                            "name" => $user->name,
+                            "role" => $data["role"],
+                            "task" => $data["task"]
+                        );
+                        array_push($res, $user_info);
+                    }
+                }
+                
                 return response()->json($res);
             } else {
                 return response()->json(array("isOk" => false));
