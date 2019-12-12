@@ -19,7 +19,13 @@ class EditGroup extends Component {
       endtDate: new Date(),
       start: null,
       end: null,
-      groupMember: null
+      groupMember: null,
+
+      viceLeader_id: [],
+      viceLeader_task: '',
+
+      staff_id: [],
+      staff_task: ''
     };
 
     this.open = this.open.bind(this);
@@ -30,6 +36,14 @@ class EditGroup extends Component {
     this.handleChange_startDate = this.handleChange_startDate.bind(this);
     this.handleChange_endDate = this.handleChange_endDate.bind(this);
     this.editGroup = this.editGroup.bind(this);
+
+    this.onSelectViceLeader = this.onSelectViceLeader.bind(this);
+    this.onRemoveViceLeader = this.onRemoveViceLeader.bind(this);
+    this.addViceLeader = this.addViceLeader.bind(this);
+
+    this.onSelectStaff = this.onSelectStaff.bind(this);
+    this.onRemoveStaff = this.onRemoveStaff.bind(this);
+    this.addStaff = this.addStaff.bind(this);
   }
 
   componentDidMount() {
@@ -92,6 +106,39 @@ class EditGroup extends Component {
       });
   }
 
+  addViceLeader() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    var data = {
+      group_id: this.props.groupId,
+      user_ids: this.state.viceLeader_id,
+      role: 'Vice Leader',
+      task: this.state.viceLeader_task
+    };
+    console.log(data);
+    axios.post('http://localhost:8181/api/groups/group/user/create', data).then(response => {
+      console.log(response);
+      this.notifyA();
+    });
+  }
+
+  addStaff() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    var data = {
+      group_id: this.props.groupId,
+      user_ids: this.state.staff_id,
+      role: 'Staff',
+      task: this.state.staff_task
+    };
+    console.log(data);
+    axios.post('http://localhost:8181/api/groups/group/user/create', data).then(response => {
+      console.log(response);
+      this.notifyA();
+    });
+  }
+
   onSelect(optionsList, selectedItem) {
     this.setState({
       leader_id: selectedItem.id
@@ -99,8 +146,22 @@ class EditGroup extends Component {
   }
   onRemove(optionList, removedItem) {}
 
+  onSelectViceLeader(optionsList, selectedItem) {
+    this.setState({
+      viceLeader_id: [...this.state.viceLeader_id, selectedItem.id]
+    });
+  }
+  onRemoveViceLeader(optionList, removedItem) {}
+
+  onSelectStaff(optionsList, selectedItem) {
+    this.setState({
+      staff_id: [...this.state.leader_id, selectedItem.id]
+    });
+  }
+  onRemoveStaff(optionList, removedItem) {}
+
   notifyA() {
-    toast.success('Success Notification !', {
+    toast.success('Successfully !', {
       position: toast.POSITION.TOP_RIGHT
     });
   }
@@ -171,8 +232,8 @@ class EditGroup extends Component {
                   <div className='non-padding col-6 select_backgroud'>
                     <Multiselect
                       options={this.props.LoginStatus.users} // Options to display in the dropdown
-                      onSelect={this.onSelect} // Function will trigger on select event
-                      onRemove={this.onRemove} // Function will trigger on remove event
+                      onSelect={this.onSelectViceLeader} // Function will trigger on select event
+                      onRemove={this.onRemoveViceLeader} // Function will trigger on remove event
                       displayValue='name' // Property name to display in the dropdown options
                     />
                   </div>
@@ -180,9 +241,16 @@ class EditGroup extends Component {
                 </div>
                 <div className='form-group row'>
                   <p className='col-3'>Mission :</p>
-                  <textarea type='text' className='form-control col-6' id='usr' />
+                  <textarea
+                    type='text'
+                    className='form-control col-6'
+                    id='usr'
+                    onChange={e => this.setState({ viceLeader_task: e.target.value })}
+                  />
                   <div className='col-3'>
-                    <button className='btn'>Save</button>
+                    <button className='btn' onClick={() => this.addViceLeader()}>
+                      Save
+                    </button>
                   </div>
                 </div>
                 <div className='form-group'>
@@ -202,8 +270,8 @@ class EditGroup extends Component {
                   <div className='non-padding col-6 select_backgroud'>
                     <Multiselect
                       options={this.props.LoginStatus.users} // Options to display in the dropdown
-                      onSelect={this.onSelect} // Function will trigger on select event
-                      onRemove={this.onRemove} // Function will trigger on remove event
+                      onSelect={this.onSelectStaff} // Function will trigger on select event
+                      onRemove={this.onRemoveStaff} // Function will trigger on remove event
                       displayValue='name' // Property name to display in the dropdown options
                     />
                   </div>
@@ -211,9 +279,16 @@ class EditGroup extends Component {
                 </div>
                 <div className='form-group row'>
                   <p className='col-3'>Mission :</p>
-                  <textarea type='text' className='form-control col-6' id='usr' />
+                  <textarea
+                    type='text'
+                    className='form-control col-6'
+                    id='usr'
+                    onChange={e => this.setState({ staff_task: e.target.value })}
+                  />
                   <div className='col-3'>
-                    <button className='btn'>Save</button>
+                    <button className='btn' onClick={() => this.addStaff()}>
+                      Save
+                    </button>
                   </div>
                 </div>
                 <div className='form-group'>
