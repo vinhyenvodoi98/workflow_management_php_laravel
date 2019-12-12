@@ -15,18 +15,24 @@ class GroupController extends Controller
 {
     function index()
     {
+        $user = Auth::user();
+        // print($user);
+        $user_id = $user["id"];
         $groups = Group::all();
         $res = array();
+        $leader_id = -1;
         foreach ($groups as $group) {
             $group_info = array();
             $group_leader = NULL;
             foreach ($group->users()->get() as $user) {
                 if ($user->pivot->role == "Leader") {
                     $group_leader = $user->name;
+                    $leader_id = $user->id;
                     break;
                 }
             }
 
+            $group_info["permission"] = FALSE;
             $group_info["id"] = $group->id;
             $group_info["name"] = $group->name;
             $group_info["description"] = $group->description;
@@ -35,6 +41,10 @@ class GroupController extends Controller
             $group_info["members"] = $group->users()->count();
             $group_info["founding_date"] = $group->founding_date;
             $group_info["expiration_date"] = $group->expiration_date;
+
+            if ($leader_id == $user_id || $group_leader == NULL) {
+                $group_info["permission"] = TRUE;
+            }
 
             array_push($res, $group_info);
         }
