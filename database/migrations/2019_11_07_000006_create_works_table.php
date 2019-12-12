@@ -16,13 +16,13 @@ class CreateWorksTable extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('index');
+            $table->string('index')->nullable();
             $table->string('name');
             $table->string('description');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->string('priority');
-            $table->integer('score');
-            $table->integer('progress');
+            $table->integer('score')->nullable();
+            $table->integer('progress')->nullable();
             $table->date('start_date');
             $table->date('due_date');
 
