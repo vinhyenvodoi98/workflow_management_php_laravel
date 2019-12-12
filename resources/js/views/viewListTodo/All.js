@@ -67,8 +67,7 @@ function All(props) {
           <ProcessModal />
         </div>
       </div>
-
-      <ListAll />
+      {props.groupData !== null ? <ListAll groupData={props.groupData} /> : <ListAll />}
     </div>
   );
 }

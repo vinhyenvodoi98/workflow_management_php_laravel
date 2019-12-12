@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { TreeDataState, CustomTreeData } from '@devexpress/dx-react-grid';
 import {
@@ -13,64 +13,22 @@ const getChildRows = (row, rootRows) => (row ? row.items : rootRows);
 function ListAll(props) {
   const [columns] = useState([
     { name: 'name', title: 'Work Name' },
-    { name: 'action', title: 'Action' },
-    { name: 'state', title: 'Status' },
+    { name: 'description', title: 'Description' },
+    { name: 'status', title: 'Status' },
     { name: 'progress', title: 'Progress' },
-    { name: 'implementer', title: 'Implementer' },
-    { name: 'prioritize', title: 'Prioritize' },
-    { name: 'start', title: '1/5/2019' },
-    { name: 'end', title: '15/5/2019' }
+    { name: 'action', title: 'Action' },
+    { name: 'priority', title: 'Priority' },
+    { name: 'start_date', title: 'Start_date' },
+    { name: 'due_date', title: 'Due_date' }
   ]);
 
-  const [data] = useState([
-    {
-      name: 'Cong viec 1',
-      action: 'Action',
-      status: 'in progress',
-      progress: '50%',
-      implementer: 'Tran Dan',
-      prioritize: 'High',
-      start: '1/5/2019',
-      end: '15/5/2019',
-      items: null
-    },
-    {
-      name: 'Cong viec 2',
-      action: 'Action',
-      status: 'in progress',
-      progress: '50%',
-      implementer: 'Tran Dan',
-      prioritize: 'High',
-      start: '1/5/2019',
-      end: '15/5/2019',
-      items: [
-        {
-          name: 'Cong viec 2.1',
-          action: 'Action',
-          status: 'in progress',
-          progress: '100%',
-          implementer: 'Tran Dan',
-          prioritize: 'High',
-          start: '1/5/2019',
-          end: '15/5/2019',
-          items: null
-        },
-        {
-          name: 'Cong viec 2.2',
-          action: 'Action',
-          status: 'in progress',
-          progress: '30%',
-          implementer: 'Tran Dan',
-          prioritize: 'High',
-          start: '1/5/2019',
-          end: '15/5/2019',
-          items: null
-        }
-      ]
-    }
-  ]);
+  const [data, setData] = useState([]);
 
   const [tableColumnExtensions] = useState([{ columnName: 'name', width: 300 }]);
+
+  useEffect(() => {
+    setData(props.groupData);
+  });
 
   return (
     <>

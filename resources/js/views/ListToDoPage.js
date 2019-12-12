@@ -12,7 +12,7 @@ class ListToDoPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      groupData: null
+      groupData: []
     };
 
     this.fetchData = this.fetchData.bind(this);
@@ -23,12 +23,15 @@ class ListToDoPage extends Component {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     var url = 'http://localhost:8181/api/user/groups/' + id + '/works';
 
-    console.log(url);
     axios.get(url).then(response => {
       // handle success
-      console.log(response.data);
       this.setState({ groupData: response.data });
     });
+  }
+
+  componentDidMount() {
+    console.log(this.props.LoginStatus.currentUserGroup);
+    this.fetchData(this.props.LoginStatus.currentUserGroup);
   }
 
   render() {
@@ -38,7 +41,6 @@ class ListToDoPage extends Component {
         <div className='row'>
           <div className='col-3'>
             <div className='sidebar-item'>
-              {console.log(this.state)}
               <div className='make-me-sticky'>
                 <div className='item'>
                   <p className='title'>
@@ -65,8 +67,8 @@ class ListToDoPage extends Component {
             <div className='content-section'>
               <Tabs>
                 <TabList className='title'>
-                  <Tab>Prioritize</Tab>
                   <Tab>All</Tab>
+                  <Tab>Prioritize</Tab>
                   <Tab>Process</Tab>
                   <Tab>Processing</Tab>
                   <Tab>Out of date</Tab>
@@ -76,10 +78,10 @@ class ListToDoPage extends Component {
                 </TabList>
 
                 <TabPanel>
-                  <All />
+                  <All groupData={this.state.groupData} />
                 </TabPanel>
                 <TabPanel>
-                  <All />
+                  <CreateTodoPage />
                 </TabPanel>
                 <TabPanel>
                   <CreateTodoPage />
