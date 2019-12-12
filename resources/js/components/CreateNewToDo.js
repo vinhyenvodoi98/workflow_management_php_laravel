@@ -4,19 +4,25 @@ import SortableTree, { addNodeUnderParent, removeNodeAtPath } from 'react-sortab
 import './NavBar/Navbar.css';
 import CreateTodoDetail from './CreateTodoDetail';
 
-const firstNames = ['Abraham', 'Adam', 'Agnar', 'Albert', 'Albin', 'Albrecht'];
+const firstNames = ['Default'];
 
 class CreateNewToDo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       treeData: [
-        { title: 'Chicken', children: [{ title: 'Egg' }] },
-        { title: 'Fish', children: [{ title: 'fingerline' }] },
-        { title: 'Dog', children: [{ title: 'Hotdog' }] }
+        { id: '1', title: 'Chicken', children: [{ title: 'Egg' }] },
+        { id: '1', title: 'Fish', children: [{ title: 'fingerline' }] },
+        { id: '1', title: 'Dog', children: [{ title: 'Hotdog' }] }
       ],
       todo: ''
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      treeData: this.props.groupData
+    });
   }
 
   handleNodeClick(node) {
@@ -31,6 +37,8 @@ class CreateNewToDo extends Component {
 
     return (
       <div className='form text_align_form'>
+        {console.log(this.props.groupData)}
+        {console.log(this.state.treeData)}
         <div className='form-group treeview'>
           <SortableTree
             treeData={this.state.treeData}

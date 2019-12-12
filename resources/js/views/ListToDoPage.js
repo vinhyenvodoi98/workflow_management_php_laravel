@@ -30,7 +30,6 @@ class ListToDoPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.LoginStatus.currentUserGroup);
     this.fetchData(this.props.LoginStatus.currentUserGroup);
   }
 
