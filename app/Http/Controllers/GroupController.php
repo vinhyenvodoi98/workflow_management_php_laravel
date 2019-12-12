@@ -228,26 +228,31 @@ class GroupController extends Controller
         // Delete group and constraint
         try {
             $group_id = $request->only('group_id')['group_id'];
-            $group = DB::table('group_task_user')->where('group_task_id', $group_id)->get();
+            $group = DB::table('groups')->where('id', $group_id)->get();
+            // print($group);
             if ($group && count($group) > 0) {
+
+                $id = Auth::user()->id;
+                // print($id);
+                $permission = DB::table('group_user')->where('user_id', $id)->where('group_id', $group_id)->select('group_id')->get();
+                // print(DB::table('group_user')->where('user_id', $id)->get());
+                if ($permission && count($permission) > 0) {
+                    //has value
+                    DB::table('groups')->where('id', $group_id)->delete();
+                    return response()->json([
+                        'sucessful' => true,
+                        'deleted' => $group_id,
+                    ]);
+                } else return response()->json([
+                    'sucessful' => false,
+                    'error' => 'permission denied',
+                ]);
+            } else {
                 return response()->json([
                     'sucessful' => false,
                     'error' => 'group_id not found',
                 ]);
             }
-            $id = Auth::user()->id;
-            $permission = DB::table('group_task_user')->where('user_id', $id)->where('group_task_id', $group_id)->select('group_task_id')->get();
-            if ($permission && count($permission) > 0) {
-                //has value
-                DB::table('groups')->where('id', $group_id)->delete();
-                return response()->json([
-                    'sucessful' => true,
-                    'deleted' => $group_id,
-                ]);
-            } else return response()->json([
-                'sucessful' => false,
-                'error' => 'permission denied',
-            ]);
         } catch (Exception $e) {
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
