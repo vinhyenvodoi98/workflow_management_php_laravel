@@ -13,15 +13,25 @@ use App\Group;
 
 class WorkController extends Controller
 {
-    function index(Request $request) {
+    function index(Request $request)
+    {
         $user = Auth::user();
+        // print($user);
         $groups = $user->groups()->where('id', $request->group_id)->get();
         $res = array();
-        foreach($groups as $group) {
-            foreach($group->works()->get() as $work){
-                $work_info = $work->only("id", "name", "description", "status",
-                                         "priority", "score", "progress", 
-                                         "start_date", "due_date");
+        foreach ($groups as $group) {
+            foreach ($group->works()->get() as $work) {
+                $work_info = $work->only(
+                    "id",
+                    "name",
+                    "description",
+                    "status",
+                    "priority",
+                    "score",
+                    "progress",
+                    "start_date",
+                    "due_date"
+                );
 
                 $current_user  = $work->users()->find($user->id);
                 if ($current_user) {
@@ -31,16 +41,16 @@ class WorkController extends Controller
                 }
                 $work_info["current_user_role"] = $current_user_role;
                 $ids_raw = DB::table('work_pivots')
-                                ->select('work_id')
-                                ->where('parent_id', $work->id)
-                                ->get();
+                    ->select('work_id')
+                    ->where('parent_id', $work->id)
+                    ->get();
                 $child_works_ids = array();
-                foreach($ids_raw as $id_raw) {
+                foreach ($ids_raw as $id_raw) {
                     array_push($child_works_ids, $id_raw->work_id);
-                }   
+                }
                 $child_works = DB::table('works')
-                                    ->whereIn('id', array_values($child_works_ids))
-                                    ->get();
+                    ->whereIn('id', array_values($child_works_ids))
+                    ->get();
                 $work_info["items"] = $this->getWorkInfo($child_works);
                 array_push($res, $work_info);
             }
@@ -48,7 +58,8 @@ class WorkController extends Controller
         return response()->json($res);
     }
 
-    function create(Request $request) {
+    function create(Request $request)
+    {
         try {
             $work = new Work();
             $data = json_decode($request->getContent(), true);
@@ -63,7 +74,7 @@ class WorkController extends Controller
             $work["status"] = "Not started";
             $work["score"] = 50;
             $work["progress"] = 50;
-            if ($work->save()){
+            if ($work->save()) {
                 DB::table('work_pivots')->insert(
                     [
                         'parent_id' => $data["parent_id"],
@@ -71,28 +82,28 @@ class WorkController extends Controller
                     ]
                 );
 
-                foreach($data["responsible"] as $uid) {
+                foreach ($data["responsible"] as $uid) {
                     $user = User::find($uid);
                     $user->works()->attach(
                         $work,
                         ['role' => 'Responsible']
                     );
                 }
-                foreach($data["accountable"] as $uid) {
+                foreach ($data["accountable"] as $uid) {
                     $user = User::find($uid);
                     $user->works()->attach(
                         $work,
                         ['role' => 'Accountable']
                     );
                 }
-                foreach($data["consulted"] as $uid) {
+                foreach ($data["consulted"] as $uid) {
                     $user = User::find($uid);
                     $user->works()->attach(
                         $work,
                         ['role' => 'Consulted']
                     );
                 }
-                foreach($data["informed"] as $uid) {
+                foreach ($data["informed"] as $uid) {
                     $user = User::find($uid);
                     $user->works()->attach(
                         $work,
@@ -103,16 +114,16 @@ class WorkController extends Controller
             } else {
                 return response(null, Response::HTTP_BAD_REQUEST);
             }
-
-        } catch ( Exception $e ) {
+        } catch (Exception $e) {
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
 
-    function getWorkInfo($works){
+    function getWorkInfo($works)
+    {
         $user = Auth::user();
         $res = array();
-        foreach($works as $work){
+        foreach ($works as $work) {
             $work_info = array();
             $work_info["id"] = $work->id;
             $work_info["name"] = $work->name;
@@ -125,7 +136,7 @@ class WorkController extends Controller
             $work_info["due_date"] = $work->due_date;
 
             $xwork = $user->works()->find($work->id);
-            if($xwork){
+            if ($xwork) {
                 $current_user  = $xwork->users()->find($user->id);
                 if ($current_user) {
                     $current_user_role = $current_user->pivot->role;
@@ -135,20 +146,20 @@ class WorkController extends Controller
             } else {
                 $current_user_role = null;
             }
-            
+
             $work_info["current_user_role"] = $current_user_role;
             $ids_raw = DB::table('work_pivots')
-                                ->select('work_id')
-                                ->where('parent_id', $work->id)
-                                ->get();
-                $child_works_ids = array();
-                foreach($ids_raw as $id_raw) {
-                    array_push($child_works_ids, $id_raw->work_id);
-                }   
-                $child_works = DB::table('works')
-                                    ->whereIn('id', array_values($child_works_ids))
-                                    ->get();
-            if(!empty($child_works)) {
+                ->select('work_id')
+                ->where('parent_id', $work->id)
+                ->get();
+            $child_works_ids = array();
+            foreach ($ids_raw as $id_raw) {
+                array_push($child_works_ids, $id_raw->work_id);
+            }
+            $child_works = DB::table('works')
+                ->whereIn('id', array_values($child_works_ids))
+                ->get();
+            if (!empty($child_works)) {
                 $work_info["items"] = $this->getWorkInfo($child_works);
             } else {
                 $work_info["items"] = null;
@@ -156,12 +167,26 @@ class WorkController extends Controller
 
             array_push($res, $work_info);
         }
-        if(!empty($res)) {
+        if (!empty($res)) {
             return $res;
         } else {
             return null;
         }
     }
-
-    
+    function analyze()
+    {
+        try {
+            $user = Auth::user();
+            $user_id = $user["id"];
+            $result = DB::table('user_work')
+                ->join('works', 'user_work.work_id', '=', 'works.id')
+                ->where('user_work.user_id', $user_id)
+                ->selectRaw('status, count(status) AS number')
+                ->groupBy('status')
+                ->get();
+            return response()->json($result);
+        } catch (Exception $e) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+    }
 }
