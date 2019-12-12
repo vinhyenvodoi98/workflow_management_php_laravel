@@ -58,6 +58,34 @@ class WorkController extends Controller
         return response()->json($res);
     }
 
+    function workBasicInfo(Request $request)
+    {
+        $user = Auth::user();
+        $groups = $user->groups()->where('id', $request->group_id)->get();
+        $res = array();
+        foreach ($groups as $group) {
+            foreach ($group->works()->get() as $work) {
+                $work_info["id"] = $work["id"];
+                $work_info["title"] = $work["name"];
+
+                $ids_raw = DB::table('work_pivots')
+                    ->select('work_id')
+                    ->where('parent_id', $work->id)
+                    ->get();
+                $child_works_ids = array();
+                foreach ($ids_raw as $id_raw) {
+                    array_push($child_works_ids, $id_raw->work_id);
+                }
+                $child_works = DB::table('works')
+                    ->whereIn('id', array_values($child_works_ids))
+                    ->get();
+                $work_info["children"] = $this->getWorkBasicInfo($child_works);
+                array_push($res, $work_info);
+            }
+        }
+        return response()->json($res);
+    }
+
     function create(Request $request)
     {
         try {
@@ -187,6 +215,41 @@ class WorkController extends Controller
             return response()->json($result);
         } catch (Exception $e) {
             return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    function getWorkBasicInfo($works)
+    {
+        $user = Auth::user();
+        $res = array();
+        foreach ($works as $work) {
+            $work_info = array();
+            $work_info["id"] = $work->id;
+            $work_info["title"] = $work->name;
+
+            $ids_raw = DB::table('work_pivots')
+                ->select('work_id')
+                ->where('parent_id', $work->id)
+                ->get();
+            $child_works_ids = array();
+            foreach ($ids_raw as $id_raw) {
+                array_push($child_works_ids, $id_raw->work_id);
+            }
+            $child_works = DB::table('works')
+                ->whereIn('id', array_values($child_works_ids))
+                ->get();
+            if (!empty($child_works)) {
+                $work_info["children"] = $this->getWorkBasicInfo($child_works);
+            } else {
+                $work_info["children"] = null;
+            }
+
+            array_push($res, $work_info);
+        }
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return null;
         }
     }
 }
