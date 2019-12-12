@@ -98,10 +98,7 @@ class WorkController extends Controller
             $work["due_date"] = $data["due_date"];
             $work["group_id"] = $data["group_id"];
             $work["target_id"] = $data["target_id"];
-            $work["index"] = 'S';
-            $work["status"] = "Not started";
-            $work["score"] = 50;
-            $work["progress"] = 50;
+
             if ($work->save()) {
                 DB::table('work_pivots')->insert(
                     [
