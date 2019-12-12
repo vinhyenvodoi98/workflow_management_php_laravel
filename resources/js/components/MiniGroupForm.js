@@ -36,9 +36,7 @@ class MiniGroupForm extends Component {
             <button className='btn'>Save</button>
           </div>
         </div>
-        <div className='form-group'>
-          <GroupTable />
-        </div>
+        <div className='form-group'>{/* <GroupTable /> */}</div>
       </div>
     );
   }

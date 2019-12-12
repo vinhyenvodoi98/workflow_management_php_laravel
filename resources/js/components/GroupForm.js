@@ -81,7 +81,7 @@ class GroupForm extends Component {
   onRemove(optionList, removedItem) {}
 
   notifyA() {
-    toast.success('Success Notification !', {
+    toast.success('Success Create Group !', {
       position: toast.POSITION.TOP_RIGHT
     });
   }

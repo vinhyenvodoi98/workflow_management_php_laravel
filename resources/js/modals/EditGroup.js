@@ -12,13 +12,14 @@ class EditGroup extends Component {
     super(props);
     this.state = {
       showModal: false,
-      name: this.props.name,
+      name: this.props.groupInfo.name,
       description: null,
       leader_id: null,
       startDate: new Date(),
       endtDate: new Date(),
       start: null,
-      end: null
+      end: null,
+      groupMember: null
     };
 
     this.open = this.open.bind(this);
@@ -29,6 +30,22 @@ class EditGroup extends Component {
     this.handleChange_startDate = this.handleChange_startDate.bind(this);
     this.handleChange_endDate = this.handleChange_endDate.bind(this);
     this.editGroup = this.editGroup.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchUserData();
+  }
+
+  fetchUserData() {
+    var token = this.props.LoginStatus.token;
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+    axios.get(`http://localhost:8181/api/groups/${this.props.groupId}/users`).then(response => {
+      // handle success
+      this.setState({
+        groupMember: response.data
+      });
+    });
   }
 
   formatDate(date) {
@@ -105,7 +122,7 @@ class EditGroup extends Component {
 
         <Modal size='lg' show={this.state.showModal} onHide={this.close} animation={false}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit group {this.props.groupName}</Modal.Title>
+            <Modal.Title>Edit group {this.props.groupInfo.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className='form text_align_form'>
@@ -119,6 +136,7 @@ class EditGroup extends Component {
                   onChange={e => {
                     this.setState({ name: e.target.value });
                   }}
+                  value={this.props.groupInfo.name}
                 />
               </div>
               <div className='form-group'>
@@ -130,6 +148,7 @@ class EditGroup extends Component {
                   onChange={e => {
                     this.setState({ description: e.target.value });
                   }}
+                  value={this.props.groupInfo.description}
                 />
               </div>
               <div className='form-group'>
@@ -167,7 +186,11 @@ class EditGroup extends Component {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <GroupTable />
+                  <GroupTable
+                    tableName='Vice leader'
+                    data={this.state.groupMember}
+                    groupId={this.props.groupId}
+                  />
                 </div>
               </div>
             </div>
@@ -194,7 +217,11 @@ class EditGroup extends Component {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <GroupTable />
+                  <GroupTable
+                    tableName='Staff'
+                    data={this.state.groupMember}
+                    groupId={this.props.groupId}
+                  />
                 </div>
               </div>
             </div>
