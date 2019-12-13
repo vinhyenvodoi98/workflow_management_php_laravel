@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import store from '../../store';
 import * as loginAction from '../../actions/loginAction';
 import './Navbar.css';
+import { Icon } from 'antd';
+import { Switch } from 'antd';
 
 class Navbar extends Component {
   constructor(props) {
@@ -16,6 +18,18 @@ class Navbar extends Component {
 
   logout() {
     store.dispatch(loginAction.logout());
+  }
+
+  onChangeNavbar(checked) {
+    store.dispatch(loginAction.UpdateNavPosition(checked));
+  }
+
+  onChangeLanguage(checked) {
+    console.log(`switch to ${checked}`);
+  }
+
+  onChangeColour(checked) {
+    console.log(`switch to ${checked}`);
   }
 
   render() {
@@ -106,7 +120,7 @@ class Navbar extends Component {
                     </div>
                   </li>
                   <li className='col'>
-                    <Link className='Link_color' to='/'>
+                    <Link className='Link_color' to='/schedule'>
                       Schedule
                     </Link>
                   </li>
@@ -155,12 +169,44 @@ class Navbar extends Component {
           <div className='col-3'>
             {this.props.LoginStatus.isLogin ? (
               <ul className='row'>
-                <li className='col'>
+                <li className='col-1'>
+                  <div className='dropdown'>
+                    <a
+                      id='dropdownMenuButton'
+                      data-toggle='dropdown'
+                      aria-haspopup='true'
+                      aria-expanded='false'
+                    >
+                      <Icon type='setting' />
+                    </a>
+                    <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                      <div className='col'>
+                        <div className='row'>
+                          <p className='col-9 vw1'>Setting Navbar</p>
+                          <Switch size='small' defaultChecked onChange={this.onChangeNavbar} />
+                        </div>
+                      </div>
+                      <div className='col'>
+                        <div className='row'>
+                          <p className='col-9 vw1'>Setting Language</p>
+                          <Switch size='small' defaultChecked onChange={this.onChangeLanguage} />
+                        </div>
+                      </div>
+                      <div className='col'>
+                        <div className='row'>
+                          <p className='col-9 vw1'>Setting Colour</p>
+                          <Switch size='small' defaultChecked onChange={this.onChangeColour} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li className='col-7'>
                   <Link className='Link_color' to='/profile'>
                     {this.props.LoginStatus.name}
                   </Link>
                 </li>
-                <li className='col'>
+                <li className='col-3'>
                   <Link className='Link_color' to='/' onClick={this.logout}>
                     Logout
                   </Link>

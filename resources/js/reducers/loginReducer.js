@@ -7,7 +7,8 @@ const initialState = {
   token: '',
   isLoading: true,
   users: null,
-  currentUserGroup: null
+  currentUserGroup: null,
+  navPositon: true
   // NOTE
   // some thing you want to set global
 };
@@ -37,6 +38,11 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUserGroup: action.currentUserGroup
+      };
+    case login.UPDATENAVPOSITION:
+      return {
+        ...state,
+        navPositon: action.navPositon
       };
 
     // NOTE

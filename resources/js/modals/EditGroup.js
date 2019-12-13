@@ -115,7 +115,6 @@ class EditGroup extends Component {
       role: 'Vice Leader',
       task: this.state.viceLeader_task
     };
-    console.log(data);
     axios.post('http://localhost:8181/api/groups/group/user/create', data).then(response => {
       console.log(response);
       this.notifyA();

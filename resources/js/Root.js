@@ -11,6 +11,7 @@ import 'react-sortable-tree/style.css';
 import 'react-tabs/style/react-tabs.css';
 import 'rsuite/dist/styles/rsuite-default.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.css';
 
 export default class Root extends Component {
   componentDidMount() {

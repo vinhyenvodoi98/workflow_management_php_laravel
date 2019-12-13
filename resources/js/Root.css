@@ -16,6 +16,10 @@
   padding: 1vw;
 }
 
+.vw1 {
+  font-size: 1vw;
+}
+
 .shadow-box {
   border: none;
   border-radius: 10px;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import axios from 'axios';
 
 am4core.useTheme(am4themes_animated);
 
@@ -17,7 +16,6 @@ class PieChart extends Component {
     chart.paddingRight = 20;
 
     chart.data = this.props.data;
-    console.log(chart.data, this.props.data);
 
     let series = chart.series.push(new am4charts.PieSeries3D());
     series.dataFields.value = 'number';

@@ -5,6 +5,7 @@ export const LOGIN = 'LOGIN';
 export const ISLOADING = 'ISLOADING';
 export const LOADALLUSER = 'LOADALLUSER';
 export const LOADUSERGROUP = 'LOADUSERGROUP';
+export const UPDATENAVPOSITION = 'UPDATENAVPOSITION';
 
 export const login = token => async dispatch => {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -91,5 +92,12 @@ export const loadUserGroup = () => dispatch => {
       type: LOADUSERGROUP,
       currentUserGroup: response.data
     });
+  });
+};
+
+export const UpdateNavPosition = navPositon => dispatch => {
+  dispatch({
+    type: UPDATENAVPOSITION,
+    navPositon
   });
 };

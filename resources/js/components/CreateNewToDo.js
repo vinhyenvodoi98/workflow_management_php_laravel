@@ -47,7 +47,6 @@ class CreateNewToDo extends Component {
 
     return (
       <div className='form text_align_form'>
-        {console.log(this.state.treeData)}
         <div className='form-group treeview'>
           <SortableTree
             treeData={this.state.treeData}
