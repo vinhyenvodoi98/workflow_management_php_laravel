@@ -46,11 +46,11 @@ class LoginPage extends Component {
             <div className='c1'>
               <div className='c11' />
               <div id='left'>
-                <h2 className='s1class text-color'>
+                <h3 className='s1class text-color'>
                   {this.homepageRender}
                   <span>SIGN</span>
                   <span className='su'>IN</span>
-                </h2>
+                </h3>
               </div>
               <Route
                 render={({ history }) => (
@@ -60,10 +60,10 @@ class LoginPage extends Component {
                       history.push('/register');
                     }}
                   >
-                    <h2 className='s2class'>
+                    <h3 className='s2class'>
                       <span>SIGN</span>
                       <span className='su'>UP</span>
-                    </h2>
+                    </h3>
                   </div>
                 )}
               />

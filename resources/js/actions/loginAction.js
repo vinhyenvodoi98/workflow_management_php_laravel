@@ -6,6 +6,7 @@ export const ISLOADING = 'ISLOADING';
 export const LOADALLUSER = 'LOADALLUSER';
 export const LOADUSERGROUP = 'LOADUSERGROUP';
 export const UPDATENAVPOSITION = 'UPDATENAVPOSITION';
+export const UPDATEBACKGROUND = 'UPDATEBACKGROUND';
 
 export const login = token => async dispatch => {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -99,5 +100,12 @@ export const UpdateNavPosition = navPositon => dispatch => {
   dispatch({
     type: UPDATENAVPOSITION,
     navPositon
+  });
+};
+
+export const UpdateBackgroud = backGround => dispatch => {
+  dispatch({
+    type: UPDATEBACKGROUND,
+    backGround
   });
 };

@@ -57,10 +57,10 @@ class RegisterPage extends Component {
                       history.push('/login');
                     }}
                   >
-                    <h2 className='s1class'>
+                    <h3 className='s1class'>
                       <span>SIGN</span>
                       <span className='su'>IN</span>
-                    </h2>
+                    </h3>
                   </div>
                 )}
               />
@@ -72,10 +72,10 @@ class RegisterPage extends Component {
                       history.push('/register');
                     }}
                   >
-                    <h2 className='s2class text-color'>
+                    <h3 className='s2class text-color'>
                       <span>SIGN</span>
                       <span className='su'>UP</span>
-                    </h2>
+                    </h3>
                   </div>
                 )}
               />

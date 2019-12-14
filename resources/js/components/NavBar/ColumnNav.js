@@ -7,6 +7,7 @@ import { Switch } from 'antd';
 import store from '../../store';
 import * as loginAction from '../../actions/loginAction';
 import RouteSwitch from '../../routeSwitch';
+import { Animated } from 'react-animated-css';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -40,140 +41,157 @@ class ColumnNav extends React.Component {
 
   render() {
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <div className='logo' />
-          <Menu theme='dark' defaultSelectedKeys={['1']} mode='inline'>
-            <Menu.Item key='1'>
-              <Icon type='pie-chart' />
-              <span> Home</span>
-              <Link to='/' />
-            </Menu.Item>
+      <Animated
+        animationIn='fadeIn'
+        animationOut='zoomOutDown'
+        animationInDuration={1500}
+        animationOutDuration={1000}
+        isVisible={true}
+      >
+        <Layout style={{ minHeight: '100vh' }}>
+          <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+            <div className='logo' />
+            <Menu theme='dark' defaultSelectedKeys={['1']} mode='inline'>
+              <Menu.Item key='1'>
+                <Icon type='pie-chart' />
+                <span> Home</span>
+                <Link to='/' />
+              </Menu.Item>
 
-            <SubMenu
-              key='2'
-              title={
-                <span>
-                  <Icon type='desktop' />
-                  <span>Work</span>
-                </span>
-              }
-            >
-              <Menu.Item key='3'>
-                <Link to='/listToDo'>Show all</Link>
+              <SubMenu
+                key='2'
+                title={
+                  <span>
+                    <Icon type='desktop' />
+                    <span>Work</span>
+                  </span>
+                }
+              >
+                <Menu.Item key='3'>
+                <span>Show all</span>
+                  <Link to='/listToDo'></Link>
+                </Menu.Item>
+                <Menu.Item key='4'>
+                <span>Create new work</span>
+                  <Link to='/createToDo'></Link>
+                </Menu.Item>
+                <Menu.Item key='5'>
+                <span>Show sample to-do</span>
+                  <Link to='/sampleToDo'></Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key='6'
+                title={
+                  <span>
+                    <Icon type='team' />
+                    <span>Group</span>
+                  </span>
+                }
+              >
+                <Menu.Item key='7'>
+                <span>Show all</span>
+                  <Link to='/groups'></Link>
+                </Menu.Item>
+                <Menu.Item key='8'>
+                <span>Create new group</span>
+                  <Link to='/groupCreate'></Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key='9'
+                title={
+                  <span>
+                    <Icon type='project' />
+                    <span>Process</span>
+                  </span>
+                }
+              >
+                <Menu.Item key='10'>
+                <span>Show list process</span>
+                  <Link to='/processes'></Link>
+                </Menu.Item>
+                <Menu.Item key='11'>
+                <span>Show processes you participate in</span>
+                  <Link to='/processpage'></Link>
+                </Menu.Item>
+                <Menu.Item key='12'>
+                <span>Create new process</span>
+                  <Link to='/processpage'></Link>
+                </Menu.Item>
+              </SubMenu>
+              <Menu.Item key='13'>
+                <Icon type='calendar' />
+                <span>Schedule</span>
+                <Link to='/schedule' />
               </Menu.Item>
-              <Menu.Item key='4'>
-                <Link to='/createToDo'>Create new work</Link>
-              </Menu.Item>
-              <Menu.Item key='5'>
-                <Link to='/sampleToDo'>Show sample to-do</Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key='6'
-              title={
-                <span>
-                  <Icon type='team' />
-                  <span>Group</span>
-                </span>
-              }
-            >
-              <Menu.Item key='7'>
-                <Link to='/groups'>Show all</Link>
-              </Menu.Item>
-              <Menu.Item key='8'>
-                <Link to='/groupCreate'>Create new group</Link>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key='9'
-              title={
-                <span>
-                  <Icon type='project' />
-                  <span>Process</span>
-                </span>
-              }
-            >
-              <Menu.Item key='10'>
-                <Link to='/processes'>Show list process</Link>
-              </Menu.Item>
-              <Menu.Item key='11'>
-                <Link to='/processpage'>Show processes you participate in</Link>
-              </Menu.Item>
-              <Menu.Item key='12'>
-                <Link to='/processpage'>Create new process</Link>
-              </Menu.Item>
-            </SubMenu>
-            <Menu.Item key='13'>
-              <Icon type='calendar' />
-              <span>Schedule</span>
-              <Link to='/schedule' />
-            </Menu.Item>
 
-            <Menu.Item key='14'>
-              <Icon type='coffee' />
-              <span>KPI</span>
-              <Link to='/KPI' />
-            </Menu.Item>
-
-            <SubMenu
-              key='15'
-              title={
-                <span>
-                  <Icon type='bank' />
-                  <span>Corporate</span>
-                </span>
-              }
-            >
-              <Menu.Item key='16'>
-                <Link to='/corporate'>Create new department</Link>
+              <Menu.Item key='14'>
+                <Icon type='coffee' />
+                <span>KPI</span>
+                <Link to='/KPI' />
               </Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key='17'
-              title={
-                <span>
-                  <Icon type='setting' />
-                </span>
-              }
-            >
-              <Menu.Item key='18'>
-                <div className='col'>
-                  <div className='row'>
-                    <p className='col-9 vw1'>Setting Navbar</p>
-                    <div className='col-2'>
-                      <Switch size='small' onChange={this.onChangeNavbar} />
+
+              <SubMenu
+                key='15'
+                title={
+                  <span>
+                    <Icon type='bank' />
+                    <span>Corporate</span>
+                  </span>
+                }
+              >
+                <Menu.Item key='16'>
+                  <span>Create new department</span>
+                  <Link to='/corporate'></Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key='17'
+                title={
+                  <span>
+                    <Icon type='setting' />
+                  </span>
+                }
+              >
+                <Menu.Item key='18'>
+                  <div className='col'>
+                    <div className='row'>
+                      <p className='col-9'><span>Setting Navbar</span></p>
+                      <div className='col-2'>
+                        <Switch size='small' onChange={this.onChangeNavbar} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item key='19'>
-                <div className='col'>
-                  <div className='row'>
-                    <p className='col-9 vw1'>Setting Language</p>
-                    <div className='col-2'>
-                      <Switch size='small' defaultChecked onChange={this.onChangeLanguage} />
+                </Menu.Item>
+                <Menu.Item key='19'>
+                  <div className='col'>
+                    <div className='row'>
+                      <p className='col-9'><span>Setting Language</span></p>
+                      <div className='col-2'>
+                        <Switch size='small' defaultChecked onChange={this.onChangeLanguage} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item key='20'>
-                <div className='col'>
-                  <div className='row'>
-                    <p className='col-9 vw1'>Setting Colour</p>
-                    <div className='col-2'>
-                      <Switch size='small' defaultChecked onChange={this.onChangeColour} />
+                </Menu.Item>
+                <Menu.Item key='20'>
+                  <div className='col'>
+                    <div className='row'>
+                      <p className='col-9'><span>Setting Colour</span></p>
+                      <div className='col-2'>
+                        <Switch size='small' checked={this.props.LoginStatus.backGround} onChange={this.onChangeColour} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Menu.Item>
-            </SubMenu>
-          </Menu>
-        </Sider>
-        <Layout>
-          <RouteSwitch />
+                </Menu.Item>
+              </SubMenu>
+            </Menu>
+          </Sider>
+          <Layout>
+            <RouteSwitch />
+          </Layout>
         </Layout>
-      </Layout>
+      </Animated>
     );
   }
 }

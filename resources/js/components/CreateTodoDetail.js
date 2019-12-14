@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Multiselect } from 'multiselect-react-dropdown';
 import DatePicker from 'react-datepicker';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -8,10 +10,6 @@ class CreateTodoDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: [
-        { name: 'Srigar', id: 1 },
-        { name: 'Sam', id: 2 }
-      ],
 
       startDate: new Date(),
       endtDate: new Date()
@@ -39,7 +37,7 @@ class CreateTodoDetail extends Component {
         {this.props.todo ? (
           <div>
             <div className='form-group'>
-              <p className='col'>Name :</p>
+              <p>Name :</p>
               <div className='input-group-prepend'>
                 <span className='input-group-text col-6'>{this.props.todo}</span>
               </div>
@@ -49,10 +47,10 @@ class CreateTodoDetail extends Component {
               <textarea type='text' className='form-control col-6' id='usr' />
             </div>
             <div className='form-group'>
-              <p className='col'>Responsible :</p>
+              <p>Responsible :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
-                  options={this.state.options} // Options to display in the dropdown
+                  options={this.props.LoginStatus.users} // Options to display in the dropdown
                   onSelect={this.onSelect} // Function will trigger on select event
                   onRemove={this.onRemove} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
@@ -60,10 +58,10 @@ class CreateTodoDetail extends Component {
               </div>
             </div>
             <div className='form-group'>
-              <p className='col'>Accountable :</p>
+              <p>Accountable :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
-                  options={this.state.options} // Options to display in the dropdown
+                  options={this.props.LoginStatus.users} // Options to display in the dropdown
                   onSelect={this.onSelect} // Function will trigger on select event
                   onRemove={this.onRemove} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
@@ -71,10 +69,10 @@ class CreateTodoDetail extends Component {
               </div>
             </div>
             <div className='form-group'>
-              <p className='col'>Informed :</p>
+              <p>Informed :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
-                  options={this.state.options} // Options to display in the dropdown
+                  options={this.props.LoginStatus.users} // Options to display in the dropdown
                   onSelect={this.onSelect} // Function will trigger on select event
                   onRemove={this.onRemove} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
@@ -83,19 +81,19 @@ class CreateTodoDetail extends Component {
             </div>
             <div className='form-group row'>
               <div className='col-4'>
-                <p className='col'>Start :</p>
+                <p>Start :</p>
                 <DatePicker
                   selected={this.state.startDate}
                   onChange={this.handleChange_startDate}
                 />
               </div>
               <div className='col-4'>
-                <p className='col'>End :</p>
+                <p>End :</p>
                 <DatePicker selected={this.state.endtDate} onChange={this.handleChange_endDate} />
               </div>
             </div>
             <div className='form-group'>
-              <p className='col-3'>Priority :</p>
+              <p>Priority :</p>
               <select
                 defaultValue={'DEFAULT'}
                 className='col-3 custom-select'
@@ -111,7 +109,7 @@ class CreateTodoDetail extends Component {
             </div>
 
             <div className='form-group'>
-              <p className='col-3'>KPI :</p>
+              <p>KPI :</p>
               <select
                 defaultValue={'DEFAULT'}
                 className='col-3 custom-select'
@@ -126,7 +124,7 @@ class CreateTodoDetail extends Component {
               </select>
             </div>
             <div className='form-group'>
-              <div className='col'>
+              <div className="col">
                 <div className='row justify-content-end'>
                   <button className='btn'>Create</button>
                 </div>
@@ -141,4 +139,10 @@ class CreateTodoDetail extends Component {
   }
 }
 
-export default CreateTodoDetail;
+const mapStatetoProps = state => {
+  return {
+    LoginStatus: state.LoginStatus
+  };
+};
+
+export default compose(connect(mapStatetoProps))(CreateTodoDetail);

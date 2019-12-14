@@ -29,7 +29,14 @@ class Navbar extends Component {
   }
 
   onChangeColour(checked) {
-    console.log(`switch to ${checked}`);
+    store.dispatch(loginAction.UpdateBackgroud(checked));
+    if (checked) {
+      document.body.style.background = 'linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%)';
+      document.body.style.height = '100%';
+    } else {
+      document.body.style.background = 'linear-gradient(90deg, #141e30 0%,#243b55 100% )';
+      document.body.style.height = '100%';
+    }
   }
 
   render() {
@@ -182,20 +189,20 @@ class Navbar extends Component {
                     <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                       <div className='col'>
                         <div className='row'>
-                          <p className='col-9 vw1'>Setting Navbar</p>
+                          <p className='col-9'>Setting Navbar</p>
                           <Switch size='small' defaultChecked onChange={this.onChangeNavbar} />
                         </div>
                       </div>
                       <div className='col'>
                         <div className='row'>
-                          <p className='col-9 vw1'>Setting Language</p>
+                          <p className='col-9'>Setting Language</p>
                           <Switch size='small' defaultChecked onChange={this.onChangeLanguage} />
                         </div>
                       </div>
                       <div className='col'>
                         <div className='row'>
-                          <p className='col-9 vw1'>Setting Colour</p>
-                          <Switch size='small' defaultChecked onChange={this.onChangeColour} />
+                          <p className='col-9'>Setting Colour</p>
+                          <Switch size='small' checked={this.props.LoginStatus.backGround} onChange={this.onChangeColour} />
                         </div>
                       </div>
                     </div>

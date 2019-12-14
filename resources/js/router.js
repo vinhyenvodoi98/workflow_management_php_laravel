@@ -7,6 +7,7 @@ import Navbar from './components/NavBar/Navbar';
 import LoadingPage from './views/LoadingPage';
 import ColumnNav from './components/NavBar/ColumnNav';
 import RouteSwitch from './routeSwitch';
+import { Animated } from 'react-animated-css';
 
 class Router extends Component {
   constructor(props) {
@@ -20,11 +21,19 @@ class Router extends Component {
         <Background />
 
         <BrowserRouter>
-          {this.props.LoginStatus.navPositon ? <Navbar /> : <></>}
           {this.props.LoginStatus.isLoading ? (
             <LoadingPage />
           ) : this.props.LoginStatus.navPositon ? (
-            <RouteSwitch />
+            <Animated
+              animationIn='fadeIn'
+              animationOut='zoomOutDown'
+              animationInDuration={1500}
+              animationOutDuration={1000}
+              isVisible={true}
+            >
+              <Navbar />
+              <RouteSwitch />
+            </Animated>
           ) : (
             <ColumnNav />
           )}
