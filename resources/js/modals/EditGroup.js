@@ -247,7 +247,13 @@ class EditGroup extends Component {
                     onChange={e => this.setState({ viceLeader_task: e.target.value })}
                   />
                   <div className='col-3'>
-                    <button className='btn' onClick={() => this.addViceLeader()}>
+                    <button
+                      className='btn'
+                      onClick={() => {
+                        this.props.fetchData();
+                        this.addViceLeader();
+                      }}
+                    >
                       Save
                     </button>
                   </div>
@@ -265,7 +271,7 @@ class EditGroup extends Component {
               <p>Staff :</p>
               <div className='mini-form-area'>
                 <div className='form-group row'>
-                  <p className='col-3'>Select Vice leader :</p>
+                  <p className='col-3'>Select Staff :</p>
                   <div className='non-padding col-6 select_backgroud'>
                     <Multiselect
                       options={this.props.LoginStatus.users} // Options to display in the dropdown
@@ -285,7 +291,13 @@ class EditGroup extends Component {
                     onChange={e => this.setState({ staff_task: e.target.value })}
                   />
                   <div className='col-3'>
-                    <button className='btn' onClick={() => this.addStaff()}>
+                    <button
+                      className='btn'
+                      onClick={() => {
+                        this.props.fetchUserData();
+                        this.addStaff();
+                      }}
+                    >
                       Save
                     </button>
                   </div>

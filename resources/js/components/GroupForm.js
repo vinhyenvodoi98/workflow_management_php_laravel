@@ -115,15 +115,16 @@ class GroupForm extends Component {
         <div className='form-group'>
           <p>Manager :</p>
           <div className='non-padding col-6'>
-            {this.props.LoginStatus.users ?
+            {this.props.LoginStatus.users ? (
               <Multiselect
-              options={this.props.LoginStatus.users} // Options to display in the dropdown
-              onSelect={this.onSelect} // Function will trigger on select event
-              onRemove={this.onRemove} // Function will trigger on remove event
-              displayValue='name' // Property name to display in the dropdown options
-              /> :
+                options={this.props.LoginStatus.users} // Options to display in the dropdown
+                onSelect={this.onSelect} // Function will trigger on select event
+                onRemove={this.onRemove} // Function will trigger on remove event
+                displayValue='name' // Property name to display in the dropdown options
+              />
+            ) : (
               <></>
-            }
+            )}
           </div>
         </div>
         <div className='form-group row'>

@@ -55,7 +55,11 @@ function Table(props) {
                     <td>{member.description}</td>
                     {member.permission ? (
                       <td>
-                        <EditGroup groupId={member.id} groupInfo={member} />
+                        <EditGroup
+                          groupId={member.id}
+                          groupInfo={member}
+                          fetchData={props.fetchData}
+                        />
                         <input
                           className='btn btn-outline-danger btn-delete mr-2'
                           type='button'
@@ -71,7 +75,7 @@ function Table(props) {
                     <td>{member.members}</td>
                   </tr>
                 ) : (
-                  <></>
+                  <tr key={i}></tr>
                 )
               )
             : props.members.map((member, i) =>
@@ -97,7 +101,7 @@ function Table(props) {
                     <td>{member.members}</td>
                   </tr>
                 ) : (
-                  <></>
+                  <tr key={i}></tr>
                 )
               )}
         </tbody>

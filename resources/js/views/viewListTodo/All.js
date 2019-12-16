@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import ListAll from './ListAll';
 import { Link } from 'react-router-dom';
+import { Checkbox } from 'antd';
 
 import ProcessModal from '../../modals/ProcessModals';
 
@@ -11,6 +12,22 @@ var role = {
   isAccountable: true,
   isConsulted: true
 };
+
+function onChangeResponsible(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
+
+function onChangeAccountable(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
+
+function onChangeConsulted(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
+
+function onChangeInformed(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
 
 function All(props) {
   return (
@@ -28,38 +45,10 @@ function All(props) {
       </div>
       <div className='col'>
         <div className='row' style={{ textAlign: 'left' }}>
-          <label className='label--checkbox row'>
-            {role.isResponsible ? (
-              <input type='checkbox' className='checkbox' checked disabled />
-            ) : (
-              <input type='checkbox' className='checkbox' disabled />
-            )}
-            <p style={{ fontSize: 'small' }}>Responsible</p>
-          </label>
-          <label className='label--checkbox row'>
-            {role.isAccountable ? (
-              <input type='checkbox' className='checkbox' checked disabled />
-            ) : (
-              <input type='checkbox' className='checkbox' disabled />
-            )}
-            <p style={{ fontSize: 'small' }}>Accountable</p>
-          </label>
-          <label className='label--checkbox row'>
-            {role.isConsulted ? (
-              <input type='checkbox' className='checkbox' checked disabled />
-            ) : (
-              <input type='checkbox' className='checkbox' disabled />
-            )}
-            <p style={{ fontSize: 'small' }}>Consulted</p>
-          </label>
-          <label className='label--checkbox row'>
-            {role.isInformed ? (
-              <input type='checkbox' className='checkbox' checked disabled />
-            ) : (
-              <input type='checkbox' className='checkbox' disabled />
-            )}
-            <p style={{ fontSize: 'small' }}>Informed</p>
-          </label>
+          <Checkbox onChange={onChangeResponsible}>Responsible</Checkbox>
+          <Checkbox onChange={onChangeAccountable}>Accountable</Checkbox>
+          <Checkbox onChange={onChangeConsulted}>Consulted</Checkbox>
+          <Checkbox onChange={onChangeInformed}>Informed</Checkbox>
         </div>
       </div>
       <div className='col'>

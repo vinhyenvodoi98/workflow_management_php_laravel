@@ -46,17 +46,21 @@ class ListToDoPage extends Component {
                     <strong>Your groups</strong>
                   </p>
                   <ul className='nav nav-pills nav-stacked' role='tablist'>
-                    {this.props.LoginStatus.currentUserGroup.map((group, index) => (
-                      <li key={index} onClick={() => this.fetchData(group.id)}>
-                        <a
-                          role='tab'
-                          data-toggle='pill'
-                          style={{ overflow: 'hidden', fontSize: '0.8vw' }}
-                        >
-                          {group.name}
-                        </a>
-                      </li>
-                    ))}
+                    {this.props.LoginStatus.currentUserGroup ? (
+                      this.props.LoginStatus.currentUserGroup.map((group, index) => (
+                        <li key={index} onClick={() => this.fetchData(group.id)}>
+                          <a
+                            role='tab'
+                            data-toggle='pill'
+                            style={{ overflow: 'hidden', fontSize: '0.8vw' }}
+                          >
+                            {group.name}
+                          </a>
+                        </li>
+                      ))
+                    ) : (
+                      <></>
+                    )}
                   </ul>
                 </div>
               </div>

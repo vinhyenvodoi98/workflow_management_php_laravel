@@ -45,7 +45,7 @@ class ProcessModals extends Component {
           animation={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Create Sample TODO</Modal.Title>
+            <Modal.Title>Work detail</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className='col'>

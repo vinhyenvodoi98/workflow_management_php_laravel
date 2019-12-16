@@ -13,13 +13,17 @@ class GroupListPage extends Component {
     };
 
     this.select = this.select.bind(this);
+    this.fetchDataGroup = this.fetchDataGroup.bind(this);
   }
 
   componentDidMount() {
+    this.fetchDataGroup();
+  }
+
+  fetchDataGroup() {
     var token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios.get('http://localhost:8181/api/groups').then(response => {
-      // handle success
       this.setState({ members: response.data });
     });
   }
@@ -51,11 +55,15 @@ class GroupListPage extends Component {
           <div className='table'>
             {this.state.page === 1 ? (
               <div>
-                <Table members={this.state.members} name='Active' />
+                <Table members={this.state.members} name='Active' fetchData={this.fetchDataGroup} />
               </div>
             ) : (
               <div>
-                <Table members={this.state.members} name='Expired' />
+                <Table
+                  members={this.state.members}
+                  name='Expired'
+                  // fetchData={this.fetchDataGroup()}
+                />
               </div>
             )}
           </div>
