@@ -32,6 +32,7 @@ class WorkController extends Controller
                     "start_date",
                     "due_date"
                 );
+                $work_info["parent_id"] = null;
 
                 $current_user  = $work->users()->find($user->id);
                 if ($current_user) {
@@ -51,7 +52,7 @@ class WorkController extends Controller
                 $child_works = DB::table('works')
                     ->whereIn('id', array_values($child_works_ids))
                     ->get();
-                $work_info["items"] = $this->getWorkInfo($child_works);
+                $work_info["items"] = $this->getWorkInfo($child_works, $work->id);
                 array_push($res, $work_info);
             }
         }
@@ -67,6 +68,7 @@ class WorkController extends Controller
             foreach ($group->works()->get() as $work) {
                 $work_info["id"] = $work["id"];
                 $work_info["title"] = $work["name"];
+                $work_info["parent_id"] = null;
 
                 $ids_raw = DB::table('work_pivots')
                     ->select('work_id')
@@ -79,7 +81,7 @@ class WorkController extends Controller
                 $child_works = DB::table('works')
                     ->whereIn('id', array_values($child_works_ids))
                     ->get();
-                $work_info["children"] = $this->getWorkBasicInfo($child_works);
+                $work_info["children"] = $this->getWorkBasicInfo($child_works, $work->id);
                 array_push($res, $work_info);
             }
         }
@@ -144,7 +146,7 @@ class WorkController extends Controller
         }
     }
 
-    function getWorkInfo($works)
+    function getWorkInfo($works, $parent_id)
     {
         $user = Auth::user();
         $res = array();
@@ -159,6 +161,7 @@ class WorkController extends Controller
             $work_info["progress"] = $work->progress;
             $work_info["start_date"] = $work->start_date;
             $work_info["due_date"] = $work->due_date;
+            $work_info["parent_id"] = $parent_id;
 
             $xwork = $user->works()->find($work->id);
             if ($xwork) {
@@ -185,7 +188,7 @@ class WorkController extends Controller
                 ->whereIn('id', array_values($child_works_ids))
                 ->get();
             if (!empty($child_works)) {
-                $work_info["items"] = $this->getWorkInfo($child_works);
+                $work_info["items"] = $this->getWorkInfo($child_works, $work->id);
             } else {
                 $work_info["items"] = null;
             }
@@ -215,7 +218,7 @@ class WorkController extends Controller
         }
     }
 
-    function getWorkBasicInfo($works)
+    function getWorkBasicInfo($works, $parent_id)
     {
         $user = Auth::user();
         $res = array();
@@ -223,6 +226,7 @@ class WorkController extends Controller
             $work_info = array();
             $work_info["id"] = $work->id;
             $work_info["title"] = $work->name;
+            $work_info["parent_id"] = $parent_id;
 
             $ids_raw = DB::table('work_pivots')
                 ->select('work_id')
@@ -236,7 +240,7 @@ class WorkController extends Controller
                 ->whereIn('id', array_values($child_works_ids))
                 ->get();
             if (!empty($child_works)) {
-                $work_info["children"] = $this->getWorkBasicInfo($child_works);
+                $work_info["children"] = $this->getWorkBasicInfo($child_works, $work->id);
             } else {
                 $work_info["children"] = null;
             }
