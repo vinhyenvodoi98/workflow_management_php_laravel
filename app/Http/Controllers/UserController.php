@@ -30,6 +30,24 @@ class UserController extends Controller
         return response()->json($res);
     }
 
+    function currentUserGroupWorks(Request $request)
+    {
+        $user = Auth::user();
+        $group = $user->groups()->find($request->group_id);
+        $works = $group->works()->get();
+        $res = array();
+        foreach ($works as $work) {
+            $work_info = $work;
+            $users = array();
+            foreach($work->users()->get() as $user) {
+                array_push($users, array("id" =>  $user->id, "name" => $user->name)); 
+            }
+            $work_info["paticipating_users"] = $users;
+            array_push($res, $work_info);
+        }
+        return response()->json($res);
+    }
+
     function indexLowerTier()
     {
         $rank = array(
