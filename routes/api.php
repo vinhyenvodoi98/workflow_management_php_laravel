@@ -57,6 +57,13 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     // Department APIs
     Route::post('departments', 'DepartmentController@create');
+
+    // KPI APIs
+    Route::get('user/targets', 'KPIController@index');
+    Route::post('user/targets', 'KPIController@store');
+    Route::get('user/targets/{target_id}', 'KPIController@show');
+    Route::put('user/targets/{target_id}', 'KPIController@update');
+    Route::delete('user/targets/{target_id}', 'KPIController@destroy');
 });
 
 Route::middleware('jwt.refresh')->get('/token/refresh', 'AuthController@refresh');
