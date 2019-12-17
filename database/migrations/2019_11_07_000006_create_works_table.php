@@ -19,10 +19,10 @@ class CreateWorksTable extends Migration
             $table->string('index')->nullable();
             $table->string('name');
             $table->string('description');
-            $table->string('status')->nullable();
+            $table->string('status')->default('Not started');
             $table->string('priority');
-            $table->integer('score')->nullable();
-            $table->integer('progress')->nullable();
+            $table->integer('score')->default(0);
+            $table->integer('progress')->default(0);
             $table->date('start_date');
             $table->date('due_date');
 

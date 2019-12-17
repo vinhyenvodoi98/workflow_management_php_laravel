@@ -7,7 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Work::class, function (Faker $faker) {
     return [
-        'index' => $faker->lexify('?'),
         'name' => $faker->sentence,
         'description' => $faker->text,
         'status' => $faker->randomElement(array ('Not started', 'In progress', 'Approval pending', 'Done')),

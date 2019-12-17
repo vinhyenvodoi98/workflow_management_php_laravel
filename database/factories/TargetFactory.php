@@ -7,7 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Target::class, function (Faker $faker) {
     return [
-        'index' => $faker->lexify('?'),
         'name' => $faker->sentence,
         'indicator' => $faker->sentence,
         'weight' => mt_rand(0, 100),

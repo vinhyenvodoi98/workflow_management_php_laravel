@@ -16,11 +16,11 @@ class CreateTargetsTable extends Migration
         Schema::create('targets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('index');
+            $table->string('index')->nullable();
             $table->string('name');
             $table->string('indicator');
             $table->integer('weight');
-            $table->integer('score');
+            $table->integer('score')->default(0);
             $table->date('date');
 
             $table->unsignedBigInteger('user_id')->nullable();
