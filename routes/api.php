@@ -33,6 +33,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     // User APIs
     Route::get('users', 'UserController@index');
     Route::get('users/currentUser/groups', 'UserController@currentUserGroups');
+    Route::get('user/currentUser/groups/{group_id}/works', 'UserController@currentUserGroupWorks');
 
 
     // Group APIs
