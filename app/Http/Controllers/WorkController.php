@@ -253,4 +253,20 @@ class WorkController extends Controller
             return null;
         }
     }
+
+    function getWorkUser()
+    {
+        $user = Auth::user();
+        $id = Auth::user()->id;
+        try {
+            $result = DB::table('user_work')
+                ->join('works', 'user_work.work_id', '=', 'works.id')
+                ->where('user_work.user_id', $id)
+                ->select('works.*')
+                ->get();
+            return response()->json($result);
+        } catch (Exception $e) {
+            return response($e->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+    }
 }
