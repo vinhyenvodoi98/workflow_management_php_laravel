@@ -12,7 +12,7 @@ class CreateNewToDo extends Component {
     this.state = {
       treeData: [],
       id: 0,
-      todo: ''
+      todo: null
     };
 
     this.fetchData = this.fetchData.bind(this);
@@ -37,7 +37,7 @@ class CreateNewToDo extends Component {
 
   handleNodeClick(node) {
     this.setState({
-      todo: node.title
+      todo: node
     });
   }
 
@@ -92,7 +92,7 @@ class CreateNewToDo extends Component {
           />
         </div>
 
-        <CreateTodoDetail todo={this.state.todo} />
+        <CreateTodoDetail groupId={this.props.groupId} todo={this.state.todo} />
       </div>
     );
   }

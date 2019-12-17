@@ -56,6 +56,7 @@ class EditGroup extends Component {
 
     axios.get(`http://localhost:8181/api/groups/${this.props.groupId}/users`).then(response => {
       // handle success
+      console.log(response.data);
       this.setState({
         groupMember: response.data
       });
@@ -112,7 +113,7 @@ class EditGroup extends Component {
     var data = {
       group_id: this.props.groupId,
       user_ids: this.state.viceLeader_id,
-      role: 'Vice Leader',
+      role: 'Vice leader',
       task: this.state.viceLeader_task
     };
     axios.post('http://localhost:8181/api/groups/group/user/create', data).then(response => {
@@ -124,7 +125,6 @@ class EditGroup extends Component {
   addStaff() {
     var token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
     var data = {
       group_id: this.props.groupId,
       user_ids: this.state.staff_id,
@@ -154,7 +154,7 @@ class EditGroup extends Component {
 
   onSelectStaff(optionsList, selectedItem) {
     this.setState({
-      staff_id: [...this.state.leader_id, selectedItem.id]
+      staff_id: [...this.state.staff_id, selectedItem.id]
     });
   }
   onRemoveStaff(optionList, removedItem) {}
@@ -294,7 +294,7 @@ class EditGroup extends Component {
                     <button
                       className='btn'
                       onClick={() => {
-                        this.props.fetchUserData();
+                        this.props.fetchData();
                         this.addStaff();
                       }}
                     >

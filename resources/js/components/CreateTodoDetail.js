@@ -3,6 +3,10 @@ import { Multiselect } from 'multiselect-react-dropdown';
 import DatePicker from 'react-datepicker';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { Select } from 'antd';
+
+const { Option } = Select;
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -10,49 +14,161 @@ class CreateTodoDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      name: '',
+      description: '',
       startDate: new Date(),
-      endtDate: new Date()
+      endtDate: new Date(),
+      start: null,
+      end: null,
+      responsible_id: [],
+      accountable_id: [],
+      consulted_id: [],
+      informed_id: [],
+      priority: '',
+      target_id: ''
     };
 
     this.handleChange_startDate = this.handleChange_startDate.bind(this);
     this.handleChange_endDate = this.handleChange_endDate.bind(this);
+    this.onSelectResponsible = this.onSelectResponsible.bind(this);
+    this.onRemoveResponsible = this.onRemoveResponsible.bind(this);
+    this.onSelectAccountable = this.onSelectAccountable.bind(this);
+    this.onRemoveAccountable = this.onRemoveAccountable.bind(this);
+    this.onSelectConsulted = this.onSelectConsulted.bind(this);
+    this.onRemoveConsulted = this.onRemoveConsulted.bind(this);
+    this.onSelectInformed = this.onSelectInformed.bind(this);
+    this.onRemoveInformed = this.onRemoveInformed.bind(this);
+
+    this.handleChangeKPI = this.handleChangeKPI.bind(this);
+    this.handleChangePriority = this.handleChangePriority.bind(this);
+  }
+
+  createWork() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+    var data = {
+      name: this.state.name,
+      description: this.state.description,
+      parent_id: this.props.todo.parent_id,
+      group_id: this.props.groupId,
+      priority: this.state.priority,
+      start_date: this.state.start,
+      due_date: this.state.end,
+      target_id: this.state.target_id,
+      responsible: this.state.responsible_id,
+      accountable: this.state.accountable_id,
+      consulted: this.state.consulted_id,
+      informed: this.state.informed_id
+    };
+    axios
+      .post('http://localhost:8181/api/user/groups/group/works', data)
+      .then(response => {
+        console.log(response);
+        this.notifyA();
+      })
+      .catch(err => this.notifyA());
+  }
+
+  formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 
   handleChange_startDate(date) {
     this.setState({
-      startDate: date
+      startDate: date,
+      start: this.formatDate(date)
     });
   }
 
   handleChange_endDate(date) {
     this.setState({
-      startDate: date
+      endtDate: date,
+      end: this.formatDate(date)
+    });
+  }
+
+  onSelectResponsible(optionsList, selectedItem) {
+    this.setState({
+      responsible_id: [...this.state.responsible_id, selectedItem.id]
+    });
+  }
+  onRemoveResponsible(optionList, removedItem) {}
+  onSelectAccountable(optionsList, selectedItem) {
+    this.setState({
+      accountable_id: [...this.state.accountable_id, selectedItem.id]
+    });
+  }
+  onRemoveAccountable(optionList, removedItem) {}
+  onSelectConsulted(optionsList, selectedItem) {
+    this.setState({
+      consulted_id: [...this.state.consulted_id, selectedItem.id]
+    });
+  }
+  onRemoveConsulted(optionList, removedItem) {}
+  onSelectInformed(optionsList, selectedItem) {
+    this.setState({
+      informed_id: [...this.state.informed_id, selectedItem.id]
+    });
+  }
+  onRemoveInformed(optionList, removedItem) {}
+
+  handleChangeKPI(value) {
+    this.setState({ target_id: value });
+  }
+
+  handleChangePriority(value) {
+    this.setState({ priority: value });
+  }
+
+  notifyA() {
+    toast.success('Successfully !', {
+      position: toast.POSITION.TOP_RIGHT
     });
   }
 
   render() {
     return (
       <div>
+        <ToastContainer enableMultiContainer position={toast.POSITION.TOP_RIGHT} />
+        {console.log(this.props.todo)}
         {this.props.todo ? (
           <div>
             <div className='form-group'>
               <p>Name :</p>
-              <div className='input-group-prepend'>
-                <span className='input-group-text col-6'>{this.props.todo}</span>
+              <div className=''>
+                <input
+                  type='text'
+                  className='form-control col-6'
+                  value={this.state.name}
+                  onChange={e => this.setState({ name: e.target.value })}
+                />
               </div>
             </div>
             <div className='form-group'>
               <p>Description :</p>
-              <textarea type='text' className='form-control col-6' id='usr' />
+              <textarea
+                type='text'
+                className='form-control col-6'
+                id='usr'
+                onChange={e => this.setState({ description: e.target.value })}
+              />
             </div>
             <div className='form-group'>
               <p>Responsible :</p>
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
                   options={this.props.LoginStatus.users} // Options to display in the dropdown
-                  onSelect={this.onSelect} // Function will trigger on select event
-                  onRemove={this.onRemove} // Function will trigger on remove event
+                  onSelect={this.onSelectResponsible} // Function will trigger on select event
+                  onRemove={this.onRemoveResponsible} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
                 />
               </div>
@@ -62,8 +178,19 @@ class CreateTodoDetail extends Component {
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
                   options={this.props.LoginStatus.users} // Options to display in the dropdown
-                  onSelect={this.onSelect} // Function will trigger on select event
-                  onRemove={this.onRemove} // Function will trigger on remove event
+                  onSelect={this.onSelectAccountable} // Function will trigger on select event
+                  onRemove={this.onRemoveAccountable} // Function will trigger on remove event
+                  displayValue='name' // Property name to display in the dropdown options
+                />
+              </div>
+            </div>
+            <div className='form-group'>
+              <p>Consulted :</p>
+              <div className='non-padding col-6 select_backgroud'>
+                <Multiselect
+                  options={this.props.LoginStatus.users} // Options to display in the dropdown
+                  onSelect={this.onSelectConsulted} // Function will trigger on select event
+                  onRemove={this.onRemoveConsulted} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
                 />
               </div>
@@ -73,8 +200,8 @@ class CreateTodoDetail extends Component {
               <div className='non-padding col-6 select_backgroud'>
                 <Multiselect
                   options={this.props.LoginStatus.users} // Options to display in the dropdown
-                  onSelect={this.onSelect} // Function will trigger on select event
-                  onRemove={this.onRemove} // Function will trigger on remove event
+                  onSelect={this.onSelectInformed} // Function will trigger on select event
+                  onRemove={this.onRemoveInformed} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
                 />
               </div>
@@ -92,41 +219,38 @@ class CreateTodoDetail extends Component {
                 <DatePicker selected={this.state.endtDate} onChange={this.handleChange_endDate} />
               </div>
             </div>
-            <div className='form-group'>
-              <p>Priority :</p>
-              <select
-                defaultValue={'DEFAULT'}
-                className='col-3 custom-select'
-                id='inputGroupSelect01'
-              >
-                <option value='DEFAULT' disabled>
-                  Choose...
-                </option>
-                <option value='1'>Low</option>
-                <option value='2'>Medium</option>
-                <option value='3'>High</option>
-              </select>
+            <div className='col-6'>
+              <div className='row'>
+                <div className='form-group col' style={{ paddingLeft: '0px' }}>
+                  <p>Priority :</p>
+                  <Select
+                    defaultValue='DEFAULT'
+                    classNam='col-6'
+                    onChange={this.handleChangePriority}
+                  >
+                    <Option value='low'>Low</Option>
+                    <Option value='medium'>Medium</Option>
+                    <Option value='high'>High</Option>
+                  </Select>
+                </div>
+                <div className='form-group col'>
+                  <p>KPI :</p>
+                  <Select defaultValue='DEFAULT' classNam='col-6' onChange={this.handleChangeKPI}>
+                    <Option value='1'>1</Option>
+                    <Option value='2'>2</Option>
+                    <Option value='3'>3</Option>
+                    <Option value='4'>4</Option>
+                  </Select>
+                </div>
+              </div>
             </div>
 
             <div className='form-group'>
-              <p>KPI :</p>
-              <select
-                defaultValue={'DEFAULT'}
-                className='col-3 custom-select'
-                id='inputGroupSelect01'
-              >
-                <option value='DEFAULT' disabled>
-                  Choose...
-                </option>
-                <option value='1'>One</option>
-                <option value='2'>Two</option>
-                <option value='3'>Three</option>
-              </select>
-            </div>
-            <div className='form-group'>
-              <div className="col">
+              <div className='col'>
                 <div className='row justify-content-end'>
-                  <button className='btn'>Create</button>
+                  <button className='btn' onClick={() => this.createWork()}>
+                    Create
+                  </button>
                 </div>
               </div>
             </div>
