@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -37,7 +38,7 @@ class AuthController extends Controller
             ], 422);
         }
         # check for token return from your login        
-        if (!($token = JWTAuth::attempt($credentials))) {
+        if (!($token = JWTAuth::attempt($credentials, ['exp' => Carbon::now()->addDays(7)->timestamp]))) {
             return response()->json([
                 "success" => "false",
                 "msg" => "Password is wrong",
