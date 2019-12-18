@@ -56,6 +56,7 @@ class WorkController extends Controller
                 array_push($res, $work_info);
             }
         }
+        $res = $this->filterGetWorks($res);
         return response()->json($res);
     }
 
@@ -100,18 +101,16 @@ class WorkController extends Controller
             $work["due_date"] = $data["due_date"];
             $work["group_id"] = $data["group_id"];
             $work["target_id"] = $data["target_id"];
-            $work["index"] = "s";
-            $work["status"] = "Not started";
-            $work["score"] = "50";
-            $work["progress"] = "50";
-            if ($work->save()) {
-                DB::table('work_pivots')->insert(
-                    [
-                        'parent_id' => $data["parent_id"],
-                        'work_id' => $work->id,
-                    ]
-                );
 
+            if ($work->save()) {
+                if ($data["parent_id"]) {
+                    DB::table('work_pivots')->insert(
+                        [
+                            'parent_id' => $data["parent_id"],
+                            'work_id' => $work->id,
+                        ]
+                    );    
+                }              
                 foreach ($data["responsible"] as $uid) {
                     $user = User::find($uid);
                     $user->works()->attach(
@@ -255,6 +254,41 @@ class WorkController extends Controller
         } else {
             return null;
         }
+    }
+
+    function filterGetWorks($works) {
+        $parent_ids = collect($works)->map(function($work){
+            return $work["id"];
+        });
+
+        foreach($works as $work) {
+            if($work["items"]) {
+                $parent_ids = $this->filterWorkParents($parent_ids, $work["items"]);
+            }
+        }
+
+        $parent_ids = $parent_ids->toArray();
+        $works = collect($works)->filter(function($work) use ($parent_ids) {
+            return in_array($work["id"], $parent_ids);
+        });
+
+        return $works;
+    }
+
+    function filterWorkParents($parent_ids, $children) {
+        foreach($children as $child) {
+            if($child["items"]) {
+                $parent_ids = $parent_ids->filter(function($parent_id) use ($child){
+                    return $parent_id != $child["id"];
+                }); 
+                $parent_ids = $this->filterWorkParents($parent_ids, $child["items"]);
+            } else {
+                $parent_ids = $parent_ids->filter(function($parent_id) use ($child){
+                    return $parent_id != $child["id"];
+                });    
+            }
+        }
+        return $parent_ids;
     }
 
     function getWorkUser()

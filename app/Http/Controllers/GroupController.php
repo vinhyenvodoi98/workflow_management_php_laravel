@@ -57,22 +57,20 @@ class GroupController extends Controller
             if ($group->save()) {
                 $leader = User::find($request->leader_id);
                 $leader->groups()->attach(
-                    $group,
+                    [$group->id],
                     ['role' => 'Leader']
                 );
-
                 $group_task = new GroupTask();
                 $group_task->name = "leader";
                 $group_task->group_id = $group->id;
                 $group_task->save();
 
-                $leader->groupTasks()->attach($group_task);
+                $leader->groupTasks()->attach([$group_task->id]);
                 $res = array();
                 $res["id"] = $group->id;
                 $res["name"] = $group->name;
                 $res["description"] = $group->description;
                 $res["leader"] = $leader->name;
-
                 return response()->json($res);
             } else {
                 return response(null, Response::HTTP_BAD_REQUEST);
@@ -251,10 +249,11 @@ class GroupController extends Controller
                 $user_info["name"] = $user->name;
                 $user_info["role"] = $user->pivot->role;
                 $group_task_id = DB::table('group_task_user')
-                    ->select('group_task_id')
                     ->where('user_id', $user->id)
-                    ->first();
-                $group_task = $group->groupTasks()->find($group_task_id->group_task_id);
+                    ->pluck('group_task_id');
+
+                $group_task = $group->groupTasks()->whereIn("id", $group_task_id)->first();
+
                 if ($group_task) {
                     $user_info["task"] = $group_task->name;
                 } else {
