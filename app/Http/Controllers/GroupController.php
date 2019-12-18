@@ -279,7 +279,7 @@ class GroupController extends Controller
 
                 $id = Auth::user()->id;
                 $permission = DB::table('group_user')
-                    ->where('id', $id)
+                    ->where('user_id', $id)
                     ->where('group_id', $group_id)
                     ->where('role', 'Leader')
                     ->select('group_id')
