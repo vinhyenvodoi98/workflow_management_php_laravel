@@ -31,6 +31,7 @@ class CreateNewToDo extends Component {
 
     axios.get(url).then(response => {
       // handle success
+      console.log(response.data);
       this.setState({ treeData: response.data });
     });
   }

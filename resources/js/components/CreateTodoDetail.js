@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { Select } from 'antd';
+import { TreeSelect } from 'antd';
 
 const { Option } = Select;
 
@@ -25,7 +26,32 @@ class CreateTodoDetail extends Component {
       consulted_id: [],
       informed_id: [],
       priority: '',
-      target_id: ''
+      target_id: '',
+      value: undefined,
+      treeData: [
+        {
+          title: 'Node1',
+          value: '0-0',
+          key: '0-0',
+          children: [
+            {
+              title: 'Child Node1',
+              value: '0-0-1',
+              key: '0-0-1'
+            },
+            {
+              title: 'Child Node2',
+              value: '0-0-2',
+              key: '0-0-2'
+            }
+          ]
+        },
+        {
+          title: 'Node2',
+          value: '0-1',
+          key: '0-1'
+        }
+      ]
     };
 
     this.handleChange_startDate = this.handleChange_startDate.bind(this);
@@ -41,6 +67,33 @@ class CreateTodoDetail extends Component {
 
     this.handleChangeKPI = this.handleChangeKPI.bind(this);
     this.handleChangePriority = this.handleChangePriority.bind(this);
+
+    this.fetchKPI = this.fetchKPI.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(value) {
+    console.log(value);
+    this.setState({ value });
+  }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.todo !== prevProps.todo) {
+  //     this.fetchKPI();
+  //   }
+  // }
+
+  fetchKPI() {
+    var token = localStorage.getItem('token');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+    axios
+      .get('http://localhost:8181/api/user/targets')
+      .then(response => {
+        console.log(response.data);
+        this.setState({ treeData: response.data });
+      })
+      .catch(err => console.log(err));
   }
 
   createWork() {
@@ -235,12 +288,17 @@ class CreateTodoDetail extends Component {
                 </div>
                 <div className='form-group col'>
                   <p>KPI :</p>
-                  <Select defaultValue='DEFAULT' classNam='col-6' onChange={this.handleChangeKPI}>
-                    <Option value='1'>1</Option>
-                    <Option value='2'>2</Option>
-                    <Option value='3'>3</Option>
-                    <Option value='4'>4</Option>
-                  </Select>
+                  <TreeSelect
+                    style={{ width: '100%' }}
+                    value={this.state.value}
+                    dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                    // filterTreeNode={true}
+                    // treeNodeLabelProp={'name'}
+                    treeData={this.state.treeData}
+                    placeholder='Please select'
+                    treeDefaultExpandAll
+                    onChange={this.onChange}
+                  />
                 </div>
               </div>
             </div>

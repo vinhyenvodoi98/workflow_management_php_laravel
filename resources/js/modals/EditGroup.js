@@ -44,17 +44,19 @@ class EditGroup extends Component {
     this.onSelectStaff = this.onSelectStaff.bind(this);
     this.onRemoveStaff = this.onRemoveStaff.bind(this);
     this.addStaff = this.addStaff.bind(this);
+
+    this.fetchUserData = this.fetchUserData.bind(this);
   }
 
   componentDidMount() {
-    this.fetchUserData();
+    this.fetchUserData(this.props.groupId);
   }
 
-  fetchUserData() {
-    var token = this.props.LoginStatus.token;
+  fetchUserData(group_id) {
+    var token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
-    axios.get(`http://localhost:8181/api/groups/${this.props.groupId}/users`).then(response => {
+    axios.get(`http://localhost:8181/api/groups/${group_id}/users`).then(response => {
       // handle success
       console.log(response.data);
       this.setState({
@@ -117,7 +119,7 @@ class EditGroup extends Component {
       task: this.state.viceLeader_task
     };
     axios.post('http://localhost:8181/api/groups/group/user/create', data).then(response => {
-      console.log(response);
+      this.fetchUserData(this.props.groupId);
       this.notifyA();
     });
   }
@@ -131,9 +133,8 @@ class EditGroup extends Component {
       role: 'Staff',
       task: this.state.staff_task
     };
-    console.log(data);
     axios.post('http://localhost:8181/api/groups/group/user/create', data).then(response => {
-      console.log(response);
+      this.fetchUserData(this.props.groupId);
       this.notifyA();
     });
   }
@@ -263,6 +264,7 @@ class EditGroup extends Component {
                     tableName='Vice leader'
                     data={this.state.groupMember}
                     groupId={this.props.groupId}
+                    fetchUserData={this.fetchUserData}
                   />
                 </div>
               </div>
@@ -307,6 +309,7 @@ class EditGroup extends Component {
                     tableName='Staff'
                     data={this.state.groupMember}
                     groupId={this.props.groupId}
+                    fetchUserData={this.fetchUserData}
                   />
                 </div>
               </div>

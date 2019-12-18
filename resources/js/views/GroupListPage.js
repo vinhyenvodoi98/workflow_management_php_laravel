@@ -62,7 +62,7 @@ class GroupListPage extends Component {
                 <Table
                   members={this.state.members}
                   name='Expired'
-                  // fetchData={this.fetchDataGroup()}
+                  fetchData={this.fetchDataGroup}
                 />
               </div>
             )}

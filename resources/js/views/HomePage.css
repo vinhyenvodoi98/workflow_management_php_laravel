@@ -47,3 +47,12 @@
 .homepage-button {
   padding: 3vw;
 }
+
+.position-left {
+  text-align: left;
+  font-size: 0.9vw;
+}
+
+.position-left > div > a {
+  color: #008dff !important;
+}

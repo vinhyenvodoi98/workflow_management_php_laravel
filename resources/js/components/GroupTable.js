@@ -22,6 +22,7 @@ class GroupTable extends Component {
       .then(response => {
         // console.log(response);
         this.notifyA();
+        this.props.fetchUserData(this.props.groupId);
       })
       .catch(error => {
         console.log(error);

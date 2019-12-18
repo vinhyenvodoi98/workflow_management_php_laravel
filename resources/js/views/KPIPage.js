@@ -25,7 +25,7 @@ export default function KPIPage() {
                     }}
                   >
                     <a role='tab' data-toggle='pill' className='active'>
-                      Group
+                      Department
                     </a>
                   </li>
                   <li

@@ -24,7 +24,7 @@ export default function KPIGroup(params) {
     <div className='form text_align_form'>
       <div className='form-group'></div>
       <div className='form-group'>
-        <p className='col-3'>Group :</p>
+        <p className='col-3'>Department :</p>
         <select defaultValue={'DEFAULT'} className='col-3 custom-select' id='inputGroupSelect01'>
           <option value='DEFAULT' disabled>
             Choose...

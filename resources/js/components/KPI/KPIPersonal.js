@@ -97,7 +97,7 @@ export default function KPIPersonal(params) {
         <div className='form-group'>
           <div className='col'>
             <div className='row'>
-              <p className='col-3'>Weighted :</p>
+              <p className='col-3'>Weight :</p>
               <div className='input-group-prepend col-6'>
                 <input type='text' className='form-control' />
               </div>

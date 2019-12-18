@@ -1,6 +1,7 @@
 import React from 'react';
 import EditGroup from '../modals/EditGroup';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Table(props) {
   function formatDate(date) {
@@ -24,15 +25,23 @@ function Table(props) {
         group_id
       })
       .then(response => {
-        console.log(response);
+        notifyA();
+        props.fetchData();
       })
       .catch(error => {
         console.log(error);
       });
   }
 
+  function notifyA() {
+    toast.success('Delete Successfully !', {
+      position: toast.POSITION.TOP_RIGHT
+    });
+  }
+
   return (
     <div>
+      <ToastContainer enableMultiContainer position={toast.POSITION.TOP_RIGHT} />
       <table className='table'>
         <thead className='thead-light'>
           <tr>
@@ -84,18 +93,23 @@ function Table(props) {
                     <th scope='row'>{i + 1}</th>
                     <td>{member.name}</td>
                     <td>{member.description}</td>
-                    <td>
-                      <input
-                        className='btn btn-outline-success btn-edit mr-2'
-                        type='button'
-                        value='Edit'
-                      />
-                      <input
-                        className='btn btn-outline-danger btn-delete mr-2'
-                        type='button'
-                        value='Delete'
-                      />
-                    </td>
+                    {member.permission ? (
+                      <td>
+                        <input
+                          className='btn btn-outline-success btn-edit mr-2'
+                          type='button'
+                          value='Edit'
+                        />
+                        <input
+                          className='btn btn-outline-danger btn-delete mr-2'
+                          type='button'
+                          value='Delete'
+                          onClick={() => deleteGroup(member.id)}
+                        />
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
                     <td>{member.leader}</td>
                     <td>{member.performed_works}</td>
                     <td>{member.members}</td>

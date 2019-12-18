@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import './GroupForm.css';
@@ -74,6 +75,7 @@ class GroupForm extends Component {
   }
 
   onSelect(optionsList, selectedItem) {
+    console.log(selectedItem.id);
     this.setState({
       leader_id: selectedItem.id
     });
@@ -139,7 +141,7 @@ class GroupForm extends Component {
           <div className='col-4'>
             <div className='align-items-end' style={{ marginTop: '7px' }}>
               <button type='button' className='btn' onClick={this.createGroup}>
-                Save
+                <Link to='/groups'>Save</Link>
               </button>
             </div>
           </div>

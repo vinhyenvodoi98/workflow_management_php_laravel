@@ -40,6 +40,20 @@ class HomePage extends Component {
                 <div className='col-6'>
                   <div className='col-12 area home_area_heght'>
                     <p className='content'>Urgent work</p>
+                    <div className='col position-left'>
+                      <div>
+                        <a>Work number 1</a>
+                      </div>
+                      <div>
+                        <a>Work number 2</a>
+                      </div>
+                      <div>
+                        <a>Work number 3</a>
+                      </div>
+                      <div>
+                        <a>Work number 4</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -50,11 +64,33 @@ class HomePage extends Component {
                 <div className='col-6'>
                   <div className='col-12 area home_area_heght'>
                     <p className='content'>Remind work</p>
+                    <div className='col position-left'>
+                      <div>
+                        Check <a>work number 1</a>
+                      </div>
+                      <div>
+                        Check <a>work number 2</a>
+                      </div>
+                      <div>
+                        Check <a>work number 3</a>
+                      </div>
+                      <div>
+                        Check <a>work number 4</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className='col-6'>
                   <div className='col-12 area home_area_heght'>
                     <p className='content'>Working diary</p>
+                    <div className='col position-left'>
+                      <div>
+                        Checked <a>work number 5</a> at 2019-05-05
+                      </div>
+                      <div>
+                        Checked <a>work number 7</a> at 2019-07-09
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

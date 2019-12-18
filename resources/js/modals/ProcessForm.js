@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { DatePicker } from 'antd';
 import { Slider } from 'rsuite';
+import { Select } from 'antd';
+import moment from 'moment';
 
 import './modals.css';
+
+const dateFormat = 'YYYY-MM-DD';
+const { Option } = Select;
 
 function ProcessForm(props) {
   const [targets, settargets] = useState([
@@ -24,41 +29,31 @@ function ProcessForm(props) {
             className='form-control'
             id='staticEmail2'
             disabled
-            value={props.todo}
+            value={props.todo.name}
           />
         </div>
         <div className='col-3'>
           <select className='custom-select' id='inputGroupSelect01'>
-            <option defaultValue>Priority</option>
-            <option value='1'>One</option>
-            <option value='2'>Two</option>
-            <option value='3'>Three</option>
+            <option defaultValue>{props.todo.priority}</option>
+            <option value='1'>low</option>
+            <option value='2'>medium</option>
+            <option value='3'>high</option>
           </select>
         </div>
         <div className='col-3'>
           <select className='custom-select' id='inputGroupSelect01'>
-            <option defaultValue>Status</option>
-            <option value='1'>One</option>
-            <option value='2'>Two</option>
-            <option value='3'>Three</option>
+            <option defaultValue>{props.todo.status}</option>
+            <option value='1'>Not started</option>
+            <option value='2'>Pendding</option>
           </select>
         </div>
       </div>
-      <div className='form-group'>Do it by me , abc,xyz</div>
-      <div className='form-group'>Belong to abcd</div>
+
       <hr />
       <div className='Description'>
         <p>Description</p>
         <div className='col-6'>
-          <p>Do it now</p>
-        </div>
-        <p>Targets</p>
-        <div className='Targets'>
-          <ol>
-            {targets.map((target, index) => (
-              <li key={index}>{target}</li>
-            ))}
-          </ol>
+          <p>{props.todo.description}</p>
         </div>
       </div>
       <div className='info'>
@@ -67,21 +62,21 @@ function ProcessForm(props) {
           <div className='row form-group'>
             <div className='col'>
               <p className='col'>Progress</p>
-              <Slider progress defaultValue={50} />
+              <Slider progress value={parseInt(props.todo.progress)} />
             </div>
             <div className='col'>
               <p className='col'>Start :</p>
-              <DatePicker selected={startDate} onChange={e => setstartDate(e)} />
+              <DatePicker value={moment(props.todo.start_date, dateFormat)} format={dateFormat} />
             </div>
           </div>
           <div className='row form-group'>
             <div className='col'>
-              <p className='col'>Evaluate</p>
-              <Slider progress defaultValue={50} />
+              <p className='col'>Score</p>
+              <Slider progress value={parseInt(props.todo.score)} />
             </div>
             <div className='col'>
               <p className='col'>End :</p>
-              <DatePicker selected={endDate} onChange={e => setendDate(e)} />
+              <DatePicker value={moment(props.todo.due_date, dateFormat)} format={dateFormat} />
             </div>
           </div>
           <div className='row form-group'>
