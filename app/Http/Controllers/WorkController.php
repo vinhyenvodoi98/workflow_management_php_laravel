@@ -52,7 +52,7 @@ class WorkController extends Controller
                 $child_works = DB::table('works')
                     ->whereIn('id', array_values($child_works_ids))
                     ->get();
-                $work_info["items"] = $this->getWorkInfo($child_works, $work->id);
+                $work_info["children"] = $this->getWorkInfo($child_works, $work->id);
                 array_push($res, $work_info);
             }
         }
@@ -86,6 +86,7 @@ class WorkController extends Controller
                 array_push($res, $work_info);
             }
         }
+        $res = $this->filterGetWorks($res);
         return response()->json($res);
     }
 
@@ -190,9 +191,9 @@ class WorkController extends Controller
                 ->whereIn('id', array_values($child_works_ids))
                 ->get();
             if (!empty($child_works)) {
-                $work_info["items"] = $this->getWorkInfo($child_works, $work->id);
+                $work_info["children"] = $this->getWorkInfo($child_works, $work->id);
             } else {
-                $work_info["items"] = null;
+                $work_info["children"] = null;
             }
 
             array_push($res, $work_info);
@@ -262,8 +263,8 @@ class WorkController extends Controller
         });
 
         foreach($works as $work) {
-            if($work["items"]) {
-                $parent_ids = $this->filterWorkParents($parent_ids, $work["items"]);
+            if($work["children"]) {
+                $parent_ids = $this->filterWorkParents($parent_ids, $work["children"]);
             }
         }
 
@@ -277,11 +278,11 @@ class WorkController extends Controller
 
     function filterWorkParents($parent_ids, $children) {
         foreach($children as $child) {
-            if($child["items"]) {
+            if($child["children"]) {
                 $parent_ids = $parent_ids->filter(function($parent_id) use ($child){
                     return $parent_id != $child["id"];
                 }); 
-                $parent_ids = $this->filterWorkParents($parent_ids, $child["items"]);
+                $parent_ids = $this->filterWorkParents($parent_ids, $child["children"]);
             } else {
                 $parent_ids = $parent_ids->filter(function($parent_id) use ($child){
                     return $parent_id != $child["id"];
