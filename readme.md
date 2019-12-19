@@ -150,3 +150,18 @@ follow this
 ```sh
 docker logs -f --details containerName
 ```
+
+## Test
+
+Firstly, we have to go into our app Laravel container.
+```
+docker exec -it <app_container_ID> bash
+```
+Then, run the following command to test:
+```
+./vendor/bin/phpunit
+```
+Write your own TestCase
+```
+php artisan make:test <TestCaseClass>
+```
