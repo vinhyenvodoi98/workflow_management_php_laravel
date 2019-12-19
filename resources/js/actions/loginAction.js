@@ -10,6 +10,7 @@ export const UPDATEBACKGROUND = 'UPDATEBACKGROUND';
 
 export const login = token => async dispatch => {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  var navPositon, backGround;
 
   await axios
     .get('http://localhost:8181/api/auth')
@@ -35,6 +36,15 @@ export const login = token => async dispatch => {
         isLoading: false
       });
     });
+
+  if ((navPositon = localStorage.getItem('navPositon'))) {
+    navPositon = navPositon === 'true';
+    dispatch(UpdateNavPosition(navPositon));
+  }
+  if ((backGround = localStorage.getItem('backGround'))) {
+    backGround = backGround === 'true';
+    dispatch(UpdateBackgroud(backGround));
+  }
 
   dispatch(loadAllUser());
   dispatch(loadUserGroup());
@@ -97,6 +107,7 @@ export const loadUserGroup = () => dispatch => {
 };
 
 export const UpdateNavPosition = navPositon => dispatch => {
+  localStorage.setItem('navPositon', navPositon);
   dispatch({
     type: UPDATENAVPOSITION,
     navPositon
@@ -104,6 +115,14 @@ export const UpdateNavPosition = navPositon => dispatch => {
 };
 
 export const UpdateBackgroud = backGround => dispatch => {
+  localStorage.setItem('backGround', backGround);
+  if (backGround) {
+    document.body.style.background = 'linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%)';
+    document.body.style.height = '100%';
+  } else {
+    document.body.style.background = 'linear-gradient(90deg, #141e30 0%,#243b55 100% )';
+    document.body.style.height = '100%';
+  }
   dispatch({
     type: UPDATEBACKGROUND,
     backGround

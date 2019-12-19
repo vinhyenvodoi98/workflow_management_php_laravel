@@ -30,13 +30,6 @@ class Navbar extends Component {
 
   onChangeColour(checked) {
     store.dispatch(loginAction.UpdateBackgroud(checked));
-    if (checked) {
-      document.body.style.background = 'linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%)';
-      document.body.style.height = '100%';
-    } else {
-      document.body.style.background = 'linear-gradient(90deg, #141e30 0%,#243b55 100% )';
-      document.body.style.height = '100%';
-    }
   }
 
   render() {
@@ -202,7 +195,11 @@ class Navbar extends Component {
                       <div className='col'>
                         <div className='row'>
                           <p className='col-9'>Setting Colour</p>
-                          <Switch size='small' checked={this.props.LoginStatus.backGround} onChange={this.onChangeColour} />
+                          <Switch
+                            size='small'
+                            checked={this.props.LoginStatus.backGround}
+                            onChange={this.onChangeColour}
+                          />
                         </div>
                       </div>
                     </div>
