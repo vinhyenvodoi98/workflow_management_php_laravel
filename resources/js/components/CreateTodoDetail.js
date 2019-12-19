@@ -26,28 +26,28 @@ class CreateTodoDetail extends Component {
       consulted_id: [],
       informed_id: [],
       priority: '',
-      target_id: '',
+      target_id: 2,
       value: undefined,
       treeData: [
         {
-          title: 'Node1',
+          title: 'Support Development team',
           value: '0-0',
           key: '0-0',
           children: [
             {
-              title: 'Child Node1',
+              title: 'Frontend team',
               value: '0-0-1',
               key: '0-0-1'
             },
             {
-              title: 'Child Node2',
+              title: 'Backend team',
               value: '0-0-2',
               key: '0-0-2'
             }
           ]
         },
         {
-          title: 'Node2',
+          title: 'Support Party year end',
           value: '0-1',
           key: '0-1'
         }
@@ -114,10 +114,12 @@ class CreateTodoDetail extends Component {
       consulted: this.state.consulted_id,
       informed: this.state.informed_id
     };
+    console.log(data);
     axios
       .post('http://localhost:8181/api/user/groups/group/works', data)
       .then(response => {
         console.log(response);
+        this.props.fetchData(this.props.groupId);
         this.notifyA();
       })
       .catch(err => this.notifyA());
@@ -192,8 +194,7 @@ class CreateTodoDetail extends Component {
     return (
       <div>
         <ToastContainer enableMultiContainer position={toast.POSITION.TOP_RIGHT} />
-        {console.log(this.props.todo)}
-        {this.props.todo ? (
+        {this.props.todo !== null ? (
           <div>
             <div className='form-group'>
               <p>Name :</p>

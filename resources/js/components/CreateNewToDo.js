@@ -24,15 +24,22 @@ class CreateNewToDo extends Component {
     }
   }
 
-  fetchData() {
+  fetchData(groupId) {
     var token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    var url = 'http://localhost:8181/api/user/groups/' + this.props.groupId + '/works/basic_info';
+    var url = 'http://localhost:8181/api/user/groups/' + groupId + '/works/basic_info';
 
     axios.get(url).then(response => {
       // handle success
       console.log(response.data);
-      this.setState({ treeData: response.data });
+      this.setState({
+        treeData: response.data
+      });
+      if (response.data.length === 0) {
+        this.setState({
+          todo: []
+        });
+      }
     });
   }
 
@@ -93,7 +100,11 @@ class CreateNewToDo extends Component {
           />
         </div>
 
-        <CreateTodoDetail groupId={this.props.groupId} todo={this.state.todo} />
+        <CreateTodoDetail
+          fetchData={this.fetchData}
+          groupId={this.props.groupId}
+          todo={this.state.todo}
+        />
       </div>
     );
   }
